@@ -10,9 +10,6 @@ public class HeroInputReader : MonoBehaviour
 
     public void SetDirection(InputAction.CallbackContext context)
     {
-        // Debug.Log("here");
-        Debug.Log(context.ReadValue<float>());
-        Debug.Log(context.phase);
 
         Vector3 vec = Vector3.zero;
 
@@ -31,16 +28,15 @@ public class HeroInputReader : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("jump");
-        Debug.Log(context.ReadValue<float>());
-        Debug.Log(context.phase);
+        if (context.started)
+        {
+            _hero.SetJumping(true);
+        }
+        if (context.canceled)
+        {
+            _hero.SetJumping(false);
+        }
 
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
