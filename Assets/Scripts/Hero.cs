@@ -202,10 +202,10 @@ public class Hero : MonoBehaviour
             _currentJumpsCount = 0;
         }
 
-        // Plunge after jump button releasing
+        // Plunge after jump button releasing till zero y velocity
         if ( !_isJumping && _rigidbody.velocity.y > 0 && !_isGrounded && _ascendTime > _minimalAscendTime)
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y / 2) ;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y / 2);
         }
 
         if (_rigidbody.velocity.y < 0.1f && !_isGrounded)
