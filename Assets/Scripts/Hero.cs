@@ -12,6 +12,7 @@ public class Hero : MonoBehaviour
 
     [SerializeField] private int _availableJumps = 2;
     public int _currentJumpsCount;
+    [SerializeField] private Sensor _interactSensor;
 
     private Vector3 _direction;
 
@@ -54,6 +55,18 @@ public class Hero : MonoBehaviour
     public void SetJumping(bool isJumping)
     {
         _isJumping = isJumping;
+    }
+
+    public void Interact()
+    {
+        if (_interactSensor != null)
+        {
+            foreach(GameObject obj in _interactSensor.GetIntersectedObjects())
+            {
+                Interactive interactiveComponent = obj.GetComponent<Interactive>();
+                interactiveComponent.Interact(this.gameObject);
+            }
+        }
     }
 
     private void CheckIsGrounded()

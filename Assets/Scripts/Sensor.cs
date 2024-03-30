@@ -16,7 +16,7 @@ public class InteractionEvent : UnityEvent<GameObject>
 public class Sensor : MonoBehaviour
 {
 
-    [SerializeField][HideInInspector] private List<GameObject> _gameObjectsList;
+    [SerializeField] private List<GameObject> _gameObjectsList;
     private bool _isTouching;
 
     [Tooltip("Collider with Is Trigger flag set.")]
