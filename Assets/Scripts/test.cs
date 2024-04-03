@@ -13,16 +13,9 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(transform.lossyScale);
         
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("ontriggerenter test");
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("oncollisionenter test");
-    }*/
 }

@@ -4,32 +4,49 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-
+    [Header("Movement adjustments")]
     [SerializeField] private float _runAccelerationMultiplier = 0.1f;
     [SerializeField] private float _maximumHorizontalVelocity = 4.5f;
-    [SerializeField] private float _runBrakingMultiplier = 0.9f;
+    [SerializeField] private float _runBrakingMultiplier = 0.8f;
+    
+    [SerializeField] private float _runAccelerationMultiplierSlope = 0.5f;
+    [SerializeField] private float _maximumHorizontalVelocitySlopeAscend = 4.5f;
+    [SerializeField] private float _maximumHorizontalVelocitySlopeDescend = 4.5f;
+    [SerializeField] private float _runBrakingMultiplierSlope = 0.1f;
+
+    [Header("Jump adjustments")]
+    [SerializeField] private float _jumpForce;
+    [SerializeField] private int _availableJumps = 2;
     [SerializeField] private float _minimalAscendTime = 1.0f;
 
-    [SerializeField] private int _availableJumps = 2;
+
     public int _currentJumpsCount;
     [SerializeField] private Sensor _interactSensor;
 
+
     private Vector3 _direction;
 
-    [SerializeField] private float _jumpForce;
+    
 
     private bool _isJumping = false; // if the jump pressed
     private bool _isGrounded = false; // if the hero is on the ground
+    private bool _isGroundForward = false;
     private bool _jumpAvailable = true; // we need to avoid secondary jumps right after landing when jump button is kept pressed
     private float _fallTime = 0.0f;
     private float _ascendTime = 0.0f;
     private bool _priorGrounded = false;
+
+    [SerializeField] private SpawnPrefab RunDustParticleSpawner;
+    private bool _runParticleAvailable = false;
     
 
     [SerializeField] private LayerCollideCheck GroundChecker;
+    [SerializeField] private LayerCollideCheck ForwardGroundChecker;
+
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
+    [SerializeField]  private ParticleSystem _particleSystem;
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
@@ -69,9 +86,23 @@ public class Hero : MonoBehaviour
         }
     }
 
+    public void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth) 
+    {
+        if (wasHealth > currentHealth)
+        {
+            _animator.SetTrigger("hit");
+            _particleSystem.Play();
+        }
+    }
+
     private void CheckIsGrounded()
     {
         _isGrounded = GroundChecker.GetCollisionStatus();
+    }
+
+    private void CheckGroundForward() 
+    {
+        _isGroundForward = ForwardGroundChecker.GetCollisionStatus();
     }
 
     private void SetAnimationParameters()
@@ -110,21 +141,49 @@ public class Hero : MonoBehaviour
         _animator.SetFloat("ascendTime", _ascendTime);
     }
 
+    private void LaunchParticles()
+    {
+        if (_runParticleAvailable && Mathf.Abs(_rigidbody.velocity.x) > 0.01f && _rigidbody.velocity.y == 0 && _direction.x != 0 && _isGrounded)
+        {
+            RunDustParticleSpawner.Spawn();
+            _runParticleAvailable = false;
+        }
+
+        if (_rigidbody.velocity.x == 0 && _direction.x == 0 && _isGrounded)
+        {
+            _runParticleAvailable = true;
+        }
+        
+    }
+
     private void FlipSprite()
     {
         if (_direction.x < 0)
         {
-            _spriteRenderer.flipX = true;
+            // _spriteRenderer.flipX = true;
+            // doing it via transform for dust paritcles position modification
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (_direction.x > 0)
         {
-            _spriteRenderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
+            // _spriteRenderer.flipX = false;
         }
     }
 
     private void FixedUpdate()
     {
         CheckIsGrounded(); // Now _airborne variable always show if the carrier is grounded.
+        CheckGroundForward();
+
+        if (_rigidbody.velocity.y < 0.1f && !_isGrounded)
+        {
+            _rigidbody.gravityScale = 3.5f;
+        }
+        else
+        {
+            _rigidbody.gravityScale = 2.0f;
+        }
 
         if (_rigidbody.velocity.y < -0.01f)
         {
@@ -140,7 +199,51 @@ public class Hero : MonoBehaviour
         {
             _ascendTime = 0.0f;
             _fallTime = 0.0f;
+            if (!_isJumping) {
+                if (_rigidbody.velocity.y > 0)
+                {
+                    _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0.0f);
+                }else
+                {
+                    _rigidbody.velocity = new Vector2(0.0f, _rigidbody.velocity.y);
+                }
+                
+            }
         }
+
+        float accelerating = 0.0f;
+        float breaking = 0.0f;
+        float velocityLimit = 0.0f;
+
+        accelerating = _runAccelerationMultiplier;
+        breaking = _runBrakingMultiplier;
+
+        bool onPlane = false;
+        bool ascendSlope = false;
+
+        if (Mathf.Abs(_rigidbody.velocity.x) > 0.02f && Mathf.Abs(_rigidbody.velocity.y) > 0.02f && _isGrounded)
+        {
+            accelerating = _runAccelerationMultiplierSlope;
+            breaking = _runBrakingMultiplierSlope;
+            onPlane = false;
+            if (_rigidbody.velocity.y > 0) {
+                ascendSlope = true;
+                velocityLimit = _maximumHorizontalVelocitySlopeAscend;
+            }
+            else
+            {
+                ascendSlope = false;
+                velocityLimit = _maximumHorizontalVelocitySlopeDescend;
+            }
+        }
+        else
+        {
+            onPlane = true;
+            accelerating = _runAccelerationMultiplier;
+            breaking = _runBrakingMultiplier;
+            velocityLimit = _maximumHorizontalVelocity;
+        }
+
 
 
         // Horizontal movement.
@@ -151,45 +254,56 @@ public class Hero : MonoBehaviour
 
         if (_direction.x >= 0.01f)
         {
-            newVelocity = new Vector2(_direction.x * (_maximumHorizontalVelocity - _rigidbody.velocity.x) * _runAccelerationMultiplier + _rigidbody.velocity.x, _rigidbody.velocity.y);
+            newVelocity = new Vector2(_direction.x * (velocityLimit - _rigidbody.velocity.x) * accelerating + _rigidbody.velocity.x, _rigidbody.velocity.y);
 
-            if (Mathf.Abs(_maximumHorizontalVelocity - _rigidbody.velocity.x) < 0.1f)
+            if (Mathf.Abs(velocityLimit - _rigidbody.velocity.x) < 0.1f)
             {
-                newVelocity = new Vector2(_maximumHorizontalVelocity, _rigidbody.velocity.y);
+                newVelocity = new Vector2(velocityLimit, _rigidbody.velocity.y);
             }
-
         }
         
         if (_direction.x <= -0.01f)
         {
-            newVelocity = new Vector2(-_direction.x * (-_maximumHorizontalVelocity - _rigidbody.velocity.x) * _runAccelerationMultiplier + _rigidbody.velocity.x, _rigidbody.velocity.y);
+            newVelocity = new Vector2(-_direction.x * (-velocityLimit - _rigidbody.velocity.x) * accelerating + _rigidbody.velocity.x, _rigidbody.velocity.y);
 
-            if (Mathf.Abs(_maximumHorizontalVelocity - _rigidbody.velocity.x) < 0.1f)
+            if (Mathf.Abs(velocityLimit + _rigidbody.velocity.x) < 0.1f)
             {
-                newVelocity = new Vector2(-_maximumHorizontalVelocity, _rigidbody.velocity.y);
+                newVelocity = new Vector2(-velocityLimit, _rigidbody.velocity.y);
             }
         }
+        
 
-        if (_direction.x < 0.01f && _direction.x > -0.01f)
+        if (_direction.x < 0.01f && _direction.x > -0.01f && _isGrounded)
         {
-            if (absoluteXVelocity > 1.0f)
+            if (absoluteXVelocity > 0.1f)
             {
-                newVelocity = new Vector2(_rigidbody.velocity.x * _runBrakingMultiplier, _rigidbody.velocity.y);
+                newVelocity = new Vector2(_rigidbody.velocity.x, 0) * breaking;
             }
             else
             {
-                newVelocity = new Vector2(0.0f, _rigidbody.velocity.y);
+                newVelocity = Vector2.zero;
+
             }
+
+        }
+        // Avoiding slipping from slipper slopes
+        if (newVelocity.magnitude < 0.1f && _isGrounded && !_isJumping)
+        {
+            _rigidbody.gravityScale = 0;
+            _rigidbody.velocity = Vector2.zero;
+        }
+        else
+        {
+            _rigidbody.velocity = new Vector2(newVelocity.x, _rigidbody.velocity.y);
         }
 
-        _rigidbody.velocity = newVelocity;
 
-        
 
         // Jumping
         // The firt jump must alway be from the ground.
         if (_isJumping  && _jumpAvailable && _isGrounded)
         {
+            _rigidbody.velocity = Vector2.zero;
             _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Force);
             _currentJumpsCount = _availableJumps - 1;
             _jumpAvailable = false;
@@ -221,27 +335,9 @@ public class Hero : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y / 2);
         }
 
-        if (_rigidbody.velocity.y < 0.1f && !_isGrounded)
-        {
-            _rigidbody.gravityScale = 3.5f;
-        }
-        else
-        {
-            _rigidbody.gravityScale = 2.0f;
-        }
-        // Avoiding slipping from slipper slopes
-        if (_isGrounded && _direction.x == 0.0f && !_isJumping)
-        {
-            _rigidbody.gravityScale = 0;
-            _rigidbody.velocity = Vector2.zero;
-        }
-
-       
-
-        
-
         SetAnimationParameters();
         FlipSprite();
+        LaunchParticles();
         _priorGrounded = _isGrounded;
     }
 }
