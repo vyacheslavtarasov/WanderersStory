@@ -20,13 +20,13 @@ public class Hero : MonoBehaviour
     [SerializeField] private float _minimalAscendTime = 1.0f;
 
 
-    public int _currentJumpsCount;
+    private int _currentJumpsCount;
     [SerializeField] private Sensor _interactSensor;
 
 
     private Vector3 _direction;
 
-    
+    private bool _fallDetected = false;
 
     private bool _isJumping = false; // if the jump pressed
     private bool _isGrounded = false; // if the hero is on the ground
@@ -40,8 +40,10 @@ public class Hero : MonoBehaviour
     private bool _runParticleAvailable = false;
     
 
-    [SerializeField] private LayerCollideCheck GroundChecker;
+    // [SerializeField] private LayerCollideCheck GroundChecker;
     [SerializeField] private LayerCollideCheck ForwardGroundChecker;
+
+    [SerializeField] private Sensor GroundChecker;
 
 
     private Rigidbody2D _rigidbody;
@@ -171,10 +173,13 @@ public class Hero : MonoBehaviour
         }
     }
 
+
+    public void OnFall() {
+    }
     private void FixedUpdate()
     {
         CheckIsGrounded(); // Now _airborne variable always show if the carrier is grounded.
-        CheckGroundForward();
+        // CheckGroundForward();
 
         if (_rigidbody.velocity.y < 0.1f && !_isGrounded)
         {

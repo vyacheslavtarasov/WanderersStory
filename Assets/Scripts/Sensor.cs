@@ -11,8 +11,6 @@ public class InteractionEvent : UnityEvent<GameObject>
 }
 
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
 public class Sensor : MonoBehaviour
 {
 
@@ -20,7 +18,7 @@ public class Sensor : MonoBehaviour
     private bool _isTouching;
 
     [Tooltip("Collider with Is Trigger flag set.")]
-    public Collider2D Collider;
+    private Collider2D _collider;
 
     [Tooltip("React only on these Layers.")]
     [SerializeField] private LayerMask _layers = ~0;
@@ -33,9 +31,14 @@ public class Sensor : MonoBehaviour
     public InteractionEvent CollisionExitEvent;
     public InteractionEvent CollisionExitAllEvent;
 
+    private void Awake()
+    {
+        _collider = GetComponent<Collider2D>();
+    }
+
     private void Start()
     {
-        if (Collider == null)
+        if (_collider == null)
         {
             Debug.LogError("Assign the gameobject Collider in the inspector before resuming.");
             // UnityEditor.EditorApplication.isPlaying = false;
@@ -69,6 +72,7 @@ public class Sensor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
+        Debug.Log("exit");
         if ((_layers & (1 << collider.gameObject.layer)) == 0)
         {
             return;
@@ -76,14 +80,16 @@ public class Sensor : MonoBehaviour
         if (_tags.Length == 0 || _tags.Contains(collider.gameObject.tag))
         {
             _gameObjectsList.Remove(collider.gameObject);
+            Debug.Log("removed");
 
             CollisionExitEvent?.Invoke(collider.gameObject);
             if (_gameObjectsList.Count > 0)
             {
-                CollisionExitAllEvent?.Invoke(collider.gameObject);
+                
             }
             else
             {
+                CollisionExitAllEvent?.Invoke(collider.gameObject);
                 _isTouching = false;
             }
         }
@@ -117,10 +123,11 @@ public class Sensor : MonoBehaviour
             CollisionExitEvent?.Invoke(collider.gameObject);
             if (_gameObjectsList.Count > 0)
             {
-                CollisionExitAllEvent?.Invoke(collider.gameObject);
+                
             }
             else
             {
+                CollisionExitAllEvent?.Invoke(collider.gameObject);
                 _isTouching = false;
             }
         }
