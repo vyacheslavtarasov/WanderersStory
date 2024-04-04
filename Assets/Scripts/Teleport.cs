@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-    public Vector3 Target;
+    public Transform place;
+
+    public void SetPlace(Transform p)
+    {
+        place = p;
+    }
 
     public void TeleportObject(GameObject obj)
     {
-        obj.transform.position = Target;
+        obj.transform.position = place.transform.position;
     }
 }

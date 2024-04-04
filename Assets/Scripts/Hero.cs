@@ -37,6 +37,7 @@ public class Hero : MonoBehaviour
     private bool _priorGrounded = false;
 
     [SerializeField] private SpawnPrefab RunDustParticleSpawner;
+    [SerializeField] private SpawnPrefab JumpDustParticleSpawner;
     private bool _runParticleAvailable = false;
     
 
@@ -211,8 +212,7 @@ public class Hero : MonoBehaviour
                 }else
                 {
                     _rigidbody.velocity = new Vector2(0.0f, _rigidbody.velocity.y);
-                }
-                
+                }                
             }
         }
 
@@ -312,6 +312,7 @@ public class Hero : MonoBehaviour
             _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Force);
             _currentJumpsCount = _availableJumps - 1;
             _jumpAvailable = false;
+            JumpDustParticleSpawner.Spawn();
         }
 
         if (_isJumping && _currentJumpsCount > 0 && _jumpAvailable && !_isGrounded )
@@ -320,6 +321,7 @@ public class Hero : MonoBehaviour
             _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Force);
             _currentJumpsCount -= 1;
             _jumpAvailable = false;
+            JumpDustParticleSpawner.Spawn();
         }
 
         // Avoid unnecessary jumps on ground if you keep button pressed
