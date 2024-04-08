@@ -16,7 +16,10 @@ public class Health : MonoBehaviour
     public float currentHealth;
     public UnityEvent OnDead;
     public ChangeHealthEvent OnChangeHealth;
-    [SerializeField] private float _damageForceToInflict = 200.0f;
+
+    public UnityEvent OnHeal;
+    public UnityEvent OnDamage;
+    
 
     private void Start()
     {
@@ -34,12 +37,13 @@ public class Health : MonoBehaviour
             OnDead?.Invoke();
             return;
         }
-        // let it be here for now
+        
         if (amount < 0)
         {
-            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * _damageForceToInflict, ForceMode2D.Force);
+            OnDamage?.Invoke();
+            return;
         }
-        
+        OnHeal?.Invoke();
+
     }
 }

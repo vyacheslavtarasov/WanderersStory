@@ -80,7 +80,6 @@ public class Sensor : MonoBehaviour
         if (_tags.Length == 0 || _tags.Contains(collider.gameObject.tag))
         {
             _gameObjectsList.Remove(collider.gameObject);
-            Debug.Log("removed");
 
             CollisionExitEvent?.Invoke(collider.gameObject);
             if (_gameObjectsList.Count > 0)

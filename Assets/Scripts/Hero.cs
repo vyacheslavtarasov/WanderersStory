@@ -22,6 +22,7 @@ public class Hero : MonoBehaviour
 
     private int _currentJumpsCount;
     [SerializeField] private Sensor _interactSensor;
+    [SerializeField] private float _damageForceToInflict = 200.0f;
 
 
     private Vector3 _direction;
@@ -32,12 +33,14 @@ public class Hero : MonoBehaviour
     private bool _isGrounded = false; // if the hero is on the ground
     private bool _isGroundForward = false;
     private bool _jumpAvailable = true; // we need to avoid secondary jumps right after landing when jump button is kept pressed
-    private float _fallTime = 0.0f;
-    private float _ascendTime = 0.0f;
+    public float _fallTime = 0.0f;
+    public float _ascendTime = 0.0f;
     private bool _priorGrounded = false;
 
+    [Space][Header("Particles")]
     [SerializeField] private SpawnPrefab RunDustParticleSpawner;
     [SerializeField] private SpawnPrefab JumpDustParticleSpawner;
+    [SerializeField] private SpawnPrefab SlapTheGroundParticleSpawner;
     private bool _runParticleAvailable = false;
     
 
@@ -95,6 +98,8 @@ public class Hero : MonoBehaviour
         {
             _animator.SetTrigger("hit");
             _particleSystem.Play();
+            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * _damageForceToInflict, ForceMode2D.Force);
         }
     }
 
@@ -175,7 +180,11 @@ public class Hero : MonoBehaviour
     }
 
 
-    public void OnFall() {
+    public void OnGroundTouch(GameObject myGameObject) {
+        if (_fallTime > 0.4f)
+        {
+            SlapTheGroundParticleSpawner.Spawn();
+        }
     }
     private void FixedUpdate()
     {
@@ -322,6 +331,8 @@ public class Hero : MonoBehaviour
             _currentJumpsCount -= 1;
             _jumpAvailable = false;
             JumpDustParticleSpawner.Spawn();
+            _ascendTime = 0.0f;
+            _fallTime = 0.0f;
         }
 
         // Avoid unnecessary jumps on ground if you keep button pressed
@@ -340,6 +351,11 @@ public class Hero : MonoBehaviour
         if ( !_isJumping && _rigidbody.velocity.y > 0 && !_isGrounded && _ascendTime > _minimalAscendTime)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y / 2);
+        }
+
+        if (_rigidbody.velocity.y < -12.0f)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, -12.0f);
         }
 
         SetAnimationParameters();
