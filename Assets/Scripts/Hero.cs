@@ -16,7 +16,6 @@ public class Hero : MonoBehaviour
 
     [Header("Jump adjustments")]
     [SerializeField] private float _jumpForce;
-    [SerializeField] private int _availableJumps = 2;
     [SerializeField] private float _minimalAscendTime = 1.0f;
 
 
@@ -43,6 +42,8 @@ public class Hero : MonoBehaviour
     [SerializeField] private SpawnPrefab JumpDustParticleSpawner;
     [SerializeField] private SpawnPrefab SlapTheGroundParticleSpawner;
     private bool _runParticleAvailable = false;
+
+    private GameSession _session;
     
 
     // [SerializeField] private LayerCollideCheck GroundChecker;
@@ -55,12 +56,14 @@ public class Hero : MonoBehaviour
     private Animator _animator;
     [SerializeField]  private ParticleSystem _particleSystem;
     private SpriteRenderer _spriteRenderer;
+    private Health _healthComponent;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _healthComponent = GetComponent<Health>();
     }
 
     private void Start()
@@ -69,6 +72,11 @@ public class Hero : MonoBehaviour
         Application.targetFrameRate = 60;
 
         _currentJumpsCount = 0;
+
+        _session = FindObjectOfType<GameSession>();
+        _healthComponent.overallHealth = _session.Data.Health;
+        
+
     }
 
     public void SetDirection(Vector3 newDirection)
@@ -122,6 +130,8 @@ public class Hero : MonoBehaviour
             this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * _damageForceToInflict, ForceMode2D.Force);
         }
+
+        _session.Data.Health = currentHealth;
     }
 
     private void CheckIsGrounded()
@@ -340,7 +350,7 @@ public class Hero : MonoBehaviour
         {
             _rigidbody.velocity = Vector2.zero;
             _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Force);
-            _currentJumpsCount = _availableJumps - 1;
+            _currentJumpsCount = _session.Data.JumpsAmount - 1;
             _jumpAvailable = false;
             JumpDustParticleSpawner.Spawn();
         }
