@@ -47,4 +47,12 @@ public class HeroInputReader : MonoBehaviour
             _hero.Interact();
         }
     }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _hero.Attack();
+        }
+    }
 }

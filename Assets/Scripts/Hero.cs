@@ -23,6 +23,7 @@ public class Hero : MonoBehaviour
     private int _currentJumpsCount;
     [SerializeField] private Sensor _interactSensor;
     [SerializeField] private float _damageForceToInflict = 200.0f;
+    [SerializeField] private Sensor _attackSensor;
 
 
     private Vector3 _direction;
@@ -89,6 +90,26 @@ public class Hero : MonoBehaviour
                 Interactive interactiveComponent = obj.GetComponent<Interactive>();
                 interactiveComponent.Interact(this.gameObject);
             }
+        }
+    }
+
+    public void Attack()
+    {
+        
+        if (_attackSensor != null)
+        {
+            _animator.SetTrigger("attack");
+            
+        }
+    }
+
+    public void DoAttack()
+    {
+        Debug.Log(_attackSensor.GetIntersectedObjects());
+        foreach (GameObject obj in _attackSensor.GetIntersectedObjects().ToArray())
+        {
+            Health healthComponennt = obj.GetComponent<Health>();
+            healthComponennt.ChangeHealth(-1.0f);
         }
     }
 
