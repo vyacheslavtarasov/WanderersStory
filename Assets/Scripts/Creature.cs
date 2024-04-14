@@ -20,7 +20,8 @@ public class Creature : MonoBehaviour
     [SerializeField] protected float _damageForceToInflict = 200.0f;
 
     // Necessary information
-    protected Vector3 _direction;
+    public Vector3 _direction;
+    private bool attackMode = false;
     protected bool _isGrounded = false; // if the hero is on the ground
     protected bool _priorGrounded = false;
     protected bool _runParticleAvailable = false;
@@ -51,8 +52,10 @@ public class Creature : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _healthComponent = GetComponent<Health>();
     }
+
     public void SetDirection(Vector3 newDirection)
     {
+
         _direction = newDirection;
     }
 
@@ -63,10 +66,12 @@ public class Creature : MonoBehaviour
 
     public void Attack()
     {
+        attackMode = true;
         if (_attackSensor != null)
         {
             _animator.SetTrigger("attack");
         }
+        
     }
 
     public void DoAttack()
@@ -76,13 +81,13 @@ public class Creature : MonoBehaviour
             Health healthComponennt = obj.GetComponent<Health>();
             healthComponennt.ChangeHealth(_attackDamage);
         }
+        attackMode = false;
     }
     protected void CheckIsGrounded()
     {
         _isGrounded = GroundChecker.GetCollisionStatus();
     }
-
-    protected virtual void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth)
+    public virtual void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth)
     {
         if (wasHealth > currentHealth)
         {
@@ -268,6 +273,11 @@ public class Creature : MonoBehaviour
         else
         {
             _rigidbody.velocity = new Vector2(newVelocity.x, _rigidbody.velocity.y);
+        }
+
+        if (attackMode)
+        {
+            _rigidbody.velocity = new Vector2(0.0f, _rigidbody.velocity.y);
         }
 
         // Jumping

@@ -72,7 +72,6 @@ public class Sensor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log("exit");
         if ((_layers & (1 << collider.gameObject.layer)) == 0)
         {
             return;

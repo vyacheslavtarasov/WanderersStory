@@ -39,7 +39,7 @@ public class Hero : Creature
     }
 
 
-    protected override void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth) 
+    public override void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth) 
     {
         base.OnChangeHealth(wasHealth, currentHealth, overallHealth);
         if (wasHealth > currentHealth)
