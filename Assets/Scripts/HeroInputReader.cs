@@ -55,4 +55,12 @@ public class HeroInputReader : MonoBehaviour
             _hero.Attack();
         }
     }
+
+    public void SpellCast(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _hero.SpellCast();
+        }
+    }
 }

@@ -42,6 +42,10 @@ public class Creature : MonoBehaviour
     [SerializeField] protected Sensor _attackSensor;
     [SerializeField] protected Sensor GroundChecker;
 
+    [SerializeField] private SpawnPrefab ProjectileSpawner;
+    [SerializeField] private Cooldown _projectileSpawnCooldown;
+     
+
     protected Animator _animator;
     protected Rigidbody2D _rigidbody;
     protected Health _healthComponent;
@@ -81,6 +85,27 @@ public class Creature : MonoBehaviour
             Health healthComponennt = obj.GetComponent<Health>();
             healthComponennt.ChangeHealth(_attackDamage);
         }
+        attackMode = false;
+    }
+
+    public void SpellCast()
+    {
+        if (!_projectileSpawnCooldown.IsReady()) 
+        {
+            return;
+        }
+        _projectileSpawnCooldown.Reset();
+        attackMode = true;
+        _animator.SetTrigger("spellCast");
+    }
+
+    public void DoSpellCast()
+    {
+        ProjectileSpawner.Spawn();
+    }
+
+    public void OnSpellCastEnd()
+    {
         attackMode = false;
     }
     protected void CheckIsGrounded()
