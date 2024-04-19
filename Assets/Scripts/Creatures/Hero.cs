@@ -15,7 +15,6 @@ public class Hero : Creature
 
     private GameSession _session;
 
-    
     private void Start()
     {
         QualitySettings.vSyncCount = 1;
@@ -23,7 +22,10 @@ public class Hero : Creature
 
         _session = FindObjectOfType<GameSession>();
         _healthComponent.overallHealth = _session.Data.Health;
+        _inventory.SetInventory(_session.Data.Inventory);
         _jumpsAmount = _session.Data.JumpsAmount;
+
+        _inventory.OnChanged += OnChangeInventory;
     }
 
     public void Interact()
@@ -36,6 +38,16 @@ public class Hero : Creature
                 interactiveComponent.Interact(this.gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        _inventory.OnChanged -= OnChangeInventory;
+    }
+
+    public void OnChangeInventory(List<InventoryItemData> _inventory)
+    {
+        _session.Data.Inventory = new List<InventoryItemData>(_inventory);
     }
 
 

@@ -13,7 +13,6 @@ public class GameSession : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("session");
         if (IsSessionExist())
         {
             DestroyImmediate(this.gameObject);

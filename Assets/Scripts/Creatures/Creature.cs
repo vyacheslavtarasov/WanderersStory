@@ -49,12 +49,14 @@ public class Creature : MonoBehaviour
     protected Animator _animator;
     protected Rigidbody2D _rigidbody;
     protected Health _healthComponent;
+    protected Inventory _inventory;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _healthComponent = GetComponent<Health>();
+        _inventory = GetComponent<Inventory>();
     }
 
     public void SetDirection(Vector3 newDirection)

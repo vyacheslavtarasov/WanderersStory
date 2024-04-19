@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 2605853861375256970}
   - component: {fileID: 2605853861375256971}
   - component: {fileID: 2605853861375256968}
+  - component: {fileID: 2605853860121117372}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -552,6 +553,8 @@ MonoBehaviour:
   _attackSensor: {fileID: 2605853860398633923}
   GroundChecker: {fileID: 2605853860332579281}
   ProjectileSpawner: {fileID: 134905951}
+  _projectileSpawnCooldown:
+    _value: 2
   _interactSensor: {fileID: 2605853861375256968}
   RunDustParticleSpawner: {fileID: 2605853861941516505}
   JumpDustParticleSpawner: {fileID: 2605853861377530582}
@@ -703,6 +706,19 @@ MonoBehaviour:
   CollisionExitAllEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2605853860121117372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605853861375256991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd0a54c308cd9c418f0c787333d309e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventory: []
 --- !u!1 &2605853861377530576
 GameObject:
   m_ObjectHideFlags: 0

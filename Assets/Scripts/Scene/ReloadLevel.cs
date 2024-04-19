@@ -10,7 +10,6 @@ public class ReloadLevel : MonoBehaviour
     private GameSession _session;
     public void Reload()
     {
-
         _session = FindObjectOfType<GameSession>();
         _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();
         var scene = SceneManager.GetActiveScene();

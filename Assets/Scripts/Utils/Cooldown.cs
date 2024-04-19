@@ -23,3 +23,18 @@ public class Cooldown
         return false;
     }
 }
+
+[Serializable]
+public struct InventoryItemData
+{
+    public string Name;
+    public int Amount;
+
+    public InventoryItemData(string name, int amount)
+    {
+        this.Name = name;
+        this.Amount = amount;
+    }
+
+    public bool IsVoid => string.IsNullOrEmpty(Name);
+}
