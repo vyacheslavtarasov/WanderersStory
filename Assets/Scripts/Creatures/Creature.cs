@@ -50,6 +50,7 @@ public class Creature : MonoBehaviour
     protected Rigidbody2D _rigidbody;
     protected Health _healthComponent;
     protected Inventory _inventory;
+    [SerializeField] protected SoundPlayer _soundPlayer;
 
     private void Awake()
     {
@@ -68,6 +69,11 @@ public class Creature : MonoBehaviour
     public void SetJumping(bool isJumping)
     {
         _isJumping = isJumping;
+        if (_isJumping)
+        {
+            _soundPlayer.Play("jump");
+        }
+        
     }
 
     public void Attack()
