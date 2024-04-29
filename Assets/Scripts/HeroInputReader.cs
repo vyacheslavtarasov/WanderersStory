@@ -13,6 +13,7 @@ public class HeroInputReader : MonoBehaviour
 
         Vector3 vec = Vector3.zero;
 
+
         if (context.ReadValue<float>() == -1.0f)
         {
             vec = Vector3.left;
@@ -61,6 +62,14 @@ public class HeroInputReader : MonoBehaviour
         if (context.started)
         {
             _hero.SpellCast();
+        }
+    }
+
+    public void CallPauseMenu(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _hero.CallPauseMenu();
         }
     }
 }

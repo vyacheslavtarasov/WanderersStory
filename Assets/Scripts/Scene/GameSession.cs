@@ -13,6 +13,7 @@ public class GameSession : MonoBehaviour
 
     private void Awake()
     {
+        SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
         if (IsSessionExist())
         {
             DestroyImmediate(this.gameObject);
@@ -23,6 +24,7 @@ public class GameSession : MonoBehaviour
         }
 
         PlayerDataSavedAtSceneStart = Data.ShallowCopy();
+        
     }
 
     private bool IsSessionExist()

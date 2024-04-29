@@ -26,6 +26,10 @@ public class Hero : Creature
         _jumpsAmount = _session.Data.JumpsAmount;
 
         _inventory.OnChanged += OnChangeInventory;
+
+
+        _healthComponent.currentHealth = _session.Data.Health;
+        _healthComponent.ChangeHealth(0.0f);
     }
 
     public void Interact()
@@ -38,6 +42,13 @@ public class Hero : Creature
                 interactiveComponent.Interact(this.gameObject);
             }
         }
+    }
+
+    public void CallPauseMenu()
+    {
+        var window = Resources.Load<GameObject>("PauseMenuWindow");
+        var canvas = FindObjectOfType<Canvas>();
+        Instantiate(window, canvas.transform);
     }
 
     private void OnDestroy()

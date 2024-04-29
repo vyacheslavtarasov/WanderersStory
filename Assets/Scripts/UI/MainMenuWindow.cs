@@ -8,7 +8,10 @@ public class MainMenuWindow : AnimatedWindow
 
     public void StartGame()
     {
-        _afterCloseAction = () => { SceneManager.LoadScene("Level_1"); };
+        _afterCloseAction = () => {
+            SceneManager.LoadScene("Level_1");
+            
+        };
         Close();
     }
 

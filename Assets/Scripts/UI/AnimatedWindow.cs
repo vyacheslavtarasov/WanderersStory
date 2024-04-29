@@ -12,7 +12,7 @@ public class AnimatedWindow : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         _animator.SetTrigger("show");
     }
