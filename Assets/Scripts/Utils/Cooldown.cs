@@ -29,11 +29,13 @@ public struct InventoryItemData
 {
     public string Name;
     public int Amount;
+    public int QuickMenuIndex;
 
-    public InventoryItemData(string name, int amount)
+    public InventoryItemData(string name, int amount, int quickMenuIndex = -1)
     {
         this.Name = name;
         this.Amount = amount;
+        this.QuickMenuIndex = quickMenuIndex;
     }
 
     public bool IsVoid => string.IsNullOrEmpty(Name);

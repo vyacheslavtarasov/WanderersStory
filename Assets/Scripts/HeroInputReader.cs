@@ -27,6 +27,29 @@ public class HeroInputReader : MonoBehaviour
         _hero.SetDirection(vec);
     }
 
+    public void SwipeQuickInventory(InputAction.CallbackContext context)
+    {
+
+        bool direction = false;
+
+        if (context.started)
+        {
+            if (context.ReadValue<float>() == -1.0f)
+            {
+                direction = false;
+            }
+
+            if (context.ReadValue<float>() == 1.0f)
+            {
+                direction = true;
+            }
+
+            Debug.Log(direction);
+
+            _hero.ChangeQuickMenuFocus(direction);
+        }
+    }
+
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.started)

@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _id: HealthPotion
+    _icon: {fileID: 21300000, guid: f347ce861fefbb642b2f49dac37c26b3, type: 3}
   - _id: PowerPotion
+    _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}

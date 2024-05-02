@@ -44,6 +44,22 @@ public class Hero : Creature
         }
     }
 
+    public void ChangeQuickMenuFocus(bool direction)
+    {
+        if (direction)
+        {
+            _session.Data.QuickInventoryIndex = Mathf.Clamp(_session.Data.QuickInventoryIndex += 1, 0, 2);
+        }
+        else
+        {
+            _session.Data.QuickInventoryIndex = Mathf.Clamp(_session.Data.QuickInventoryIndex -= 1, 0, 2);
+        }
+
+
+
+        _inventory.SetDirty();
+    }
+
     public void CallPauseMenu()
     {
         var window = Resources.Load<GameObject>("PauseMenuWindow");
@@ -58,7 +74,8 @@ public class Hero : Creature
 
     public void OnChangeInventory(List<InventoryItemData> _inventory)
     {
-        _session.Data.Inventory = new List<InventoryItemData>(_inventory);
+        // _session.Data.Inventory = new List<InventoryItemData>(_inventory);
+        _session.Data.UpdateInventory(_inventory);
     }
 
 

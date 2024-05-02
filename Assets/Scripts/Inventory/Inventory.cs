@@ -17,15 +17,26 @@ public class Inventory : MonoBehaviour
         var itemDef = DefsFacade.I.Items.Get(name);
         if (itemDef.IsVoid) return;
 
-        var item = GetItem(name);
-        if (item.IsVoid)
+        InventoryItemData item;
+        int itemIndex = GetItemIndex(name);
+        if (itemIndex < 0)
         {
-            item = new InventoryItemData(name, 1);
+            item = new InventoryItemData(name, amount);
             _inventory.Add(item);
         }
+        else
+        {
+            item = _inventory[itemIndex];
+            item.Amount += 1;
+            Debug.Log(item.QuickMenuIndex);
+            _inventory[itemIndex] = item;
+        }
 
-        item.Amount += amount;
+        OnChanged?.Invoke(_inventory);
+    }
 
+    public void SetDirty()
+    {
         OnChanged?.Invoke(_inventory);
     }
 
@@ -59,6 +70,16 @@ public class Inventory : MonoBehaviour
         }
 
         return new InventoryItemData(null, 1);
+    }
+
+    private int GetItemIndex(string name)
+    {
+        for(var i = 0; i < _inventory.Count; i++)
+        {
+            if (_inventory[i].Name == name)
+                return i;
+        }
+        return -1;
     }
 
     public int Count(string name)
