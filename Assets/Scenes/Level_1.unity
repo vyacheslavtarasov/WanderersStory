@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 73854684}
   - component: {fileID: 73854685}
   - component: {fileID: 73854686}
+  - component: {fileID: 73854687}
   m_Layer: 7
   m_Name: lever_floor_1
   m_TagString: Button
@@ -684,7 +685,19 @@ MonoBehaviour:
         m_CallState: 2
   ItemNotFoundEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 73854687}
+        m_TargetAssemblyTypeName: ShowDialog, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &73854686
 AudioSource:
   m_ObjectHideFlags: 0
@@ -781,6 +794,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &73854687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73854676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b2bbd09bd06564183d922d113ecbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogEntry: {fileID: 11400000, guid: 714ff57a72ae01d458a0a90527e6c3d0, type: 2}
 --- !u!1 &91903332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,7 +1782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.299402, y: 7.2982197, z: -10}
+  m_LocalPosition: {x: -16.59, y: -5.514375, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11367,9 +11393,13 @@ GameObject:
   - component: {fileID: 801689668}
   - component: {fileID: 801689667}
   - component: {fileID: 801689666}
-  m_Layer: 0
+  - component: {fileID: 801689673}
+  - component: {fileID: 801689672}
+  - component: {fileID: 801689671}
+  - component: {fileID: 801689670}
+  m_Layer: 7
   m_Name: candelabrum_tall_nofire
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11521,6 +11551,93 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &801689670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801689665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f1e93b73a5fb34da5ee8958df9ba7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 801689673}
+        m_TargetAssemblyTypeName: ShowDialog, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!50 &801689671
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801689665}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &801689672
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801689665}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.15625}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.578125}
+    oldSize: {x: 0.5, y: 2}
+    newSize: {x: 0.5, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &801689673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801689665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b2bbd09bd06564183d922d113ecbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogEntry: {fileID: 11400000, guid: a6f92c9a00785ff4398b5233fa61edc6, type: 2}
 --- !u!1 &814630170
 GameObject:
   m_ObjectHideFlags: 0
@@ -12599,7 +12716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478019367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.27, y: 7.3056245, z: -10}
+  m_LocalPosition: {x: -16.59, y: -5.514375, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14544,11 +14661,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2605853861375256989, guid: f422e43fb04ba414b9a91c199bc503db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.07
+      value: -16.39
       objectReference: {fileID: 0}
     - target: {fileID: 2605853861375256989, guid: f422e43fb04ba414b9a91c199bc503db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.99
+      value: -5.83
       objectReference: {fileID: 0}
     - target: {fileID: 2605853861375256989, guid: f422e43fb04ba414b9a91c199bc503db, type: 3}
       propertyPath: m_LocalPosition.z

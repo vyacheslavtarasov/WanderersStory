@@ -24,7 +24,11 @@ public class InventoryItemPresenseCondition : MonoBehaviour
                 ItemFoundEvent?.Invoke(initiator, source);
             }
         }
-        ItemNotFoundEvent?.Invoke(initiator, source);
+        else
+        {
+            ItemNotFoundEvent?.Invoke(initiator, source);
+        }
+        
     }
 
 }
