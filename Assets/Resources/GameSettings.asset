@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   _music:
-    _value: 0.21
+    _value: 0.24086982
   _sound:
-    _value: 0.65
+    _value: 0.80632555
+  _locale:
+    _value: English
