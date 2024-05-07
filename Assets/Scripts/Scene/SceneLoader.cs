@@ -13,6 +13,7 @@ public class SceneLoader : MonoBehaviour
     {
         _session = FindObjectOfType<GameSession>();
         _session.PlayerDataSavedAtSceneStart = _session.Data.ShallowCopy();
+        _session._currentCheckpointName = _session.DefaultCheckpoint;
         SceneManager.LoadScene(_levelName);
     }
 }

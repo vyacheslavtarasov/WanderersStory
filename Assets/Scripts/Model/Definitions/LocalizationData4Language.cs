@@ -19,7 +19,6 @@ class LocalizationData4Language : ScriptableObject
     {
         if (_instance == null || _loadedFilename != filename )
         {
-            Debug.Log("loading");
             _instance = LoadGameSettings(filename);
             _loadedFilename = filename;
         }
