@@ -10,12 +10,20 @@ public class HUDController : MonoBehaviour
     void Awake()
     {
         _session = FindObjectOfType<GameSession>();
-        _session.Data.OnChanged += SetHealth;
+        if (_session != null)
+        {
+            _session.Data.OnChanged += SetHealth;
+        }
+        
     }
 
     private void OnDestroy()
     {
-        _session.Data.OnChanged -= SetHealth;
+        if (_session != null)
+        {
+            _session.Data.OnChanged -= SetHealth;
+        }
+        
     }
 
     public void SetHealth(float newValue)

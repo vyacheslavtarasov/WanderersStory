@@ -5,6 +5,9 @@ using UnityEngine;
 public class DefsFacade : ScriptableObject
 {
     [SerializeField] private InventoryItemsDef _items;
+    [SerializeField] private PerkRepositoryDef _perks;
+
+    public PerkRepositoryDef Perks => _perks;
 
     public InventoryItemsDef Items => _items;
 

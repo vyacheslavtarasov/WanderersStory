@@ -40,3 +40,5 @@ public struct InventoryItemData
 
     public bool IsVoid => string.IsNullOrEmpty(Name);
 }
+
+

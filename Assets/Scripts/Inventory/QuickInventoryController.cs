@@ -16,7 +16,11 @@ public class QuickInventoryController : MonoBehaviour
     {
 
         _session = FindObjectOfType<GameSession>();
-        _session.Data.OnInventoryChanged += UpdateInventoryUI;
+        if (_session != null)
+        {
+            _session.Data.OnInventoryChanged += UpdateInventoryUI;
+        }
+        
         Rebuild();
     }
 
@@ -28,6 +32,10 @@ public class QuickInventoryController : MonoBehaviour
 
     private void Rebuild()
     {
+        if (_session == null)
+        {
+            return;
+        }
         var list = _session.Data.Inventory.Where(a => a.QuickMenuIndex >= 0).OrderBy(a => a.QuickMenuIndex);
 
         foreach(InventoryItemWidget a in _instantiatedObjects)

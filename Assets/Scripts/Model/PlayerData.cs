@@ -8,6 +8,7 @@ public class PlayerData
     public int JumpsAmount;
     public List<InventoryItemData> Inventory;
     public int QuickInventoryIndex = 0;
+    public List<PlayerPerk> Perks;
 
     public delegate void OnHealthChanged(float newValue);
     public event OnHealthChanged OnChanged;
