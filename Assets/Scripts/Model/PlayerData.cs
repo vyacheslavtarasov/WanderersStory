@@ -21,7 +21,6 @@ public class PlayerData
         set
         {
             _health = value;
-
             OnChanged?.Invoke(value);
         }
     }
