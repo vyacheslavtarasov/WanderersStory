@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class QuickInventoryController : MonoBehaviour
 {
     [SerializeField] private Transform _container;
     [SerializeField] private InventoryItemWidget _prefab;
-    
+
     private List<InventoryItemWidget> _instantiatedObjects = new List<InventoryItemWidget>();
 
     private GameSession _session;
@@ -15,16 +15,19 @@ public class QuickInventoryController : MonoBehaviour
     private void Start()
     {
 
+
+
+
         _session = FindObjectOfType<GameSession>();
         if (_session != null)
         {
             _session.Data.OnInventoryChanged += UpdateInventoryUI;
         }
-        
+
         Rebuild();
     }
 
-    private void UpdateInventoryUI() 
+    private void UpdateInventoryUI()
     {
         Debug.Log("redrawing quick ui");
         Rebuild();
@@ -38,20 +41,19 @@ public class QuickInventoryController : MonoBehaviour
         }
         var list = _session.Data.Inventory.Where(a => a.QuickMenuIndex >= 0).OrderBy(a => a.QuickMenuIndex);
 
-        foreach(InventoryItemWidget a in _instantiatedObjects)
+        foreach (InventoryItemWidget a in _instantiatedObjects)
         {
             if (a)
             {
                 Destroy(a.gameObject);
             }
-            
         }
 
 
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             var a = list.Where(a => a.QuickMenuIndex == i);
-          
+
             var item = Instantiate(_prefab, _container);
             if (a.Count() > 0)
             {

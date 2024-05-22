@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,13 +6,16 @@ public class Hero : Creature
 
     [SerializeField] private Sensor _interactSensor;
 
-    [Space][Header("Particles")]
+    [Space]
+    [Header("Particles")]
     [SerializeField] private SpawnPrefab RunDustParticleSpawner;
     [SerializeField] private SpawnPrefab JumpDustParticleSpawner;
     [SerializeField] private SpawnPrefab SlapTheGroundParticleSpawner;
     [SerializeField] private ParticleSystem _particleSystem;
 
     private GameSession _session;
+
+
 
     private void Start()
     {
@@ -36,7 +38,7 @@ public class Hero : Creature
     {
         if (_interactSensor != null)
         {
-            foreach(GameObject obj in _interactSensor.GetIntersectedObjects())
+            foreach (GameObject obj in _interactSensor.GetIntersectedObjects())
             {
                 Interactive interactiveComponent = obj.GetComponent<Interactive>();
                 interactiveComponent.Interact(this.gameObject);
@@ -79,7 +81,7 @@ public class Hero : Creature
     }
 
 
-    public override void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth) 
+    public override void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth)
     {
         base.OnChangeHealth(wasHealth, currentHealth, overallHealth);
         if (wasHealth > currentHealth)
@@ -110,20 +112,21 @@ public class Hero : Creature
         }
     }
 
- 
-    public void OnGroundTouch(GameObject myGameObject) {
+
+    public void OnGroundTouch(GameObject myGameObject)
+    {
         if (_fallTime > 0.4f)
         {
             SlapTheGroundParticleSpawner.Spawn();
         }
     }
 
-    
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
 
         LaunchParticles();
-       
+
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Data/GameSettings", fileName = "GameSettings")]
+[CreateAssetMenu(menuName = "Data/GameSettings", fileName = "GameSettings")]
 public class GameSettings : ScriptableObject
 {
     [SerializeField] private FloatPersistenProperty _music;
@@ -17,8 +17,10 @@ public class GameSettings : ScriptableObject
     private static GameSettings _instance;
     public static GameSettings I => _instance == null ? LoadGameSettings() : _instance;
 
-    private static GameSettings LoadGameSettings() 
+    private static GameSettings LoadGameSettings()
     {
+
+
         var a = Resources.Load<GameSettings>("GameSettings");
         _instance = a;
         return Resources.Load<GameSettings>("GameSettings");
@@ -43,6 +45,6 @@ public class GameSettings : ScriptableObject
         {
             Debug.Log("Here is the error, need ot fix it.");
         }
-        
+
     }
 }

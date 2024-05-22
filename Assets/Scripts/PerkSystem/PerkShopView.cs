@@ -52,9 +52,6 @@ public class PerkShopView : MonoBehaviour
                 _useButton.interactable = false;
             }
         }
-
-        
-
     }
 
     public void SetNameOfChosenPerk(PerkShopPerk _perk)

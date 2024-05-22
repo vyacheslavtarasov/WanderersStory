@@ -25,7 +25,7 @@ public class PlayerData
         }
     }
 
-    public void UpdateInventory(List<InventoryItemData> inventory) 
+    public void UpdateInventory(List<InventoryItemData> inventory)
     {
         Inventory = new List<InventoryItemData>(inventory);
         OnInventoryChanged?.Invoke();

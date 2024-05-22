@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PerkShopController : MonoBehaviour
 {
-    
-    [SerializeField] private List<PerkShopPerk> _availablePerks; // Model
+    [SerializeField] private List<PerkShopPerk> _availablePerks; // Model1
     private PerkShopView _perkShopView;
     // Start is called before the first frame update
 
@@ -14,7 +12,6 @@ public class PerkShopController : MonoBehaviour
     {
         _perkShopView = FindObjectOfType<PerkShopView>(true);
         OnChanged += _perkShopView.Redraw;
-        
     }
 
     public delegate void OnModelChanged(List<PerkShopPerk> _perks);
@@ -33,7 +30,7 @@ public class PerkShopController : MonoBehaviour
             _perkShopView.gameObject.SetActive(true);
         }
     }
-    
+
     public void Remove(string name)
     {
         var perkDef = DefsFacade.I.Perks.Get(name);

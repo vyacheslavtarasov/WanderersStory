@@ -44,7 +44,7 @@ public class Creature : MonoBehaviour
 
     [SerializeField] private SpawnPrefab ProjectileSpawner;
     [SerializeField] private Cooldown _projectileSpawnCooldown;
-     
+
 
     protected Animator _animator;
     protected Rigidbody2D _rigidbody;
@@ -73,17 +73,18 @@ public class Creature : MonoBehaviour
         {
             _soundPlayer.Play("jump");
         }
-        
+
     }
 
     public void Attack()
     {
+        Debug.Log("attack!");
         attackMode = true;
         if (_attackSensor != null)
         {
             _animator.SetTrigger("attack");
         }
-        
+
     }
 
     public void DoAttack()
@@ -98,7 +99,7 @@ public class Creature : MonoBehaviour
 
     public void SpellCast()
     {
-        if (!_projectileSpawnCooldown.IsReady()) 
+        if (!_projectileSpawnCooldown.IsReady())
         {
             return;
         }
@@ -314,7 +315,7 @@ public class Creature : MonoBehaviour
         }
 
         // Jumping
-        // The firt jump must alway be from the ground.
+        // The firt jump must always be from the ground.
         if (_isJumping && _jumpAvailable && _isGrounded)
         {
             _rigidbody.velocity = Vector2.zero;
