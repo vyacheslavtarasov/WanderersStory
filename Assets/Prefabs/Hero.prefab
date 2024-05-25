@@ -826,6 +826,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b64a6fb0-81a8-4928-ad34-250d5ebaba52
     m_ActionName: ArcadeLevelDefault/SwipeQuickInventory[/XInputControllerWindows/leftTrigger,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2605853861375256978}
+        m_TargetAssemblyTypeName: HeroInputReader, Assembly-CSharp
+        m_MethodName: JumpFromShelf
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 382a10ba-716e-4ad5-afd9-78eef1d7e70e
+    m_ActionName: ArcadeLevelDefault/JumpFromShelf[/Keyboard/downArrow,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ArcadeLevelDefault

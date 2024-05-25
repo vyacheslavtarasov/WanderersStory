@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +33,26 @@ public class Hero : Creature
 
         _healthComponent.currentHealth = _session.Data.Health;
         _healthComponent.ChangeHealth(0.0f);
+    }
+
+    public void JumpFromShelf()
+    {
+
+        foreach(GameObject obj in GroundChecker.GetIntersectedObjects().ToArray())
+        {
+            if (obj.CompareTag("Shelf"))
+            {
+                
+                obj.GetComponent<BoxCollider2D>().enabled = false;
+                StartCoroutine(SwitcColliderhBack(obj, 1.4f));
+            }
+        }
+    }
+
+    private IEnumerator SwitcColliderhBack(GameObject obj, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        obj.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public void Interact()

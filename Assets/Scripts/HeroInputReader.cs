@@ -8,6 +8,8 @@ public class HeroInputReader : MonoBehaviour
     [SerializeField] Hero _hero;
 
 
+
+
     public void SetDirection(InputAction.CallbackContext context)
     {
 
@@ -61,6 +63,16 @@ public class HeroInputReader : MonoBehaviour
             _hero.SetJumping(false);
         }
 
+
+    }
+
+    public void JumpFromShelf(InputAction.CallbackContext context)
+    {
+
+        if (context.started)
+        {
+            _hero.JumpFromShelf();
+        }
 
     }
 
