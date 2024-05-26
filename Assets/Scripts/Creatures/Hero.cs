@@ -14,9 +14,11 @@ public class Hero : Creature
     [SerializeField] private SpawnPrefab SlapTheGroundParticleSpawner;
     [SerializeField] private ParticleSystem _particleSystem;
 
+    public bool _wallStick = false;
+
     private GameSession _session;
 
-
+    [SerializeField] protected Sensor _stickyWallChecker;
 
     private void Start()
     {
@@ -148,6 +150,26 @@ public class Hero : Creature
         base.FixedUpdate();
 
         LaunchParticles();
+
+
+        if (_stickyWallChecker.GetCollisionStatus() && _direction.x == transform.localScale.x && !_isGrounded)
+        {
+            _wallStick = true;
+            _animator.SetBool("WallHang", true);
+        }
+
+        if (!_stickyWallChecker.GetCollisionStatus() || _isGrounded || _rigidbody.velocity.y > 0)
+        {
+            _wallStick = false;
+            _currentJumpsCount = _jumpsAmount;
+            _animator.SetBool("WallHang", false);
+        }
+
+        if (_wallStick)
+        {
+            _rigidbody.gravityScale = 0.0f;
+            _rigidbody.velocity = Vector2.zero;
+        }
 
     }
 }

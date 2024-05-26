@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Creature : MonoBehaviour
 {
@@ -62,7 +59,6 @@ public class Creature : MonoBehaviour
 
     public void SetDirection(Vector3 newDirection)
     {
-
         _direction = newDirection;
     }
 
@@ -73,7 +69,6 @@ public class Creature : MonoBehaviour
         {
             _soundPlayer.Play("jump");
         }
-
     }
 
     public void Attack()
