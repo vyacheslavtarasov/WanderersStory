@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 6513737310873735241}
   - component: {fileID: 7304880741215880305}
   m_Layer: 0
-  m_Name: StickyWallChecker
+  m_Name: StickyWallCheckerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,7 +359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2248274900525424038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09998864, y: -0.48, z: 0}
+  m_LocalPosition: {x: 0.16250008, y: -0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 512
@@ -441,6 +442,7 @@ GameObject:
   - component: {fileID: 2605853860332579286}
   - component: {fileID: 2605853860332579287}
   - component: {fileID: 2605853860332579281}
+  - component: {fileID: 4348390145221741372}
   m_Layer: 0
   m_Name: GroundChecker
   m_TagString: Untagged
@@ -470,7 +472,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2605853860332579280}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -513,6 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 64
@@ -538,6 +541,22 @@ MonoBehaviour:
   CollisionExitAllEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!70 &4348390145221741372
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605853860332579280}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06730818, y: -0.8846384}
+  m_Size: {x: 0.40266192, y: 0.019677164}
+  m_Direction: 1
 --- !u!1 &2605853860362572935
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 1
@@ -704,6 +724,7 @@ GameObject:
   - component: {fileID: 2605853861375256968}
   - component: {fileID: 2605853860121117372}
   - component: {fileID: 1168325636438093296}
+  - component: {fileID: 8576369605381459386}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -732,6 +753,7 @@ Transform:
   - {fileID: 134905950}
   - {fileID: 121035896}
   - {fileID: 5469757335560564074}
+  - {fileID: 5032557098262724569}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -980,6 +1002,8 @@ MonoBehaviour:
   _attackDamage: -1
   _damageForceToInflict: 200
   _direction: {x: 0, y: 0, z: 0}
+  _isGrounded: 0
+  _isJumping: 0
   _jumpForce: 480
   _minimalAscendTime: 0.1
   _jumpsAmount: 2
@@ -988,13 +1012,16 @@ MonoBehaviour:
   ProjectileSpawner: {fileID: 134905951}
   _projectileSpawnCooldown:
     _value: 2
+  _wallStick: 0
   _soundPlayer: {fileID: 121035900}
+  platformController: {fileID: 0}
   _interactSensor: {fileID: 2605853861375256968}
   RunDustParticleSpawner: {fileID: 2605853861941516505}
   JumpDustParticleSpawner: {fileID: 2605853861377530582}
   SlapTheGroundParticleSpawner: {fileID: 2605853860362572933}
   _particleSystem: {fileID: 2605853861527134731}
-  _stickyWallChecker: {fileID: 6513737310873735241}
+  WallSide: 
+  _stickyWallCheckerR: {fileID: 6513737310873735241}
 --- !u!70 &2605853861375256982
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1027,7 +1054,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 1c62d462f2e7875468b137f5367e691e, type: 2}
+  m_Material: {fileID: 6200000, guid: a7cf3e117a717134bb9fe81eec2f3363, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -1127,6 +1154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 128
@@ -1166,6 +1194,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48152f1f2fad6748940cd642cba7f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!255 &8576369605381459386
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605853861375256991}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -31.35, y: 2.11}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &2605853861377530576
 GameObject:
   m_ObjectHideFlags: 0
@@ -6133,3 +6179,130 @@ MonoBehaviour:
   Prefab2Spawn: {fileID: 7637066976138412375, guid: e30b87b2aff09a043a674b09a5914ac2, type: 3}
   TransformComponent: {fileID: 2605853861941516504}
   inheritScale: 1
+--- !u!1 &4127575888374127240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5032557098262724569}
+  - component: {fileID: 1198891730568088747}
+  - component: {fileID: 3522147127917031636}
+  - component: {fileID: 6668772790748818923}
+  - component: {fileID: 8788259933579582114}
+  m_Layer: 0
+  m_Name: GroundChecker2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5032557098262724569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127575888374127240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2605853861375256989}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1198891730568088747
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127575888374127240}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.020763397, y: -0.7355685}
+  serializedVersion: 2
+  m_Radius: 0.20667887
+--- !u!50 &3522147127917031636
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127575888374127240}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &6668772790748818923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127575888374127240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d0b003a5f4c7c41868cf1ec537dbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObjectsList: []
+  _isTouching: 0
+  _layers:
+    serializedVersion: 2
+    m_Bits: 64
+  _tags: []
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2605853861375256976}
+        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
+        m_MethodName: OnGroundLeave
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionExitAllEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!70 &8788259933579582114
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127575888374127240}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.043795317, y: -1.7145017}
+  m_Size: {x: 0.45762336, y: 1.7880623}
+  m_Direction: 0

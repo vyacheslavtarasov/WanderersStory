@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Button
   - Damageable
+  - Shelf
+  - GravityVolume
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - InteractiveElements
   - DamagingElement
   - WallsToClimb
-  - 
+  - GravityVolume
   - 
   - 
   - 

@@ -15,7 +15,7 @@ public class Sensor : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> _gameObjectsList;
-    private bool _isTouching;
+    public bool _isTouching;
 
     [Tooltip("Collider with Is Trigger flag set.")]
     private Collider2D _collider;
@@ -69,7 +69,6 @@ public class Sensor : MonoBehaviour
         }
     }
 
-
     private void OnTriggerExit2D(Collider2D collider)
     {
         if ((_layers & (1 << collider.gameObject.layer)) == 0)
@@ -103,10 +102,13 @@ public class Sensor : MonoBehaviour
         {
 
             _isTouching = true;
+            
             CollisionEnterEvent?.Invoke(collider.gameObject);
             _gameObjectsList.Add(collider.gameObject);
         }
     }
+
+    
 
     private void OnCollisionExit2D(Collision2D collider)
     {

@@ -14,11 +14,13 @@ public class Hero : Creature
     [SerializeField] private SpawnPrefab SlapTheGroundParticleSpawner;
     [SerializeField] private ParticleSystem _particleSystem;
 
-    public bool _wallStick = false;
+    
 
     private GameSession _session;
 
-    [SerializeField] protected Sensor _stickyWallChecker;
+    public string WallSide = "";
+
+   [SerializeField] protected Sensor _stickyWallCheckerR;
 
     private void Start()
     {
@@ -45,7 +47,7 @@ public class Hero : Creature
             if (obj.CompareTag("Shelf"))
             {
                 
-                obj.GetComponent<BoxCollider2D>().enabled = false;
+                obj.GetComponent<EdgeCollider2D>().enabled = false;
                 StartCoroutine(SwitcColliderhBack(obj, 1.4f));
             }
         }
@@ -54,7 +56,7 @@ public class Hero : Creature
     private IEnumerator SwitcColliderhBack(GameObject obj, float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        obj.GetComponent<BoxCollider2D>().enabled = true;
+        obj.GetComponent<EdgeCollider2D>().enabled = true;
     }
 
     public void Interact()
@@ -119,6 +121,19 @@ public class Hero : Creature
     {
         base.OnJump();
         JumpDustParticleSpawner.Spawn();
+
+        if (_wallStick)
+        {
+            _rigidbody.AddForce(new Vector2(_direction.x, 0) * 480.0f, ForceMode2D.Force);
+
+
+
+            _currentJumpsCount = _jumpsAmount - 1;
+            _jumpAvailable = false;
+            _wallStick = false;
+            _animator.SetBool("WallHang", false);
+
+        }
     }
 
     private void LaunchParticles()
@@ -136,33 +151,73 @@ public class Hero : Creature
     }
 
 
-    public void OnGroundTouch(GameObject myGameObject)
+    public override void OnGroundTouch(GameObject myGameObject)
     {
         if (_fallTime > 0.4f)
         {
             SlapTheGroundParticleSpawner.Spawn();
         }
+
+        base.OnGroundTouch(myGameObject);
+
+    }
+
+    private void MoveWithAPlatform(Vector2 delta)
+    {
+
+        _rigidbody.position += delta;
+        // _rigidbody.MovePosition(_rigidbody.position + delta);
+
     }
 
 
+    
+
     protected override void FixedUpdate()
     {
+
+        /*if (platformController)
+        {
+
+            MoveWithAPlatform(platformController.Delta);
+
+        }*/
+
         base.FixedUpdate();
+
+        
 
         LaunchParticles();
 
 
-        if (_stickyWallChecker.GetCollisionStatus() && _direction.x == transform.localScale.x && !_isGrounded)
+        if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == 1.0f && !_isGrounded && !_wallStick && (WallSide == "Right" || WallSide == ""))
         {
+            Debug.Log("stick left");
             _wallStick = true;
+            WallSide = "Right";
             _animator.SetBool("WallHang", true);
         }
 
-        if (!_stickyWallChecker.GetCollisionStatus() || _isGrounded || _rigidbody.velocity.y > 0)
+        if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == -1.0f && !_isGrounded && !_wallStick && (WallSide == "Left" || WallSide == ""))
         {
-            _wallStick = false;
+            Debug.Log("stick right");
+            _wallStick = true;
+            WallSide = "Left";
+            _animator.SetBool("WallHang", true);
+        }
+
+        if (!_stickyWallCheckerR.GetCollisionStatus())
+        {
+            WallSide = "";
+        }
+        
+
+        if (!_stickyWallCheckerR.GetCollisionStatus() || _isGrounded || _rigidbody.velocity.y > 0)
+        {
+
+            // _wallStick = false;
             _currentJumpsCount = _jumpsAmount;
-            _animator.SetBool("WallHang", false);
+            // _animator.SetBool("WallHang", false);
         }
 
         if (_wallStick)

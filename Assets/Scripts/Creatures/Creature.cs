@@ -19,10 +19,10 @@ public class Creature : MonoBehaviour
     // Necessary information
     public Vector3 _direction;
     private bool attackMode = false;
-    protected bool _isGrounded = false; // if the hero is on the ground
+    public bool _isGrounded = false; // if the hero is on the ground
     protected bool _priorGrounded = false;
     protected bool _runParticleAvailable = false;
-    protected bool _isJumping = false; // if the jump pressed
+    public bool _isJumping = false; // if the jump pressed
     protected int _currentJumpsCount = 0;
     protected bool _jumpAvailable = true; // we need to avoid secondary jumps right after landing when jump button is kept pressed
     protected float _fallTime = 0.0f;
@@ -42,12 +42,16 @@ public class Creature : MonoBehaviour
     [SerializeField] private SpawnPrefab ProjectileSpawner;
     [SerializeField] private Cooldown _projectileSpawnCooldown;
 
-
+    public bool _wallStick = false;
     protected Animator _animator;
     protected Rigidbody2D _rigidbody;
     protected Health _healthComponent;
     protected Inventory _inventory;
+    protected FixedJoint2D _fixedJoint;
+    protected SpriteRenderer _spriteRenderer;
     [SerializeField] protected SoundPlayer _soundPlayer;
+
+    public MovingPlatformController platformController;
 
     private void Awake()
     {
@@ -55,10 +59,13 @@ public class Creature : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _healthComponent = GetComponent<Health>();
         _inventory = GetComponent<Inventory>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _fixedJoint = GetComponent<FixedJoint2D>();
     }
 
     public void SetDirection(Vector3 newDirection)
     {
+        
         _direction = newDirection;
     }
 
@@ -115,6 +122,27 @@ public class Creature : MonoBehaviour
     protected void CheckIsGrounded()
     {
         _isGrounded = GroundChecker.GetCollisionStatus();
+
+    }
+
+    public virtual void OnGroundTouch(GameObject myGameObject)
+    {
+        if (myGameObject.GetComponent<MovingPlatformController>())
+        {
+            platformController = myGameObject.GetComponent<MovingPlatformController>();
+            _fixedJoint.connectedBody = myGameObject.GetComponent<Rigidbody2D>();
+            _fixedJoint.enabled = true;
+        }
+    }
+
+    public void OnGroundLeave(GameObject myGameObject)
+    {
+        if (myGameObject.GetComponent<MovingPlatformController>())
+        {
+            platformController = null;
+            
+
+        }
     }
     public virtual void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth)
     {
@@ -128,23 +156,27 @@ public class Creature : MonoBehaviour
 
     protected void FlipSprite()
     {
-        if (_direction.x < 0)
-        {
-            // _spriteRenderer.flipX = true;
-            // doing it via transform for dust paritcles position modification
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (_direction.x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-            // _spriteRenderer.flipX = false;
-        }
+
+            if (_direction.x < 0)
+            {
+                // _spriteRenderer.flipX = true;
+                // doing it via transform for dust paritcles position modification
+
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (_direction.x > 0)
+            {
+
+                transform.localScale = new Vector3(1, 1, 1);
+                // _spriteRenderer.flipX = false;
+            }
     }
 
     protected void SetAnimationParameters()
     {
 
-        if (_direction.x != 0.0f) // button is pressed
+
+            if (_direction.x != 0.0f) // button is pressed
         {
             _animator.SetBool("isRunning", true);
         }
@@ -171,14 +203,33 @@ public class Creature : MonoBehaviour
         {
             _animator.SetBool("isJumping", false);
         }
-
-        _animator.SetFloat("fallTime", _fallTime);
-        _animator.SetFloat("ascendTime", _ascendTime);
+        
+            _animator.SetFloat("fallTime", _fallTime);
+            _animator.SetFloat("ascendTime", _ascendTime);
+ 
+        
     }
 
+    
     protected virtual void FixedUpdate()
     {
+
+        if ((_direction.x != 0 || _isJumping) && _fixedJoint != null && _fixedJoint.enabled == true)
+        {
+            _fixedJoint.enabled = false;
+        }
+
+        if (platformController != null)
+        {
+            _rigidbody.velocity -= platformController._rigidbody.velocity;
+        }
+
         CheckIsGrounded(); // Now _airborne variable always show if the carrier is grounded.
+
+        if (_isGrounded && !_isJumping && platformController != null && _direction.x == 0)
+        {
+            _fixedJoint.enabled = true;
+        }
 
         if (_rigidbody.velocity.y < 0.1f && !_isGrounded)
         {
@@ -199,7 +250,7 @@ public class Creature : MonoBehaviour
             _ascendTime += 0.02f;
         }
 
-        // Became airborne event
+        // Became airborne event (now grounded in the frame before was not grounded
         // It is here this way because catching it in different compoent
         // leads to uneven results. (fixed update for different objects can be called in different order)
         if (_isGrounded == false && _priorGrounded == true)
@@ -210,7 +261,7 @@ public class Creature : MonoBehaviour
             // became airborne without jumping is basically fall
             if (!_isJumping)
             {
-                // we need to do it to avoid inertia at the end of the slope.
+                // we need to do it to avoid inertia at the top of the slope, when running up
                 if (_rigidbody.velocity.y > 0)
                 {
                     _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0.0f);
@@ -221,6 +272,8 @@ public class Creature : MonoBehaviour
                 }
             }
         }
+
+        
 
         // Horizontal movement.
         // Parameters depends on whether Hero is on slope or plane
@@ -294,15 +347,25 @@ public class Creature : MonoBehaviour
             }
         }
         // Avoiding slipping from slipper slopes
-        if (newVelocity.magnitude < 0.1f && _isGrounded && !_isJumping)
+        if (!_wallStick)
+        {
+
+            if (newVelocity.magnitude < 0.1f && _isGrounded && !_isJumping)
+            {
+                _rigidbody.gravityScale = 0;
+                _rigidbody.velocity = Vector2.zero;
+            }
+            else
+            {
+                _rigidbody.velocity = new Vector2(newVelocity.x, _rigidbody.velocity.y);
+            }
+        }
+        else
         {
             _rigidbody.gravityScale = 0;
             _rigidbody.velocity = Vector2.zero;
         }
-        else
-        {
-            _rigidbody.velocity = new Vector2(newVelocity.x, _rigidbody.velocity.y);
-        }
+        
 
         if (attackMode)
         {
@@ -324,6 +387,7 @@ public class Creature : MonoBehaviour
         {
             _rigidbody.velocity = new Vector2(this._rigidbody.velocity.x, 0);
             _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Force);
+            
             _currentJumpsCount -= 1;
             _jumpAvailable = false;
 
@@ -355,8 +419,29 @@ public class Creature : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, -12.0f);
         }
 
+        // Avoid sliding from slopen during jumping on a slope in one place.
+        if (_isGrounded == true && _priorGrounded == false && !onPlane)
+        {
+            _rigidbody.gravityScale = 0;
+            _rigidbody.velocity = Vector2.zero;
+
+        }
+
         SetAnimationParameters();
-        FlipSprite();
+        if (!_wallStick)
+        {
+            FlipSprite();
+        }
+
+
+        if (platformController != null)
+        {
+            _rigidbody.velocity += platformController._rigidbody.velocity;
+            if (!_isJumping)
+            {
+                _rigidbody.gravityScale = 30.0f;
+            }
+        }
 
         _priorGrounded = _isGrounded;
     }

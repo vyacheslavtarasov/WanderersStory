@@ -46,8 +46,6 @@ public class HeroInputReader : MonoBehaviour
                 direction = true;
             }
 
-            Debug.Log(direction);
-
             _hero.ChangeQuickMenuFocus(direction);
         }
     }
