@@ -124,10 +124,8 @@ public class Hero : Creature
 
         if (_wallStick)
         {
+            
             _rigidbody.AddForce(new Vector2(_direction.x, 0) * 480.0f, ForceMode2D.Force);
-
-
-
             _currentJumpsCount = _jumpsAmount - 1;
             _jumpAvailable = false;
             _wallStick = false;
@@ -183,6 +181,8 @@ public class Hero : Creature
 
         }*/
 
+
+
         base.FixedUpdate();
 
         
@@ -196,6 +196,7 @@ public class Hero : Creature
             _wallStick = true;
             WallSide = "Right";
             _animator.SetBool("WallHang", true);
+            _currentJumpsCount = _jumpsAmount;
         }
 
         if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == -1.0f && !_isGrounded && !_wallStick && (WallSide == "Left" || WallSide == ""))
@@ -204,20 +205,12 @@ public class Hero : Creature
             _wallStick = true;
             WallSide = "Left";
             _animator.SetBool("WallHang", true);
+            _currentJumpsCount = _jumpsAmount;
         }
 
         if (!_stickyWallCheckerR.GetCollisionStatus())
         {
             WallSide = "";
-        }
-        
-
-        if (!_stickyWallCheckerR.GetCollisionStatus() || _isGrounded || _rigidbody.velocity.y > 0)
-        {
-
-            // _wallStick = false;
-            _currentJumpsCount = _jumpsAmount;
-            // _animator.SetBool("WallHang", false);
         }
 
         if (_wallStick)

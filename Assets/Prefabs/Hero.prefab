@@ -554,8 +554,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06730818, y: -0.8846384}
-  m_Size: {x: 0.40266192, y: 0.019677164}
+  m_Offset: {x: -0.03588872, y: -0.8846384}
+  m_Size: {x: 0.31045204, y: 0.019677164}
   m_Direction: 1
 --- !u!1 &2605853860362572935
 GameObject:
@@ -754,6 +754,7 @@ Transform:
   - {fileID: 121035896}
   - {fileID: 5469757335560564074}
   - {fileID: 5032557098262724569}
+  - {fileID: 1964318537158486320}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -962,6 +963,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 382a10ba-716e-4ad5-afd9-78eef1d7e70e
     m_ActionName: ArcadeLevelDefault/JumpFromShelf[/Keyboard/downArrow,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2605853861375256978}
+        m_TargetAssemblyTypeName: HeroInputReader, Assembly-CSharp
+        m_MethodName: Up
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 90a11340-d99e-4971-87c3-71360d87884e
+    m_ActionName: ArcadeLevelDefault/Up[/Keyboard/upArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ArcadeLevelDefault
@@ -1003,10 +1020,16 @@ MonoBehaviour:
   _damageForceToInflict: 200
   _direction: {x: 0, y: 0, z: 0}
   _isGrounded: 0
+  _priorGrounded: 0
   _isJumping: 0
+  _currentJumpsCount: 0
+  _jumpAvailable: 1
+  _fallTime: 0
+  _ascendTime: 0
+  _isUp: 0
   _jumpForce: 480
   _minimalAscendTime: 0.1
-  _jumpsAmount: 2
+  _jumpsAmount: 0
   _attackSensor: {fileID: 2605853860398633923}
   GroundChecker: {fileID: 2605853860332579281}
   ProjectileSpawner: {fileID: 134905951}
@@ -6303,6 +6326,129 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.043795317, y: -1.7145017}
-  m_Size: {x: 0.45762336, y: 1.7880623}
+  m_Offset: {x: -0.061610222, y: -1.7145017}
+  m_Size: {x: 0.3183422, y: 1.7880623}
   m_Direction: 0
+--- !u!1 &7887745028961194500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1964318537158486320}
+  - component: {fileID: 3542760444981564582}
+  - component: {fileID: 1934206518888764242}
+  - component: {fileID: 2457511992078138787}
+  m_Layer: 0
+  m_Name: LadderChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1964318537158486320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7887745028961194500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2605853861375256989}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &3542760444981564582
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7887745028961194500}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1934206518888764242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7887745028961194500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d0b003a5f4c7c41868cf1ec537dbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObjectsList: []
+  _isTouching: 0
+  _layers:
+    serializedVersion: 2
+    m_Bits: 1
+  _tags:
+  - LadderCollider
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2605853861375256976}
+        m_TargetAssemblyTypeName: Creature, Assembly-CSharp
+        m_MethodName: OnLadderTouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2605853861375256976}
+        m_TargetAssemblyTypeName: Creature, Assembly-CSharp
+        m_MethodName: OnLadderDetouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionExitAllEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!70 &2457511992078138787
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7887745028961194500}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.054176204, y: -0.896188}
+  m_Size: {x: 0.49717802, y: 0.04277635}
+  m_Direction: 1

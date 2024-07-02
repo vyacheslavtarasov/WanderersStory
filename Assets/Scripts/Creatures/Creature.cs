@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
+using System.Linq;
 
 public class Creature : MonoBehaviour
 {
@@ -20,13 +24,14 @@ public class Creature : MonoBehaviour
     public Vector3 _direction;
     private bool attackMode = false;
     public bool _isGrounded = false; // if the hero is on the ground
-    protected bool _priorGrounded = false;
+    public bool _priorGrounded = false;
     protected bool _runParticleAvailable = false;
     public bool _isJumping = false; // if the jump pressed
-    protected int _currentJumpsCount = 0;
-    protected bool _jumpAvailable = true; // we need to avoid secondary jumps right after landing when jump button is kept pressed
-    protected float _fallTime = 0.0f;
-    protected float _ascendTime = 0.0f;
+    public int _currentJumpsCount = 0;
+    public bool _jumpAvailable = true; // we need to avoid secondary jumps right after landing when jump button is kept pressed
+    public float _fallTime = 0.0f;
+    public float _ascendTime = 0.0f;
+    public bool _isUp = false;
 
     [Space]
     [Header("Jump Adjustments")]
@@ -78,6 +83,32 @@ public class Creature : MonoBehaviour
         }
     }
 
+    public void SetUp(bool isUp)
+    {
+        _isUp = isUp;
+    }
+
+    public IEnumerator SendFlyingUp(float flyTime, float jumpForce)
+    {
+        Debug.Log("jump");
+        float tmpMinimalAscentTime = _minimalAscendTime;
+        float tmpJumpForce = _jumpForce;
+        // _currentJumpsCount = 0;
+        _jumpAvailable = true;
+        _jumpForce = jumpForce;
+        _minimalAscendTime = flyTime;
+        _isJumping = true;
+        yield return new WaitForSeconds(0.5f);
+
+        _isJumping = false;
+        _jumpForce = tmpJumpForce;
+        yield return new WaitForSeconds(flyTime - 0.5f);
+        _minimalAscendTime = tmpMinimalAscentTime;
+        Debug.Log("end");
+        
+    }
+
+
     public void Attack()
     {
         Debug.Log("attack!");
@@ -123,6 +154,19 @@ public class Creature : MonoBehaviour
     {
         _isGrounded = GroundChecker.GetCollisionStatus();
 
+    }
+
+    public void OnLadderTouch(GameObject ladder)
+    {
+        if (!_isUp && _isGrounded)
+        {
+            ladder.transform.parent.GetComponent<EdgeCollider2D>().enabled = false;
+        }
+    }
+
+    public void OnLadderDetouch(GameObject ladder)
+    {
+        ladder.transform.parent.GetComponent<EdgeCollider2D>().enabled = true;
     }
 
     public virtual void OnGroundTouch(GameObject myGameObject)

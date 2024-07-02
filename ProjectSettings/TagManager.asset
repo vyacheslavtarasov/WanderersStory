@@ -8,6 +8,7 @@ TagManager:
   - Damageable
   - Shelf
   - GravityVolume
+  - LadderCollider
   layers:
   - Default
   - TransparentFX
