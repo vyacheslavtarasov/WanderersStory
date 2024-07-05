@@ -9,6 +9,7 @@ TagManager:
   - Shelf
   - GravityVolume
   - LadderCollider
+  - Clingable
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System;
 
 public class DialogBoxController : MonoBehaviour
@@ -17,6 +18,11 @@ public class DialogBoxController : MonoBehaviour
     [SerializeField] private AudioClip _open;
     [SerializeField] private AudioClip _close;
 
+    [SerializeField] private Button _nextButton;
+
+    public bool _dialogActive = false;
+
+    public UnityEvent DialogFinishedEvent;
 
     private DialogData _dialogData;
     private Coroutine _typingRoutine;
@@ -24,21 +30,27 @@ public class DialogBoxController : MonoBehaviour
     private bool _sentenceTypeComplete = false;
     public void ShowDialog(DialogData data)
     {
+        
         _dialogData = data;
         _currentSentence = 0;
+        _sentenceTypeComplete = false;
         _text.text = string.Empty;
 
-        _container.SetActive(true);
         _animator.SetBool("show", true);
+        _nextButton.interactable = true;
     }
 
     private void OnShowAnimationComplete()
     {
         _typingRoutine = StartCoroutine(TypeSentence());
+        _dialogActive = true;
+        
+        _nextButton.Select();
     }
 
     public void OnNextButtonClick()
     {
+        if (!_dialogActive) return;
         var sentence = _dialogData.Sentences[_currentSentence];
 
         if (!_sentenceTypeComplete)
@@ -56,6 +68,7 @@ public class DialogBoxController : MonoBehaviour
         if(_currentSentence >= _dialogData.Sentences.Length)
         {
             _animator.SetBool("show", false);
+            _dialogActive = false;
         }
         else
         {
@@ -65,7 +78,10 @@ public class DialogBoxController : MonoBehaviour
 
     private void OnHideAnimationComplete()
     {
-        
+        _dialogActive = false;
+        _nextButton.interactable = false;
+        DialogFinishedEvent?.Invoke();
+        DialogFinishedEvent.RemoveAllListeners();
     }
 
     private IEnumerator TypeSentence()
@@ -73,6 +89,8 @@ public class DialogBoxController : MonoBehaviour
         _sentenceTypeComplete = false;
         _text.text = string.Empty;
         var sentence = _dialogData.Sentences[_currentSentence];
+        Debug.Log(_currentSentence);
+        Debug.Log(sentence);
         foreach (var letter  in sentence)
         {
             _text.text += letter;

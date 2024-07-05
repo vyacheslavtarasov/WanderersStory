@@ -16,17 +16,17 @@ public class InventoryItemPresenseCondition : MonoBehaviour
 
     public void CheckItemInInventory(GameObject initiator = null, GameObject source = null)
     {
-        var inventoryComponent = initiator?.GetComponent<Inventory>();
+        var inventoryComponent = initiator.GetComponent<Inventory>();
         if (inventoryComponent != null)
         {
             if (inventoryComponent.Count(Name) >= Amount)
             {
                 ItemFoundEvent?.Invoke(initiator, source);
             }
-        }
-        else
-        {
-            ItemNotFoundEvent?.Invoke(initiator, source);
+            else
+            {
+                ItemNotFoundEvent?.Invoke(initiator, source);
+            }
         }
         
     }

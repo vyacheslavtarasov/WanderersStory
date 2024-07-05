@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09c134654cb8eb42ae4ac9252d7ff7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab2Spawn: {fileID: 7637066976138412375, guid: d55091a4366f75d46a7e7e56e1c65887, type: 3}
+  Prefab2Spawn: {fileID: 7637066976138412375, guid: ac5ca7e292a521b4194622944798b5fe, type: 3}
   TransformComponent: {fileID: 134905950}
   inheritScale: 1
 --- !u!1 &2248274900525424038
@@ -725,6 +725,7 @@ GameObject:
   - component: {fileID: 2605853860121117372}
   - component: {fileID: 1168325636438093296}
   - component: {fileID: 8576369605381459386}
+  - component: {fileID: -9166330392201065523}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -1235,6 +1236,22 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: -31.35, y: 2.11}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!114 &-9166330392201065523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605853861375256991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6b13b8dbcd05a4087cc1d5213eb9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  place: {fileID: 0}
+  gettingTransparentTime: 1
+  moveTime: 1
+  ObjectToTransfer: {fileID: 0}
 --- !u!1 &2605853861377530576
 GameObject:
   m_ObjectHideFlags: 0
