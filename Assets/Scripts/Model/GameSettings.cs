@@ -8,19 +8,20 @@ public class GameSettings : ScriptableObject
     [SerializeField] private FloatPersistenProperty _music;
     [SerializeField] private FloatPersistenProperty _sound;
     [SerializeField] private StringPersistentProperty _locale;
+    [SerializeField] private ObjectPersistentProperty _session;
 
     public FloatPersistenProperty Music => _music;
     public FloatPersistenProperty Sound => _sound;
 
     public StringPersistentProperty Locale => _locale;
 
+    public ObjectPersistentProperty Session => _session;
+
     private static GameSettings _instance;
     public static GameSettings I => _instance == null ? LoadGameSettings() : _instance;
 
     private static GameSettings LoadGameSettings()
     {
-
-
         var a = Resources.Load<GameSettings>("GameSettings");
         _instance = a;
         return Resources.Load<GameSettings>("GameSettings");
@@ -31,6 +32,7 @@ public class GameSettings : ScriptableObject
         _music = new FloatPersistenProperty("music", 1.0f);
         _sound = new FloatPersistenProperty("sound", 1.0f);
         _locale = new StringPersistentProperty("locale", "English");
+        _session = new ObjectPersistentProperty("session", null);
     }
 
     private void OnValidate()
@@ -40,6 +42,7 @@ public class GameSettings : ScriptableObject
             _music.Validate();
             _sound.Validate();
             _locale.Validate();
+            _session.Validate();
         }
         catch
         {

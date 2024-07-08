@@ -19,7 +19,11 @@ public class AudioSettingsController : MonoBehaviour
 
     private void OnSoundSettingsChanged(float newValue, float oldValue)
     {
-        _source.volume = newValue;
+        if (_source != null)
+        {
+            _source.volume = newValue;
+        }
+        
     }
 
     private FloatPersistenProperty GetProperty()

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
+using UnityEngine.InputSystem;
 
 public class LevelTitleController: MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class LevelTitleController: MonoBehaviour
     private DialogData _dialogData;
     private Coroutine _typingRoutine;
     private int _currentSentence = 1;
+    public InputActionAsset InputActionAsset;
+    private void Awake()
+    {
+        InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
+    }
 
     public void ShowTitle(DialogData data)
     {
@@ -34,6 +40,19 @@ public class LevelTitleController: MonoBehaviour
         _placeName.text = string.Empty;
 
         _animator.SetBool("Show", true);
+        foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
+        {
+            if (localActionMap.name == "UI")
+            {
+                // Debug.Log("UI");
+                localActionMap.Enable();
+            }
+            else
+            {
+                // Debug.Log("disabling");
+                localActionMap.Disable();
+            }
+        }
     }
 
     private void OnShowAnimationComplete()
@@ -46,6 +65,17 @@ public class LevelTitleController: MonoBehaviour
 
         TitleShowFinishedEvent?.Invoke();
         TitleShowFinishedEvent.RemoveAllListeners();
+        foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
+        {
+            if (localActionMap.name == "ArcadeLevelDefault")
+            {
+                localActionMap.Enable();
+            }
+            else
+            {
+                localActionMap.Disable();
+            }
+        }
     }
 
     private IEnumerator TypeSentence()

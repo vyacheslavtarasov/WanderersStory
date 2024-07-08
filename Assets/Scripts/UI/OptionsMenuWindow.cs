@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 public class OptionsMenuWindow : AnimatedWindow
 {
@@ -9,21 +10,30 @@ public class OptionsMenuWindow : AnimatedWindow
     [SerializeField] private AudioSettingsWidget _music;
     [SerializeField] private AudioSettingsWidget _sound;
 
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         _music.SetModel(GameSettings.I.Music);
         _sound.SetModel(GameSettings.I.Sound);
     }
 
     public void CloseMenu()
     {
-        Close();
+        if (Parent != null && Parent.GetComponent<AnimatedWindow>() != null)
+        {
+            _animator.SetTrigger("hide");
+            Parent.GetComponent<AnimatedWindow>().DefaultButton.GetComponent<Button>().Select();
+        }
+        else
+        {
+            Close();
+        }
     }
 
     public override void OnCloseAnimationComplete()
     {
         _afterCloseAction?.Invoke();
+        
         base.OnCloseAnimationComplete();
 
     }

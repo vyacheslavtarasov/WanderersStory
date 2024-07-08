@@ -1,16 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.InputSystem;
+
+
+
 
 public class MainMenuWindow : AnimatedWindow
 {
     private Action _afterCloseAction;
 
+    public GameObject Session;
+
     public void StartGame()
     {
         _afterCloseAction = () => {
             SceneManager.LoadScene("Level_1");
-            
         };
         Close();
     }
@@ -19,7 +24,21 @@ public class MainMenuWindow : AnimatedWindow
     {
         var window = Resources.Load<GameObject>("SettingsMenuWindow");
         var canvas = FindObjectOfType<Canvas>();
-        Instantiate(window, canvas.transform);
+        GameObject optionsMenu = Instantiate(window, canvas.transform);
+        optionsMenu.GetComponent<AnimatedWindow>().Parent = this.gameObject;
+    }
+
+    public void LoadGame()
+    {
+        _afterCloseAction = () => { Debug.Log("loading a save");
+
+            Instantiate(Session, Vector3.zero, Quaternion.identity);
+
+            Debug.Log($"Session: {PlayerPrefs.GetString("session", "default")}");
+            Debug.Log(GameSettings.I.Session.Value.LevelName);
+            GetComponent<SceneLoader>().Load(GameSettings.I.Session.Value);
+        };
+        Close();
     }
 
     public void QuitGame()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -42,7 +43,11 @@ public class Checkpoint : MonoBehaviour
 
     public void SetCurrentCheckpoint()
     {
-        _session.SetCurrentCheckpoint(Name);  
+        _session.SetCurrentCheckpoint(Name);
+        Debug.Log(_session.Data);
+        _session.Data.LevelName = SceneManager.GetActiveScene().name;
+        GameSettings.I.Session.Value = _session.Data;
+        Debug.Log($"Session: {PlayerPrefs.GetString("session", "default")}");
     }
 
     public void SpawnHero()

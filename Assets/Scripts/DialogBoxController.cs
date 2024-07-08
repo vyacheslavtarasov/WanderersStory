@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
+using UnityEngine.InputSystem;
 
 public class DialogBoxController : MonoBehaviour
 {
@@ -28,6 +29,13 @@ public class DialogBoxController : MonoBehaviour
     private Coroutine _typingRoutine;
     private int _currentSentence = 0;
     private bool _sentenceTypeComplete = false;
+
+    public InputActionAsset InputActionAsset;
+
+    private void Awake()
+    {
+        InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
+    }
     public void ShowDialog(DialogData data)
     {
         
@@ -38,6 +46,18 @@ public class DialogBoxController : MonoBehaviour
 
         _animator.SetBool("show", true);
         _nextButton.interactable = true;
+
+        foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
+        {
+            if (localActionMap.name == "UI")
+            {
+                localActionMap.Enable();
+            }
+            else
+            {
+                localActionMap.Disable();
+            }
+        }
     }
 
     private void OnShowAnimationComplete()
@@ -80,6 +100,20 @@ public class DialogBoxController : MonoBehaviour
     {
         _dialogActive = false;
         _nextButton.interactable = false;
+        
+
+        foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
+        {
+            if (localActionMap.name == "ArcadeLevelDefault")
+            {
+                localActionMap.Enable();
+            }
+            else
+            {
+                localActionMap.Disable();
+            }
+        }
+
         DialogFinishedEvent?.Invoke();
         DialogFinishedEvent.RemoveAllListeners();
     }

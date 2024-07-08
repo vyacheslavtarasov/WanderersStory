@@ -51,7 +51,11 @@ public class LocalizationController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _model.OnChanged -= OnValueChanged;
+        if (_model != null)
+        {
+            _model.OnChanged -= OnValueChanged;
+        }
+        
     }
 
 

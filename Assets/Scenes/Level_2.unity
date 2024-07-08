@@ -493,11 +493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2605853861375256989, guid: f422e43fb04ba414b9a91c199bc503db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.27
+      value: -24.84
       objectReference: {fileID: 0}
     - target: {fileID: 2605853861375256989, guid: f422e43fb04ba414b9a91c199bc503db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.05
+      value: 8.69
       objectReference: {fileID: 0}
     - target: {fileID: 2605853861375256989, guid: f422e43fb04ba414b9a91c199bc503db, type: 3}
       propertyPath: m_LocalPosition.z
@@ -860,6 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 1
@@ -1244,6 +1245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 1
@@ -1409,7 +1411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.470001, y: 7.365625, z: -10}
+  m_LocalPosition: {x: -25.088888, y: 9.005625, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11342,7 +11344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478019367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.470001, y: 7.365625, z: -10}
+  m_LocalPosition: {x: -25.088888, y: 9.005625, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11422,7 +11424,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6b13b8dbcd05a4087cc1d5213eb9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  place: {fileID: 801689669}
+  place: {x: 0, y: 0, z: 0}
+  gettingTransparentTime: 1
+  moveTime: 1
+  ObjectToTransfer: {fileID: 0}
 --- !u!114 &1523489157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11436,6 +11441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 1
@@ -12083,6 +12089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -12515,6 +12522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 1

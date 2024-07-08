@@ -10,6 +10,7 @@ TagManager:
   - GravityVolume
   - LadderCollider
   - Clingable
+  - DefaultButton
   layers:
   - Default
   - TransparentFX

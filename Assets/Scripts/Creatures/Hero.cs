@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Hero : Creature
 {
@@ -20,7 +21,17 @@ public class Hero : Creature
 
     public string WallSide = "";
 
-   [SerializeField] protected Sensor _stickyWallCheckerR;
+    /*[ContextMenu("serialize")]
+    public void Serialize()
+    {
+        Debug.Log(_session.Data);
+        GameSettings.I.Session.Value = _session.Data;
+        Debug.Log($"Session: {PlayerPrefs.GetString("session", "default")}");
+        Debug.Log(GameSettings.I.Session.Value);
+    }*/
+    
+
+    [SerializeField] protected Sensor _stickyWallCheckerR;
 
     private void Start()
     {
@@ -37,6 +48,22 @@ public class Hero : Creature
 
         _healthComponent.currentHealth = _session.Data.Health;
         _healthComponent.ChangeHealth(0.0f);
+
+
+        InputActionAsset InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
+
+        foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
+        {
+            if (localActionMap.name == "ArcadeLevelDefault")
+            {
+                localActionMap.Enable();
+            }
+            else
+            {
+                localActionMap.Disable();
+            }
+        }
+
     }
 
     public void JumpFromShelf()

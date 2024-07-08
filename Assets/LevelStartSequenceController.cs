@@ -20,7 +20,15 @@ public class LevelStartSequenceController : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<ShowDialog>().Show(_dialog);
+        if (_dialog != null)
+        {
+            GetComponent<ShowDialog>().Show(_dialog);
+        }
+        else
+        {
+            Show(_levelName);
+        }
+        
     }
 
 

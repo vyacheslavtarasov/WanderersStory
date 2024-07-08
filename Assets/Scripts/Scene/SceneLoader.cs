@@ -16,4 +16,13 @@ public class SceneLoader : MonoBehaviour
         _session._currentCheckpointName = _session.DefaultCheckpoint;
         SceneManager.LoadScene(_levelName);
     }
+
+    public void Load(PlayerData data)
+    {
+        _session = FindObjectOfType<GameSession>();
+        _session.PlayerDataSavedAtSceneStart = data;
+        _session.Data = data;
+        _session._currentCheckpointName = _session.DefaultCheckpoint;
+        SceneManager.LoadScene(data.LevelName);
+    }
 }
