@@ -35,6 +35,7 @@ public class DialogBoxController : MonoBehaviour
     private void Awake()
     {
         InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
+        Debug.Log("dialog box controller awake");
     }
     public void ShowDialog(DialogData data)
     {
@@ -51,6 +52,7 @@ public class DialogBoxController : MonoBehaviour
         {
             if (localActionMap.name == "UI")
             {
+                Debug.Log("enabling UI dialog box controller");
                 localActionMap.Enable();
             }
             else
@@ -106,6 +108,7 @@ public class DialogBoxController : MonoBehaviour
         {
             if (localActionMap.name == "ArcadeLevelDefault")
             {
+                Debug.Log("enabling arcade dialog box controller");
                 localActionMap.Enable();
             }
             else

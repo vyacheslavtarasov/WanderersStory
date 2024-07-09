@@ -44,7 +44,7 @@ public class LevelTitleController: MonoBehaviour
         {
             if (localActionMap.name == "UI")
             {
-                // Debug.Log("UI");
+                Debug.Log("enabling UI level title controller");
                 localActionMap.Enable();
             }
             else
@@ -69,6 +69,7 @@ public class LevelTitleController: MonoBehaviour
         {
             if (localActionMap.name == "ArcadeLevelDefault")
             {
+                Debug.Log("enabling arcade level title controller");
                 localActionMap.Enable();
             }
             else

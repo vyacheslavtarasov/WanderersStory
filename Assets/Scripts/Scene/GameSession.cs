@@ -11,6 +11,8 @@ public class GameSession : MonoBehaviour
 
     public PlayerData PlayerDataSavedAtSceneStart; // or at checkpoint
 
+    public bool LoadLevelWithOpening = false;
+
     [SerializeField] public string _currentCheckpointName;
     public string DefaultCheckpoint = "default";
 

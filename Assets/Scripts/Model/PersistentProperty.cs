@@ -24,8 +24,16 @@ public abstract class PersistentProperty<TPropertyType>
         get => _stored;
         set
         {
-            var isEquals = _stored.Equals(value);
-            if (isEquals) return;
+            if (_stored == null)
+            {
+
+            }
+            else
+            {
+                var isEquals = _stored.Equals(value);
+                if (isEquals) return;
+            }
+            
 
             var oldValue = _value;
             Write(_key, value);

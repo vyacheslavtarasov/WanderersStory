@@ -29,6 +29,7 @@ public class AnimatedWindow : MonoBehaviour
         {
             if (localActionMap.name == "UI")
             {
+                Debug.Log("enabling UI animated window controller");
                 localActionMap.Enable();
             }
             else
@@ -48,6 +49,7 @@ public class AnimatedWindow : MonoBehaviour
         {
             if (localActionMap.name == "ArcadeLevelDefault")
             {
+                Debug.Log("enabling arcade animated window controller");
                 localActionMap.Enable();
             }
             else

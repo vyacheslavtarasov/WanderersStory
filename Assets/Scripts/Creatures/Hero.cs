@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class Hero : Creature
 {
 
@@ -51,18 +51,26 @@ public class Hero : Creature
 
 
         InputActionAsset InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
-
-        foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
+        if (_session.LoadLevelWithOpening)
         {
-            if (localActionMap.name == "ArcadeLevelDefault")
+
+        }
+        else
+        {
+            foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
             {
-                localActionMap.Enable();
-            }
-            else
-            {
-                localActionMap.Disable();
+                if (localActionMap.name == "ArcadeLevelDefault")
+                {
+                    Debug.Log("enabling arcade hero controller");
+                    localActionMap.Enable();
+                }
+                else
+                {
+                    localActionMap.Disable();
+                }
             }
         }
+        
 
     }
 

@@ -20,6 +20,10 @@ public class LevelStartSequenceController : MonoBehaviour
 
     private void Start()
     {
+        GameSession session = FindObjectOfType<GameSession>();
+
+        if (!session.LoadLevelWithOpening) return;
+
         if (_dialog != null)
         {
             GetComponent<ShowDialog>().Show(_dialog);
