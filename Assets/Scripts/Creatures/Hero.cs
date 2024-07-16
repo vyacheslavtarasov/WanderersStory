@@ -61,7 +61,7 @@ public class Hero : Creature
             {
                 if (localActionMap.name == "ArcadeLevelDefault")
                 {
-                    Debug.Log("enabling arcade hero controller");
+                    // Debug.Log("enabling arcade hero controller");
                     localActionMap.Enable();
                 }
                 else
@@ -227,7 +227,7 @@ public class Hero : Creature
 
         if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == 1.0f && !_isGrounded && !_wallStick && (WallSide == "Right" || WallSide == ""))
         {
-            Debug.Log("stick left");
+            // Debug.Log("stick left");
             _wallStick = true;
             WallSide = "Right";
             _animator.SetBool("WallHang", true);
@@ -236,7 +236,7 @@ public class Hero : Creature
 
         if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == -1.0f && !_isGrounded && !_wallStick && (WallSide == "Left" || WallSide == ""))
         {
-            Debug.Log("stick right");
+            // Debug.Log("stick right");
             _wallStick = true;
             WallSide = "Left";
             _animator.SetBool("WallHang", true);

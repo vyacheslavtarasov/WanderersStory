@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Creature : MonoBehaviour
 {
@@ -58,6 +59,8 @@ public class Creature : MonoBehaviour
 
     public MovingPlatformController platformController;
 
+    public UnityEvent JumpEvent;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -90,7 +93,7 @@ public class Creature : MonoBehaviour
 
     public IEnumerator SendFlyingUp(float flyTime, float jumpForce)
     {
-        Debug.Log("jump");
+        // Debug.Log("jump");
         float tmpMinimalAscentTime = _minimalAscendTime;
         float tmpJumpForce = _jumpForce;
         // _currentJumpsCount = 0;
@@ -104,14 +107,14 @@ public class Creature : MonoBehaviour
         _jumpForce = tmpJumpForce;
         yield return new WaitForSeconds(flyTime - 0.5f);
         _minimalAscendTime = tmpMinimalAscentTime;
-        Debug.Log("end");
+        // Debug.Log("end");
         
     }
 
 
     public void Attack()
     {
-        Debug.Log("attack!");
+        // Debug.Log("attack!");
         attackMode = true;
         if (_attackSensor != null)
         {
@@ -153,24 +156,37 @@ public class Creature : MonoBehaviour
     protected void CheckIsGrounded()
     {
         _isGrounded = GroundChecker.GetCollisionStatus();
-
     }
 
     public void OnLadderTouch(GameObject ladder)
     {
-        if (!_isUp && _isGrounded)
+        Debug.Log(ladder.name);
+        if (!_isUp && _isGrounded && transform.position.y - 1.6f < ladder.gameObject.transform.position.y)
         {
-            ladder.transform.parent.GetComponent<EdgeCollider2D>().enabled = false;
+            ladder.transform.GetComponentInParent<EdgeCollider2D>().enabled = false;
+            Debug.Log(ladder.transform.parent.name);
         }
     }
 
     public void OnLadderDetouch(GameObject ladder)
     {
-        ladder.transform.parent.GetComponent<EdgeCollider2D>().enabled = true;
+        ladder.transform.GetComponentInParent<EdgeCollider2D>().enabled = true;
+    }
+
+    public void OnGroundLeave(GameObject myGameObject)
+    {
+        // Debug.Log("leaving " + Time.frameCount);
+        if (myGameObject.GetComponent<MovingPlatformController>())
+        {
+            // platformController = null;
+            
+
+        }
     }
 
     public virtual void OnGroundTouch(GameObject myGameObject)
     {
+        // Debug.Log("touching " + Time.frameCount);
         if (myGameObject.GetComponent<MovingPlatformController>())
         {
             platformController = myGameObject.GetComponent<MovingPlatformController>();
@@ -179,15 +195,7 @@ public class Creature : MonoBehaviour
         }
     }
 
-    public void OnGroundLeave(GameObject myGameObject)
-    {
-        if (myGameObject.GetComponent<MovingPlatformController>())
-        {
-            platformController = null;
-            
-
-        }
-    }
+    
     public virtual void OnChangeHealth(float wasHealth, float currentHealth, float overallHealth)
     {
         if (wasHealth > currentHealth)
@@ -270,6 +278,7 @@ public class Creature : MonoBehaviour
 
         CheckIsGrounded(); // Now _airborne variable always show if the carrier is grounded.
 
+
         if (_isGrounded && !_isJumping && platformController != null && _direction.x == 0)
         {
             _fixedJoint.enabled = true;
@@ -315,9 +324,14 @@ public class Creature : MonoBehaviour
                     _rigidbody.velocity = new Vector2(0.0f, _rigidbody.velocity.y);
                 }
             }
+            platformController = null;
+            
+            
+            // Debug.Log("here");
+            
         }
 
-        
+
 
         // Horizontal movement.
         // Parameters depends on whether Hero is on slope or plane
@@ -391,7 +405,7 @@ public class Creature : MonoBehaviour
             }
         }
         // Avoiding slipping from slipper slopes
-        if (!_wallStick)
+       if (!_wallStick)
         {
 
             if (newVelocity.magnitude < 0.1f && _isGrounded && !_isJumping)
@@ -431,7 +445,6 @@ public class Creature : MonoBehaviour
         {
             _rigidbody.velocity = new Vector2(this._rigidbody.velocity.x, 0);
             _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Force);
-            
             _currentJumpsCount -= 1;
             _jumpAvailable = false;
 
@@ -464,7 +477,7 @@ public class Creature : MonoBehaviour
         }
 
         // Avoid sliding from slopen during jumping on a slope in one place.
-        if (_isGrounded == true && _priorGrounded == false && !onPlane)
+        if (_isGrounded == true && _priorGrounded == false && !onPlane && _direction.x == 0.0f)
         {
             _rigidbody.gravityScale = 0;
             _rigidbody.velocity = Vector2.zero;
@@ -477,6 +490,7 @@ public class Creature : MonoBehaviour
             FlipSprite();
         }
 
+        
 
         if (platformController != null)
         {
@@ -492,6 +506,7 @@ public class Creature : MonoBehaviour
 
     protected virtual void OnJump()
     {
-
+        Debug.Log("invoking jump");
+        JumpEvent?.Invoke();
     }
 }

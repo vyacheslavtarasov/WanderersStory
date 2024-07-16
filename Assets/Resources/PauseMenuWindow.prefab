@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputActionAsset: {fileID: 0}
   DefaultButton: {fileID: 7081435249862558954}
+  Parent: {fileID: 0}
 --- !u!1 &7081435249198189960
 GameObject:
   m_ObjectHideFlags: 0

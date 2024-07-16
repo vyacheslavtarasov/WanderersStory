@@ -8,4 +8,9 @@ public class Destroy : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    public void DestroyIt(GameObject obj)
+    {
+        Destroy(obj);
+    }
 }

@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
+    public GameObject ObjectAsTargetPlace;
     public Vector3 place;
     public float gettingTransparentTime = 1.0f;
     public float moveTime = 1.0f;
     public GameObject ObjectToTransfer; // if it is - the function TeleportObject transfers it, not it's argument
 
+    private void Start()
+    {
+        if (place == Vector3.zero && ObjectAsTargetPlace != null)
+        {
+            place = ObjectAsTargetPlace.transform.position;
+        }
+    }
     public void SetPlace(Transform p)
     {
         place = p.position;

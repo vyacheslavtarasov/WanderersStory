@@ -11,6 +11,11 @@ public class DialogBoxController : MonoBehaviour
     [SerializeField] private Text _text;
     [SerializeField] private GameObject _container;
     [SerializeField] private Animator _animator;
+    [SerializeField] private Text _lSpeakerName;
+    [SerializeField] private Text _rSpeakerName;
+
+    [SerializeField] private GameObject _lContainer;
+    [SerializeField] private GameObject _rContainer;
 
     [Space]
     [SerializeField] private float _textSpeed = 0.09f;
@@ -47,6 +52,19 @@ public class DialogBoxController : MonoBehaviour
 
         _animator.SetBool("show", true);
         _nextButton.interactable = true;
+
+        if (_dialogData.Place == null || _dialogData.Place == place.left)
+        {
+            _lSpeakerName.text = _dialogData.SpeakerName;
+            _lContainer.active = true;
+            _rContainer.active = false;
+        }
+        else
+        {
+            _rSpeakerName.text = _dialogData.SpeakerName;
+            _lContainer.active = false;
+            _rContainer.active = true;
+        }
 
         foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
         {

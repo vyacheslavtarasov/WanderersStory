@@ -11,6 +11,7 @@ TagManager:
   - LadderCollider
   - Clingable
   - DefaultButton
+  - Item
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,8 @@ public enum Mode
 {
     Circle,
     PingPong,
-    OneWay
+    OneWay,
+    OneStepAtATime
 }
 
 public class MovingPlatformController : MonoBehaviour
@@ -25,6 +26,11 @@ public class MovingPlatformController : MonoBehaviour
     public Mode MoveMode = Mode.PingPong;
 
     public Rigidbody2D _rigidbody;
+
+    public void SetVelocity(float velocity)
+    {
+        Velocity = velocity;
+    }
 
     // Start and stop movement by enabling and disabling the controller
     private void Awake()
@@ -107,6 +113,30 @@ public class MovingPlatformController : MonoBehaviour
                         this.enabled = false;
                     }
                 }
+            }
+            if (MoveMode == Mode.OneStepAtATime)
+            {
+                if (_directionForward)
+                {
+                    _targetPositionIndex += 1;
+                    if (_targetPositionIndex >= Positions.Count)
+                    {
+                        _targetPositionIndex = Positions.Count - 2;
+                        _directionForward = false;
+                    }
+                }
+                else
+                {
+                    _targetPositionIndex -= 1;
+                    if (_targetPositionIndex < 0)
+                    {
+                        _targetPositionIndex = 1;
+                        _directionForward = true;
+                        
+                    }
+                }
+                Velocity = 0.0f;
+                this.enabled = false;
             }
         }
 

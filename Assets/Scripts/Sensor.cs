@@ -50,6 +50,11 @@ public class Sensor : MonoBehaviour
         return _isTouching;
     }
 
+    public List<GameObject> GetTouchedObjList()
+    {
+        return _gameObjectsList;
+    }
+
     public List<GameObject> GetIntersectedObjects() {
         return _gameObjectsList;
     }

@@ -2574,6 +2574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputActionAsset: {fileID: 0}
   DefaultButton: {fileID: 8783858885333846399}
+  Parent: {fileID: 0}
   _music: {fileID: 117774675}
   _sound: {fileID: 205598585}
 --- !u!1 &8783858886813524451

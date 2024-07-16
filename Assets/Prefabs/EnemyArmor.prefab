@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 1
@@ -216,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 64
@@ -351,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectsList: []
+  _isTouching: 0
   _layers:
     serializedVersion: 2
     m_Bits: 1
@@ -464,7 +467,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -637,11 +640,25 @@ MonoBehaviour:
   _attackDamage: -1
   _damageForceToInflict: 600
   _direction: {x: 0, y: 0, z: 0}
+  _isGrounded: 0
+  _priorGrounded: 0
+  _isJumping: 0
+  _currentJumpsCount: 0
+  _jumpAvailable: 1
+  _fallTime: 0
+  _ascendTime: 0
+  _isUp: 0
   _jumpForce: 0
   _minimalAscendTime: 1
   _jumpsAmount: 2
   _attackSensor: {fileID: 2605853860398633923}
   GroundChecker: {fileID: 2605853860332579281}
+  ProjectileSpawner: {fileID: 0}
+  _projectileSpawnCooldown:
+    _value: 2
+  _wallStick: 0
+  _soundPlayer: {fileID: 0}
+  platformController: {fileID: 0}
 --- !u!114 &1191944170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5543,7 +5560,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
