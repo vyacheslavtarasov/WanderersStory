@@ -22,6 +22,6 @@ public class ShowTargetComponent : MonoBehaviour
 
     private void MoveBack()
     {
-        _cameraStateController.SetDefaultCamera();
+        _cameraStateController.SetPreviousCamera();
     }
 }

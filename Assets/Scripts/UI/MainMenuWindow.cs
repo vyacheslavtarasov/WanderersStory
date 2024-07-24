@@ -17,7 +17,7 @@ public class MainMenuWindow : AnimatedWindow
         _afterCloseAction = () => {
             GameObject session = Instantiate(Session, Vector3.zero, Quaternion.identity);
             session.GetComponent<GameSession>().LoadLevelWithOpening = true;
-            SceneManager.LoadScene("Level_1");
+            SceneManager.LoadScene("MechanicsDemoLevel");
         };
         Close();
     }
@@ -35,7 +35,6 @@ public class MainMenuWindow : AnimatedWindow
         _afterCloseAction = () => { Debug.Log("loading a save");
 
             GameObject session = Instantiate(Session, Vector3.zero, Quaternion.identity);
-            // session.GetComponent<GameSession>().LoadLevelWithOpening = true;
             Debug.Log($"Session: {PlayerPrefs.GetString("session", "default")}");
             Debug.Log(GameSettings.I.Session.Value.LevelName);
             GetComponent<SceneLoader>().Load(GameSettings.I.Session.Value);

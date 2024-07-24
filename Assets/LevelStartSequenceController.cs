@@ -38,7 +38,6 @@ public class LevelStartSequenceController : MonoBehaviour
 
     public void Show(DialogEntry dialogEntry)
     {
-
         _levelTitleController = FindObjectOfType<LevelTitleController>();
         _levelTitleController.ShowTitle(dialogEntry.Data);
         _levelTitleController.TitleShowFinishedEvent.AddListener(DialogFinished);

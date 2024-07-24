@@ -26,7 +26,7 @@ public class Ai : MonoBehaviour
         {
             state = "patrol";
             var direction = waypoints[_targetWaypointIndex].position - transform.position;
-            if (direction.magnitude < 0.5f)
+            if (direction.magnitude < 1.0f)
             {
                 _targetWaypointIndex += 1;
                 _targetWaypointIndex %= waypoints.Length;

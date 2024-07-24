@@ -7,9 +7,14 @@ public class CameraStateController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _showCamera;
     [SerializeField] private CinemachineVirtualCamera _verticalCamera;
     [SerializeField] private CinemachineVirtualCamera _horizontalCamera;
+    [SerializeField] private CinemachineVirtualCamera _staticCamera;
+
     [SerializeField] private PolygonCollider2D _defaultCameraVolume;
 
     public GameObject CurrentCameraVolume = null;
+
+    public string previousCamera = "Default";
+    public string currentCamera = "Default";
 
     public void SetShowCameraPosition(Vector3 position)
     {
@@ -19,35 +24,56 @@ public class CameraStateController : MonoBehaviour
 
     public void SetShowCamera()
     {
-        _animator.SetBool("Show", true);
+        _animator.SetTrigger("Show");
     }
 
-    public void SetDefaultCamera()
+    public void SetPreviousCamera()
     {
-        _animator.SetBool("Show", false);
+        _animator.SetTrigger(currentCamera);
     }
 
-    public void SwitchToVerticalCamera(PolygonCollider2D _collider, GameObject _object)
+    public void SwitchToVerticalCamera(GameObject _object)
     {
-        _verticalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _collider;
+        _verticalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();;
         _animator.SetTrigger("Vertical");
+        previousCamera = currentCamera;
+        currentCamera = "Vertical";
         CurrentCameraVolume = _object;
-
     }
 
     public void SwitchToHorizontalCamera(PolygonCollider2D _collider, GameObject _object)
     {
         _horizontalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _collider;
         _animator.SetTrigger("Horizontal");
+        previousCamera = currentCamera;
+        currentCamera = "Horizontal";
         CurrentCameraVolume = _object;
 
     }
 
+    public void SwitchToStaticlCamera(GameObject _object)
+    {
+        _staticCamera.transform.position = _object.transform.position;
+        _animator.SetTrigger("Static");
+        previousCamera = currentCamera;
+        currentCamera = "Static";
+        CurrentCameraVolume = _object;
+    }
+
     public void TrySwitchDefault(GameObject _object)
     {
-        if (CurrentCameraVolume != null && _object == CurrentCameraVolume)
+        if (previousCamera == "Default") // because volume can be uncorrect after here-there transfer.
         {
             _animator.SetTrigger("Default");
+            currentCamera = "Default";
+            return;
         }
+
+        if (CurrentCameraVolume != null && _object == CurrentCameraVolume)
+        {
+            _animator.SetTrigger(previousCamera);
+            currentCamera = previousCamera;
+        }
+        previousCamera = "Default";
     }
 }

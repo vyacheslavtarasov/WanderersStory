@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(PolygonCollider2D))]
 public class VerticalCameraSwitcher : MonoBehaviour
 {
     [SerializeField] private CameraStateController _cameraStateController;
-    [SerializeField] private PolygonCollider2D _collider;
+
+    
 
     private void OnValidate()
     {
@@ -13,16 +16,15 @@ public class VerticalCameraSwitcher : MonoBehaviour
         {
             _cameraStateController = FindObjectOfType<CameraStateController>();
         }
-        _collider = GetComponent<PolygonCollider2D>();
     }
 
-    public void Switch(GameObject gameObject)
+    public void Switch()
     {
-        _cameraStateController.SwitchToVerticalCamera(_collider, gameObject);
+        _cameraStateController.SwitchToVerticalCamera(gameObject);
         _cameraStateController.CurrentCameraVolume = gameObject;
     }
 
-    public void SwitchOff(GameObject gameObject)
+    public void SwitchOff()
     {
         _cameraStateController.TrySwitchDefault(gameObject);
     }

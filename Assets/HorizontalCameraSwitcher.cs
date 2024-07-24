@@ -16,13 +16,13 @@ public class HorizontalCameraSwitcher : MonoBehaviour
         _collider = GetComponent<PolygonCollider2D>();
     }
 
-    public void Switch(GameObject gameObject)
+    public void Switch()
     {
         _cameraStateController.SwitchToHorizontalCamera(_collider, gameObject);
         _cameraStateController.CurrentCameraVolume = gameObject;
     }
 
-    public void SwitchOff(GameObject gameObject)
+    public void SwitchOff()
     {
         _cameraStateController.TrySwitchDefault(gameObject);
     }

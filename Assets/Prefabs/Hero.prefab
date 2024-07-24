@@ -520,19 +520,7 @@ MonoBehaviour:
         m_CallState: 2
   CollisionExitEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2605853861375256976}
-        m_TargetAssemblyTypeName: Creature, Assembly-CSharp
-        m_MethodName: OnGroundLeave
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   CollisionExitAllEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1028,6 +1016,7 @@ MonoBehaviour:
   _damageForceToInflict: 200
   _direction: {x: 0, y: 0, z: 0}
   _isGrounded: 0
+  _onPlatform: 0
   _priorGrounded: 0
   _isJumping: 0
   _currentJumpsCount: 0
@@ -1040,6 +1029,7 @@ MonoBehaviour:
   _jumpsAmount: 0
   _attackSensor: {fileID: 2605853860398633923}
   GroundChecker: {fileID: 2605853860332579281}
+  GroudnCheker2: {fileID: 6668772790748818923}
   ProjectileSpawner: {fileID: 134905951}
   _projectileSpawnCooldown:
     _value: 2
@@ -1258,6 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6b13b8dbcd05a4087cc1d5213eb9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectAsTargetPlace: {fileID: 0}
   place: {x: 0, y: 0, z: 0}
   gettingTransparentTime: 1
   moveTime: 1

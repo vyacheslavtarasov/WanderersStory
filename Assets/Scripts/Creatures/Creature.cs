@@ -25,6 +25,7 @@ public class Creature : MonoBehaviour
     public Vector3 _direction;
     private bool attackMode = false;
     public bool _isGrounded = false; // if the hero is on the ground
+    public bool _onPlatform = false;
     public bool _priorGrounded = false;
     protected bool _runParticleAvailable = false;
     public bool _isJumping = false; // if the jump pressed
@@ -44,6 +45,7 @@ public class Creature : MonoBehaviour
     [Header("Sensors")]
     [SerializeField] protected Sensor _attackSensor;
     [SerializeField] protected Sensor GroundChecker;
+    [SerializeField] protected Sensor GroudnCheker2;
 
     [SerializeField] private SpawnPrefab ProjectileSpawner;
     [SerializeField] private Cooldown _projectileSpawnCooldown;
@@ -158,6 +160,8 @@ public class Creature : MonoBehaviour
         _isGrounded = GroundChecker.GetCollisionStatus();
     }
 
+
+
     public void OnLadderTouch(GameObject ladder)
     {
         Debug.Log(ladder.name);
@@ -178,7 +182,7 @@ public class Creature : MonoBehaviour
         // Debug.Log("leaving " + Time.frameCount);
         if (myGameObject.GetComponent<MovingPlatformController>())
         {
-            // platformController = null;
+            platformController = null;
             
 
         }
@@ -226,7 +230,6 @@ public class Creature : MonoBehaviour
 
     protected void SetAnimationParameters()
     {
-
 
             if (_direction.x != 0.0f) // button is pressed
         {
@@ -277,6 +280,7 @@ public class Creature : MonoBehaviour
         }
 
         CheckIsGrounded(); // Now _airborne variable always show if the carrier is grounded.
+        // CheckIsWithPlatform(); 
 
 
         if (_isGrounded && !_isJumping && platformController != null && _direction.x == 0)
@@ -324,7 +328,7 @@ public class Creature : MonoBehaviour
                     _rigidbody.velocity = new Vector2(0.0f, _rigidbody.velocity.y);
                 }
             }
-            platformController = null;
+            // platformController = null;
             
             
             // Debug.Log("here");
@@ -497,7 +501,7 @@ public class Creature : MonoBehaviour
             _rigidbody.velocity += platformController._rigidbody.velocity;
             if (!_isJumping)
             {
-                _rigidbody.gravityScale = 30.0f;
+                _rigidbody.gravityScale = 5.0f;
             }
         }
 
