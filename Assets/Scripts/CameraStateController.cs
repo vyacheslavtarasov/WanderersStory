@@ -34,42 +34,36 @@ public class CameraStateController : MonoBehaviour
 
     public void SwitchToVerticalCamera(GameObject _object)
     {
-        _verticalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();;
+        _verticalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();
         _animator.SetTrigger("Vertical");
         previousCamera = currentCamera;
         currentCamera = "Vertical";
-        CurrentCameraVolume = _object;
     }
 
-    public void SwitchToHorizontalCamera(PolygonCollider2D _collider, GameObject _object)
+    public void SwitchToHorizontalCamera(GameObject _object)
     {
-        _horizontalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _collider;
+        _horizontalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();
         _animator.SetTrigger("Horizontal");
         previousCamera = currentCamera;
         currentCamera = "Horizontal";
-        CurrentCameraVolume = _object;
 
     }
 
     public void SwitchToStaticlCamera(GameObject _object)
     {
         _staticCamera.transform.position = _object.transform.position;
+        _staticCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();
         _animator.SetTrigger("Static");
         previousCamera = currentCamera;
         currentCamera = "Static";
-        CurrentCameraVolume = _object;
     }
 
     public void TrySwitchDefault(GameObject _object)
     {
-        if (previousCamera == "Default") // because volume can be uncorrect after here-there transfer.
-        {
-            _animator.SetTrigger("Default");
-            currentCamera = "Default";
-            return;
-        }
+        var liveCamera = GetComponent<CinemachineStateDrivenCamera>().LiveChild;
+        var myObject = liveCamera.VirtualCameraGameObject.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D.gameObject;
 
-        if (CurrentCameraVolume != null && _object == CurrentCameraVolume)
+        if (_object == myObject)
         {
             _animator.SetTrigger(previousCamera);
             currentCamera = previousCamera;
