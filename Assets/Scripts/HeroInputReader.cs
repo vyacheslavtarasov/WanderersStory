@@ -8,7 +8,13 @@ public class HeroInputReader : MonoBehaviour
     [SerializeField] Hero _hero;
 
 
-
+    public void CloseAllAnimatedWindows(InputAction.CallbackContext context)
+    {
+        foreach (AnimatedWindow obj in FindObjectsOfType<AnimatedWindow>())
+        {
+            obj.Close();
+        }
+    }
 
     public void SetDirection(InputAction.CallbackContext context)
     {

@@ -14,14 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _perks:
   - _name: doubleJump
-    _name2Display: Double Jump
+    _name2Display: "\u0414\u0432\u043E\u0439\u043D\u043E\u0439 \u041F\u0440\u044B\u0436\u043E\u043A"
     _icon: {fileID: 21300000, guid: 25b37a104c2415a408e520837a8d9b0d, type: 3}
-    _description: Double Jump ability.
+    _description: "\u0421\u043F\u043E\u0441\u043E\u0431\u043D\u043E\u0441\u0442\u044C
+      \u0441\u0434\u0435\u043B\u0430\u0442\u044C \u0432\u0442\u043E\u0440\u043E\u0439
+      \u043F\u0440\u044B\u0436\u0434\u043E\u043A \u0432 \u0432\u043E\u0437\u0434\u0443\u0445\u0435."
   - _name: magic
-    _name2Display: Magic
+    _name2Display: "\u041C\u0430\u0433\u0438\u044F"
     _icon: {fileID: 21300000, guid: 1b67e393cd5f7ab41812897ed5f447c8, type: 3}
-    _description: Magic use available.
-  - _name: extraPower
-    _name2Display: Extra Power
+    _description: "\u0412\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C
+      \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044F
+      \u0437\u0430\u043A\u043B\u0438\u043D\u0430\u043D\u0438\u0439."
+  - _name: wallCling
+    _name2Display: Wall Cling
     _icon: {fileID: 21300000, guid: a41abaf1ed580ff4c9a4a1264a0081b6, type: 3}
-    _description: Adding Extra power for strikes.
+    _description: "\u0421\u043F\u043E\u0441\u043E\u0431\u043D\u043E\u0441\u0442\u044C
+      \u0437\u0430\u0432\u0438\u0441\u0430\u0442\u044C \u0438 \u043E\u0442\u0442\u0430\u043B\u043A\u0438\u0432\u0430\u0442\u044C\u0441\u044F
+      \u043E\u0442 \u0441\u0442\u0435\u043D."

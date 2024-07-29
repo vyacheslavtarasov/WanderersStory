@@ -57,7 +57,7 @@ public class AnimatedWindow : MonoBehaviour
                 localActionMap.Disable();
             }
         }
-        _animator.SetTrigger("hide");
+        _animator.SetTrigger("hide"); 
     }
 
     public virtual void OnCloseAnimationComplete()

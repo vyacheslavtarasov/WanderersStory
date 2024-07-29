@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
-public class PerkShopView : MonoBehaviour
+public class PerkShopView : AnimatedWindow
 {
     private PlayerPerkController _playerPerkController;
-    [SerializeField] private Animator _animator;
+    // [SerializeField] private Animator _animator;
     [SerializeField] private Button _useButton;
     [SerializeField] private Button _buyButton;
     [SerializeField] private Text _description;
     [SerializeField] private Text _price;
     [SerializeField] private GameObject _perkContainer;
+    [SerializeField] private Text _actionText;
 
     [SerializeField] private PerkShopPerk _chosenPerkShopPerk;
 
@@ -27,13 +29,23 @@ public class PerkShopView : MonoBehaviour
         _playerPerkController = FindObjectOfType<PlayerPerkController>();
         foreach (PerkWidget perkWidget in perkWidgets)
         {
-            perkWidget.SetData(_perkShopController.AvailablePerks.ToArray()[index], _playerPerkController.GetItem(_perkShopController.AvailablePerks.ToArray()[index].Name).Active);
-            perkWidget.RemoveSubscriptions();
-            perkWidget.OnChanged += SetNameOfChosenPerk;
+            if (index >= count)
+            {
+                perkWidget.gameObject.SetActive(false);
+            }
+            else
+            {
+                perkWidget.gameObject.SetActive(true);
+                perkWidget.SetData(_perkShopController.AvailablePerks.ToArray()[index], _playerPerkController.GetItem(_perkShopController.AvailablePerks.ToArray()[index].Name).Active);
+                perkWidget.RemoveSubscriptions();
+                perkWidget.OnChanged += SetNameOfChosenPerk;
+            }
+            
 
             index += 1;
-            if (index >= count) break;
+            
         }
+        Debug.Log(index);
         PerkDef itemDefinition = DefsFacade.I.Perks.Get(_chosenPerkShopPerk.Name);
         _description.text = itemDefinition.Description;
         _price.text = _chosenPerkShopPerk.Price.ToString();
@@ -42,6 +54,7 @@ public class PerkShopView : MonoBehaviour
         {
             _useButton.interactable = false;
             _buyButton.interactable = true;
+            _actionText.text = "ÑKÑÖÑÅÑyÑÑÑé";
         }
         else
         {
@@ -51,6 +64,7 @@ public class PerkShopView : MonoBehaviour
             {
                 _useButton.interactable = false;
             }
+            _actionText.text = "Ñ^Ñ{ÑyÑÅÑyÑÇÑÄÑrÑpÑÑÑé";
         }
     }
 
@@ -65,10 +79,43 @@ public class PerkShopView : MonoBehaviour
         _perkShopController = controller;
     }
 
-    private void OnEnable()
+
+    // public InputActionAsset InputActionAsset;
+
+    // public GameObject DefaultButton;
+
+
+    /*private void Awake()
     {
-        _animator.SetTrigger("show");
+        InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
+    }*/
+
+
+    protected override void OnEnable()
+    {
         Redraw();
+        base.OnEnable();
+        /*_animator.SetTrigger("show");
+        foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
+        {
+            if (localActionMap.name == "UI")
+            {
+                Debug.Log("enabling UI animated window controller");
+                localActionMap.Enable();
+            }
+            else
+            {
+                localActionMap.Disable();
+            }
+        }
+        
+        DefaultButton.GetComponent<Button>().Select();*/
+        
+    }
+
+    public override void OnCloseAnimationComplete()
+    {
+        gameObject.SetActive(false);
     }
 
     private void OnDisable()
@@ -78,7 +125,15 @@ public class PerkShopView : MonoBehaviour
 
     public void BuyPerk()
     {
-        _playerPerkController.Add(_chosenPerkShopPerk.Name);
+        if (_playerPerkController.GetItem(_chosenPerkShopPerk.Name).IsVoid)
+        {
+            _playerPerkController.Add(_chosenPerkShopPerk.Name);
+        }
+        else
+        {
+            _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
+        }
+        
         Redraw();
     }
 
@@ -88,16 +143,5 @@ public class PerkShopView : MonoBehaviour
         _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
         Redraw();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

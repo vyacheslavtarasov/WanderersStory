@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 public class Hero : Creature
 {
-
+    private PlayerPerkController _playerPerkController;
     [SerializeField] private Sensor _interactSensor;
 
     [Space]
@@ -33,6 +33,31 @@ public class Hero : Creature
 
     [SerializeField] protected Sensor _stickyWallCheckerR;
 
+    public void OnPerksUpdate(List<PlayerPerk> perks)
+    {
+        _playerPerkController = FindObjectOfType<PlayerPerkController>();
+        var doubleJump = _playerPerkController.GetItem("doubleJump");
+        if (!doubleJump.IsVoid && doubleJump.Active)
+        {
+            _jumpsAmount = 2;
+        }
+        else
+        {
+            _jumpsAmount = 1;
+        }
+
+        var wallCling = _playerPerkController.GetItem("wallCling");
+        if (!wallCling.IsVoid && doubleJump.Active)
+        {
+            _stickyWallCheckerR.enabled = true;
+        }
+        else
+        {
+            _stickyWallCheckerR.enabled = false;
+        }
+
+    }
+
     private void Start()
     {
         QualitySettings.vSyncCount = 1;
@@ -42,6 +67,7 @@ public class Hero : Creature
         _healthComponent.overallHealth = _session.Data.Health;
         _inventory.SetInventory(_session.Data.Inventory);
         _jumpsAmount = _session.Data.JumpsAmount;
+        OnPerksUpdate(null);
 
         _inventory.OnChanged += OnChangeInventory;
 

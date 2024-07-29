@@ -7,12 +7,16 @@ public class PlayerPerkController : MonoBehaviour
 {
     private GameSession _session;
     private List<PlayerPerk> _perks;
+    private Hero _hero;
     // private PerkShopView _perkShopView;
 
     private void Start()
     {
         _session = FindObjectOfType<GameSession>();
         _perks = _session.Data.Perks;
+        _hero = FindObjectOfType<Hero>();
+
+        OnChanged += _hero.OnPerksUpdate;
         // OnChanged += _perkShopView.Redraw;
     }
 
@@ -81,11 +85,15 @@ public class PlayerPerkController : MonoBehaviour
 
     public PlayerPerk GetItem(string name)
     {
-        foreach (var perkData in _perks)
+        if (_perks != null)
         {
-            if (perkData.Name == name)
-                return perkData;
+            foreach (var perkData in _perks)
+            {
+                if (perkData.Name == name)
+                    return perkData;
+            }
         }
+        
 
         return new PlayerPerk(null);
     }
