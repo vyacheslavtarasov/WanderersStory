@@ -12,6 +12,9 @@ TagManager:
   - Clingable
   - DefaultButton
   - Item
+  - HeatWave
+  - Fire
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -24,7 +27,7 @@ TagManager:
   - DamagingElement
   - WallsToClimb
   - GravityVolume
-  - 
+  - Crate
   - 
   - 
   - 

@@ -15,4 +15,12 @@ public class AssignHeroToFollowCamera : MonoBehaviour
         _camera.Follow = _hero.transform;
     }
 
+    public void AssignHero()
+    {
+
+        _camera = GetComponent<CinemachineVirtualCamera>();
+        _hero = FindObjectOfType<Hero>();
+        _camera.Follow = _hero.transform;
+
+    }
 }

@@ -501,7 +501,7 @@ MonoBehaviour:
   _isTouching: 0
   _layers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
   _tags: []
   CollisionEnterEvent:
     m_PersistentCalls:

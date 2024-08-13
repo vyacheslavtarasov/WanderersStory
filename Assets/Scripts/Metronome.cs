@@ -9,6 +9,9 @@ public class Metronome : MonoBehaviour
     private float _currentValue = 0;
     private int _ticksAmount = 0;
     public UnityEvent Tick;
+    public UnityEvent OnEnableMetronome;
+
+    
 
     public void SetInterval(float val)
     {
@@ -41,6 +44,7 @@ public class Metronome : MonoBehaviour
 
     private void OnEnable()
     {
+        OnEnableMetronome?.Invoke();
         Reset();
     }
 

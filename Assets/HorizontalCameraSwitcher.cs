@@ -16,6 +16,7 @@ public class HorizontalCameraSwitcher : MonoBehaviour
 
     public void Switch()
     {
+        
         _cameraStateController.SwitchToHorizontalCamera(gameObject);
     }
 

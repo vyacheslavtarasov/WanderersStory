@@ -25,6 +25,7 @@ public class Sensor : MonoBehaviour
 
     [Tooltip("React only on this tag. No means all.")]
     [SerializeField] private string[] _tags;
+    [SerializeField] private GameObject[] _exceptions;
 
 
     public InteractionEvent CollisionEnterEvent;
@@ -61,21 +62,29 @@ public class Sensor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if ((_layers & (1 << collider.gameObject.layer)) == 0)
+        if (_exceptions.Contains(collider.gameObject))
+        {
+            return;
+        }
+            if ((_layers & (1 << collider.gameObject.layer)) == 0)
         {
             return;
         }
         if (_tags.Length == 0 || _tags.Contains(collider.gameObject.tag))
         {
-
             _isTouching = true;
             CollisionEnterEvent?.Invoke(collider.gameObject);
             _gameObjectsList.Add(collider.gameObject);
+            
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
+        if (_exceptions.Contains(collider.gameObject))
+        {
+            return;
+        }
         if ((_layers & (1 << collider.gameObject.layer)) == 0)
         {
             return;
@@ -99,6 +108,10 @@ public class Sensor : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collider)
     {
+        if (_exceptions.Contains(collider.gameObject))
+        {
+            return;
+        }
         if ((_layers & (1 << collider.gameObject.layer)) == 0)
         {
             return;
@@ -106,10 +119,9 @@ public class Sensor : MonoBehaviour
         if (_tags.Length == 0 || _tags.Contains(collider.gameObject.tag))
         {
 
-            _isTouching = true;
-            
-            CollisionEnterEvent?.Invoke(collider.gameObject);
-            _gameObjectsList.Add(collider.gameObject);
+                _isTouching = true;
+                CollisionEnterEvent?.Invoke(collider.gameObject);
+                _gameObjectsList.Add(collider.gameObject);
         }
     }
 
@@ -117,6 +129,10 @@ public class Sensor : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collider)
     {
+        if (_exceptions.Contains(collider.gameObject))
+        {
+            return;
+        }
         if ((_layers & (1 << collider.gameObject.layer)) == 0)
         {
             return;

@@ -95,6 +95,7 @@ public class Creature : MonoBehaviour
 
     public IEnumerator SendFlyingUp(float flyTime, float jumpForce)
     {
+        var oldJumpForce = _jumpForce;
         // Debug.Log("jump");
         float tmpMinimalAscentTime = _minimalAscendTime;
         float tmpJumpForce = _jumpForce;
@@ -109,6 +110,7 @@ public class Creature : MonoBehaviour
         _jumpForce = tmpJumpForce;
         yield return new WaitForSeconds(flyTime - 0.5f);
         _minimalAscendTime = tmpMinimalAscentTime;
+        _jumpForce = oldJumpForce;
         // Debug.Log("end");
         
     }

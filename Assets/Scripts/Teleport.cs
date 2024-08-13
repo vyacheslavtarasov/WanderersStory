@@ -69,9 +69,9 @@ public class Teleport : MonoBehaviour
     private IEnumerator TeleportMe(GameObject obj)
     {
         yield return StartCoroutine(VanishingCoroutine(obj, 0.0f));
-        // obj.SetActive(false);
+        obj.SetActive(false);
         yield return StartCoroutine(MovingCoroutine(obj));
-        // obj.SetActive(true);
+        obj.SetActive(true);
         yield return StartCoroutine(VanishingCoroutine(obj, 1.0f)); 
     }
 }

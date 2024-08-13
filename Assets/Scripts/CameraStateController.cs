@@ -8,8 +8,19 @@ public class CameraStateController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _verticalCamera;
     [SerializeField] private CinemachineVirtualCamera _horizontalCamera;
     [SerializeField] private CinemachineVirtualCamera _staticCamera;
+    [SerializeField] private CinemachineVirtualCamera _defaultCamera;
+    [SerializeField] private CinemachineVirtualCamera _defaultVerticalCamera;
 
     [SerializeField] private PolygonCollider2D _defaultCameraVolume;
+
+    private CinemachineVirtualCamera CurrentCinemachineVirtualCamera;
+    private CinemachineVirtualCamera PreviousCinemachineVirtualCamera;
+
+    private void Start()
+    {
+        CurrentCinemachineVirtualCamera = _defaultCamera;
+        PreviousCinemachineVirtualCamera = _defaultCamera;
+    }
 
     public GameObject CurrentCameraVolume = null;
 
@@ -24,6 +35,7 @@ public class CameraStateController : MonoBehaviour
 
     public void SetShowCamera()
     {
+        Debug.Log("setting show camera");
         _animator.SetTrigger("Show");
     }
 
@@ -32,9 +44,24 @@ public class CameraStateController : MonoBehaviour
         _animator.SetTrigger(currentCamera);
     }
 
+    public void AssignFollowObject(GameObject gameObject)
+    {
+        Debug.Log("assigning object");
+        Debug.Log(CurrentCinemachineVirtualCamera);
+        Debug.Log(gameObject);
+        CurrentCinemachineVirtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = gameObject.transform;
+    }
+
+    public void AssignHeroFollowObject()
+    {
+        CurrentCinemachineVirtualCamera.GetComponent<AssignHeroToFollowCamera>().AssignHero();
+    }
+
     public void SwitchToVerticalCamera(GameObject _object)
     {
         _verticalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();
+        PreviousCinemachineVirtualCamera = CurrentCinemachineVirtualCamera;
+        CurrentCinemachineVirtualCamera = _verticalCamera;
         _animator.SetTrigger("Vertical");
         previousCamera = currentCamera;
         currentCamera = "Vertical";
@@ -43,6 +70,8 @@ public class CameraStateController : MonoBehaviour
     public void SwitchToHorizontalCamera(GameObject _object)
     {
         _horizontalCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();
+        PreviousCinemachineVirtualCamera = CurrentCinemachineVirtualCamera;
+        CurrentCinemachineVirtualCamera = _horizontalCamera;
         _animator.SetTrigger("Horizontal");
         previousCamera = currentCamera;
         currentCamera = "Horizontal";
@@ -53,9 +82,22 @@ public class CameraStateController : MonoBehaviour
     {
         _staticCamera.transform.position = _object.transform.position;
         _staticCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();
+        PreviousCinemachineVirtualCamera = CurrentCinemachineVirtualCamera;
+        CurrentCinemachineVirtualCamera = _staticCamera;
         _animator.SetTrigger("Static");
         previousCamera = currentCamera;
         currentCamera = "Static";
+    }
+
+    public void SwitchToDefaultVerticalCamera(GameObject _object)
+    {
+        _staticCamera.transform.position = _object.transform.position;
+        _staticCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = _object.GetComponent<PolygonCollider2D>();
+        PreviousCinemachineVirtualCamera = CurrentCinemachineVirtualCamera;
+        CurrentCinemachineVirtualCamera = _defaultVerticalCamera;
+        _animator.SetTrigger("DefaultVertical");
+        previousCamera = currentCamera;
+        currentCamera = "DefaultVertical";
     }
 
     public void TrySwitchDefault(GameObject _object)
@@ -67,7 +109,9 @@ public class CameraStateController : MonoBehaviour
         {
             _animator.SetTrigger(previousCamera);
             currentCamera = previousCamera;
+            PreviousCinemachineVirtualCamera = CurrentCinemachineVirtualCamera;
         }
         previousCamera = "Default";
+        CurrentCinemachineVirtualCamera = _defaultCamera;
     }
 }

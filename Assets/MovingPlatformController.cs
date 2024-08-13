@@ -32,6 +32,11 @@ public class MovingPlatformController : MonoBehaviour
         Velocity = velocity;
     }
 
+    public void SetTargetPosition(int position)
+    {
+        _targetPositionIndex = position;
+    }
+
     // Start and stop movement by enabling and disabling the controller
     private void Awake()
     {
