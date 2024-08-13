@@ -124,10 +124,12 @@ public class Hero : Creature
     {
         if (_interactSensor != null)
         {
+            Debug.Log(_interactSensor.GetIntersectedObjects());
             foreach (GameObject obj in _interactSensor.GetIntersectedObjects())
             {
                 Interactive interactiveComponent = obj.GetComponent<Interactive>();
-                interactiveComponent.Interact(this.gameObject);
+                    interactiveComponent.Interact(this.gameObject);
+                
             }
         }
     }

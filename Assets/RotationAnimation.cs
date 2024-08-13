@@ -18,9 +18,20 @@ public class RotationAnimation : MonoBehaviour
         transform.DORotate(TargetRotation, RotationTime);
     }
 
+    public void RotateWithDelay(float delay = 0f)
+    {
+        Debug.Log("rotating with delay");
+        Invoke("Rotate", delay);
+    }
+
     public void RotateBack()
     {
         transform.DORotateQuaternion(InitialRotation, RotationTime);
+    }
+
+    public void RotateBackWithDelay(float delay = 0f)
+    {
+        Invoke("RotateBack", delay);
     }
 
     public void Reset()
