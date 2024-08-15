@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System.Linq;
 
 public class DialogBoxController : MonoBehaviour
 {
@@ -28,6 +30,7 @@ public class DialogBoxController : MonoBehaviour
 
     public bool _dialogActive = false;
 
+    private Dictionary<string, UnityAction> listeners = new Dictionary<string, UnityAction>();
     public UnityEvent DialogFinishedEvent;
 
     private DialogData _dialogData;
@@ -116,6 +119,24 @@ public class DialogBoxController : MonoBehaviour
         }
     }
 
+
+    public void AddListener(string id, UnityAction action)
+    {
+        if (!listeners.ContainsKey(id))
+        {
+            listeners.Add(id, action);
+            DialogFinishedEvent.AddListener(action);
+        }
+    }
+
+    public void RemoveListener(string id)
+    {
+        if (listeners.TryGetValue(id, out UnityAction action))
+        {
+            DialogFinishedEvent.RemoveListener(action);
+            listeners.Remove(id);
+        }
+    }
     private void OnHideAnimationComplete()
     {
         _dialogActive = false;
@@ -135,8 +156,14 @@ public class DialogBoxController : MonoBehaviour
             }
         }
 
-        DialogFinishedEvent?.Invoke();
-        DialogFinishedEvent.RemoveAllListeners();
+        string[] Names = listeners.Keys.ToArray();
+
+        DialogFinishedEvent?.Invoke(); // here you can add new listeners, so we need to remove not all, but previously existed.
+        
+        foreach(string name in Names)
+        {
+            RemoveListener(name);
+        }
     }
 
     private IEnumerator TypeSentence()

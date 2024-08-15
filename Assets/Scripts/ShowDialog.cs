@@ -9,6 +9,7 @@ public class ShowDialog : MonoBehaviour
 {
     [SerializeField] private DialogEntry _dialogEntry;
     DialogBoxController _dialogBox;
+    public bool Skip { get; set; }
 
     public UnityEvent DialogFinishedEvent;
     public bool Enabled { get => enabled; set => enabled = value; }
@@ -16,6 +17,11 @@ public class ShowDialog : MonoBehaviour
 
     public void Show()
     {
+        if (Skip)
+        {
+            DialogFinishedEvent?.Invoke();
+            return;
+        }
         if (!Enabled) return;
         if(_dialogBox == null)
         {
@@ -23,24 +29,30 @@ public class ShowDialog : MonoBehaviour
         }
         if (_dialogBox._dialogActive) return;
         _dialogBox.ShowDialog(_dialogEntry.Data);
-        _dialogBox.DialogFinishedEvent.AddListener(DialogFinished);
+        float randomFloat = Random.value;
+        _dialogBox.AddListener(randomFloat.ToString(), DialogFinished);
     }
 
     public void DialogFinished()
     {
         DialogFinishedEvent?.Invoke();
-        DialogFinishedEvent.RemoveAllListeners();
         return;
     }
 
 
     public void Show(DialogEntry dialogEntry)
     {
+        if (Skip)
+        {
+            DialogFinishedEvent?.Invoke();
+            return;
+        }
         if (!Enabled) return;
         _dialogBox = FindObjectOfType<DialogBoxController>();
         
         if (_dialogBox._dialogActive) return;
         _dialogBox.ShowDialog(dialogEntry.Data);
-        _dialogBox.DialogFinishedEvent.AddListener(DialogFinished);
+        float randomFloat = Random.value;
+        _dialogBox.AddListener(randomFloat.ToString(), DialogFinished);
     }
 }
