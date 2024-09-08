@@ -41,6 +41,7 @@ class LocalizationData4Language : ScriptableObject
         foreach (var str in stringArray)
         {
             var arr = str.Split("\t");
+            Debug.Log(str);
             var a = new LocalizationEntry(arr[0], arr[1], arr[2]);
             LocalizationEntriesList.Add(a);
         } 

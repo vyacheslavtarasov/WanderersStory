@@ -156,6 +156,7 @@ MonoBehaviour:
     m_Bits: 1
   _tags:
   - Player
+  _exceptions: []
   CollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -213,7 +214,19 @@ MonoBehaviour:
   _heroSpawner: {fileID: 5025635206262913420}
   Checked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Gong
+          m_BoolArgument: 0
+        m_CallState: 2
   UnChecked:
     m_PersistentCalls:
       m_Calls: []
@@ -232,3 +245,4 @@ MonoBehaviour:
   Prefab2Spawn: {fileID: 2605853861375256991, guid: f422e43fb04ba414b9a91c199bc503db, type: 3}
   TransformComponent: {fileID: 5025635206262913421}
   inheritScale: 1
+  inheritRotation: 0

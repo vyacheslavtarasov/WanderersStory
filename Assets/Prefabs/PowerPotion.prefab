@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 962560931643035153}
   - component: {fileID: 962560931643035158}
   - component: {fileID: 962560931643035159}
+  - component: {fileID: 270874819}
   m_Layer: 0
   m_Name: PowerPotion
   m_TagString: Untagged
@@ -159,9 +160,22 @@ MonoBehaviour:
     m_Bits: 1
   _tags:
   - Player
+  _exceptions: []
   CollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StatefulObject, Assembly-CSharp
+        m_MethodName: SetCurrentState
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: notActive
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 962560931643035155}
         m_TargetAssemblyTypeName: InventoryAddItem, Assembly-CSharp
         m_MethodName: Add
@@ -171,7 +185,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: notActive
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 962560931643035159}
@@ -184,6 +198,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PotionGet
           m_BoolArgument: 0
         m_CallState: 2
   CollisionExitEvent:
@@ -204,3 +230,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2003c92182e6344ba04b04ea861bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &270874819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962560931643035156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a99c92d2008563408d9bb7b478d54f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultState: active

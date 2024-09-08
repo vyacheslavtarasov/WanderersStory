@@ -22,6 +22,22 @@ public class PerkRepositoryDef : ScriptableObject
         return default;
     }
 
+    /*public DialogEntry GetLocalization(string name)
+    {
+        for (int i = 0; i < _perks.Length; i++)
+        {
+            if (_perks[i].Name == name)
+            {
+                Debug.Log("returning" + _localization[i]);
+                return _localization[i];
+            }
+
+        }
+        return _localization[0];
+    }*/
+
+    // [SerializeField] public List<DialogEntry> _localization;
+
 #if UNITY_EDITOR
     public PerkDef[] ItemsForEditor => _perks;
 #endif
@@ -31,14 +47,13 @@ public class PerkRepositoryDef : ScriptableObject
 public struct PerkDef
 {
     [SerializeField] private string _name;  // uniqie
-    [SerializeField] private string _name2Display;
     [SerializeField] private Sprite _icon;
-    [SerializeField] private string _description;
+    [SerializeField] public DialogEntry _nameAndDescription;
 
     public string Name => _name;
     public Sprite Icon => _icon;
-    public string Description => _description;
-    public string Name2Display => _name2Display;
+
+
 
     public bool IsVoid => string.IsNullOrEmpty(_name);
 }

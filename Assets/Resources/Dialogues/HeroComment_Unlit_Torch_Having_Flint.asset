@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10cfacd73a1b884e8d21cd405871f65, type: 3}
+  m_Name: HeroComment_Unlit_Torch_Having_Flint
+  m_EditorClassIdentifier: 
+  _data:
+    _sentences:
+    - "\u0417\u0430\u0436\u0435\u0447\u044C \u0444\u0430\u043A\u0435\u043B \u043F\u0440\u0438
+      \u043F\u043E\u043C\u043E\u0449\u0438 \u043A\u0440\u0435\u043C\u043D\u044F?"
+    _speakerName: "\u0413\u0435\u0440\u043E\u0439"
+    _place: 0
+  _engData:
+    _sentences:
+    - Light a torch with a flint?
+    _speakerName: Hero
+    _place: 0
+  _chiData:
+    _sentences:
+    - "\u7528\u6253\u706B\u77F3\u70B9\u71C3\u706B\u628A\uFF1F"
+    _speakerName: "\u82F1\u96C4"
+    _place: 0

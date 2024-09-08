@@ -13,10 +13,12 @@ public class InventoryNameAttributeDrawer : PropertyDrawer
 
         foreach(var itemDef in defs)
         {
+            Debug.Log(itemDef.Name);
             names.Add(itemDef.Name);
         }
 
         var index = names.IndexOf(property.stringValue);
+        Debug.Log(property.stringValue);
 
        index = EditorGUI.Popup(position, property.displayName, index, names.ToArray());
        property.stringValue = names[index];

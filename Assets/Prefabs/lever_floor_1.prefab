@@ -107,6 +107,7 @@ MonoBehaviour:
     m_Bits: 1
   _tags:
   - Player
+  _exceptions: []
   CollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -224,7 +225,6 @@ GameObject:
   - component: {fileID: 1621878270131312218}
   - component: {fileID: 1621878270131312221}
   - component: {fileID: 1621878270131312220}
-  - component: {fileID: 1621878270131312223}
   - component: {fileID: 1621878270131312222}
   - component: {fileID: 1621878270131312224}
   - component: {fileID: 1621878270131312225}
@@ -411,6 +411,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _spriteRenderer: {fileID: 0}
+  OnFrame: []
 --- !u!114 &1621878270131312214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +450,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _spriteRenderer: {fileID: 0}
+  OnFrame: []
 --- !u!61 &1621878270131312218
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -525,7 +527,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1621878270131312223}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -576,102 +578,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!82 &1621878270131312223
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621878270131312213}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3177848d258250d4ab32325603daa598, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  CheckObjectWithName: 0
+  _gameObjectName: 
 --- !u!114 &1621878270131312222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,6 +596,24 @@ MonoBehaviour:
   DialogFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
+  YesEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  NoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DialogFinishedEventWithInitiator:
+    m_PersistentCalls:
+      m_Calls: []
+  YesEventWithInitiator:
+    m_PersistentCalls:
+      m_Calls: []
+  NoEventWithInitiator:
+    m_PersistentCalls:
+      m_Calls: []
+  Initiator: {fileID: 0}
+  LocalizationLanguage: 
+  IsQuestion: 0
 --- !u!114 &1621878270131312224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,7 +640,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1229a28be769244db9c261280c218b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _randomInterval: 0
   _interval: 1.4
+  _minValue: 0
+  _maxValue: 0
   Tick:
     m_PersistentCalls:
       m_Calls:
@@ -742,3 +671,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEnableMetronome:
+    m_PersistentCalls:
+      m_Calls: []

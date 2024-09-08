@@ -33,6 +33,8 @@ public struct ItemDef
     [SerializeField] private string _id;
     [SerializeField] private Sprite _icon;
     [SerializeField] private ItemTag[] _tags;
+    [SerializeField] private DialogEntry _name2Display;
+    [SerializeField] private DialogEntry _description;
 
     public bool HasTag(ItemTag tag)
     {

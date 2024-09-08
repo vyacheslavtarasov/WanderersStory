@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using NaughtyAttributes;
 
 public class Metronome : MonoBehaviour
 {
+    public bool _randomInterval = false;
+
+    [HideIf("_randomInterval")]
     [SerializeField] private float _interval;
+
+    [ShowIf("_randomInterval")]
+    [SerializeField] private float _minValue = 0.0f;
+    [ShowIf("_randomInterval")]
+    [SerializeField] private float _maxValue = 0.0f;
+
     private float _currentValue = 0;
     private int _ticksAmount = 0;
     public UnityEvent Tick;
@@ -44,6 +54,10 @@ public class Metronome : MonoBehaviour
 
     private void OnEnable()
     {
+        if (_minValue < _maxValue && _randomInterval)
+        {
+            _interval = Random.Range(_minValue, _maxValue);
+        }
         OnEnableMetronome?.Invoke();
         Reset();
     }

@@ -5,13 +5,42 @@ using DG.Tweening;
 
 public class RotationAnimation : MonoBehaviour
 {
+    public bool InfiniteRotation = false;
+    private Rigidbody2D _rigidbody;
+
+    [NaughtyAttributes.ShowIf("InfiniteRotation")]
+    public float RotationVelocity;
+
+
+    [NaughtyAttributes.HideIf("InfiniteRotation")]
     public Vector3 TargetRotation;
+    [NaughtyAttributes.HideIf("InfiniteRotation")]
     public Quaternion InitialRotation;
+    [NaughtyAttributes.HideIf("InfiniteRotation")]
     public float RotationTime = 10.0f;
 
     private void Start()
     {
         InitialRotation = transform.rotation;
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    public void InvertRotationVelocity()
+    {
+        RotationVelocity = -RotationVelocity;
+    }
+
+    private void Update()
+    {
+        if (InfiniteRotation)
+        {
+            _rigidbody.angularVelocity = RotationVelocity;
+        }
+    }
+
+    private void OnDisable()
+    {
+        _rigidbody.angularVelocity = 0.0f;
     }
     public void Rotate()
     {

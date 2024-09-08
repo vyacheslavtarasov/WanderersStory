@@ -22,8 +22,11 @@ public class ColliderEnabledCondition : MonoBehaviour
                 ColliderEnabled?.Invoke(initiator, source);
                 return;
             }
+            else
+            {
+                ColliderDisabled?.Invoke(initiator, source);
+            }
         }
-
-        ColliderEnabled?.Invoke(initiator, source);
+        ColliderDisabled?.Invoke(initiator, source);
     }
 }

@@ -11,6 +11,8 @@ public class CameraStateController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _defaultCamera;
     [SerializeField] private CinemachineVirtualCamera _defaultVerticalCamera;
 
+    
+
     [SerializeField] private PolygonCollider2D _defaultCameraVolume;
 
     private CinemachineVirtualCamera CurrentCinemachineVirtualCamera;

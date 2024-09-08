@@ -7,6 +7,7 @@ public class SpawnPrefab : MonoBehaviour
     public GameObject Prefab2Spawn;
     public Transform TransformComponent;
     public bool inheritScale = true;
+    public bool inheritRotation = false;
 
     [ContextMenu("spawn")]
     public GameObject Spawn()
@@ -21,7 +22,12 @@ public class SpawnPrefab : MonoBehaviour
 
     public void SpawnNoReturn()
     {
-        var instance = Instantiate(Prefab2Spawn, TransformComponent.position, Quaternion.identity);
+        Quaternion rotationToBe = Quaternion.identity;
+        if (inheritRotation)
+        {
+            rotationToBe = TransformComponent.rotation;
+        }
+        var instance = Instantiate(Prefab2Spawn, TransformComponent.position, rotationToBe);
         if (inheritScale)
         {
             instance.transform.localScale = TransformComponent.lossyScale;

@@ -13,7 +13,9 @@ public class GameSession : MonoBehaviour
 
     public bool LoadLevelWithOpening = false;
 
-    [SerializeField] public string _currentCheckpointName;
+    public bool Level1_Gate_Found = false;
+
+    // [SerializeField] public string _currentCheckpointName;
     public string DefaultCheckpoint = "default";
 
     public delegate void OnCheckpointChanged(string newValue);
@@ -21,7 +23,7 @@ public class GameSession : MonoBehaviour
 
     public bool IsChecked(string checkpointName)
     {
-        if(checkpointName == _currentCheckpointName)
+        if(checkpointName == Data.CheckpointName)
         {
             return true;
         }
@@ -30,12 +32,14 @@ public class GameSession : MonoBehaviour
 
     public void SetCurrentCheckpoint(string checkpointName)
     {
-        _currentCheckpointName = checkpointName;
+        // _currentCheckpointName = checkpointName;
+        Data.CheckpointName = checkpointName;
         PlayerDataSavedAtSceneStart = Data.ShallowCopy();
         OnChanged?.Invoke(checkpointName);
     }
 
-    private void SpawnHero(string checkpointName)
+
+    public void SpawnHero(string checkpointName)
     {
         var checkpoints = FindObjectsOfType<Checkpoint>();
         foreach (var checkpoint in checkpoints)
@@ -66,7 +70,7 @@ public class GameSession : MonoBehaviour
 
         if (existGameSession != null) // we are on a new level or reload, in other session awake. we need to get our previous session to spawn a hero.
         {
-            SpawnHero(existGameSession._currentCheckpointName);
+            SpawnHero(existGameSession.Data.CheckpointName);
             PlayerDataSavedAtSceneStart = Data.ShallowCopy();
             DestroyImmediate(this.gameObject);
         }

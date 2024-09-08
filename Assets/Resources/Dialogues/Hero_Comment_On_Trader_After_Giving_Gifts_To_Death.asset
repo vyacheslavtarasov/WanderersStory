@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10cfacd73a1b884e8d21cd405871f65, type: 3}
+  m_Name: Hero_Comment_On_Trader_After_Giving_Gifts_To_Death
+  m_EditorClassIdentifier: 
+  _data:
+    _sentences:
+    - "\u0422\u0435\u043F\u0435\u0440\u044C \u0422\u043E\u0440\u0433\u043E\u0432\u0446\u0443
+      \u043E\u0442 \u043D\u0435\u0451 \u043D\u0435 \u0441\u043A\u0440\u044B\u0442\u044C\u0441\u044F..."
+    _speakerName: "\u0413\u0435\u0440\u043E\u0439"
+    _place: 0
+  _engData:
+    _sentences:
+    - Now the Trader can't escape her...
+    _speakerName: Hero
+    _place: 0
+  _chiData:
+    _sentences:
+    - "\u73B0\u5728\uFF0C\u5546\u4EBA\u65E0\u6CD5\u5B8C\u5168\u8EB2\u907F\u5979...."
+    _speakerName: "\u82F1\u96C4"
+    _place: 0

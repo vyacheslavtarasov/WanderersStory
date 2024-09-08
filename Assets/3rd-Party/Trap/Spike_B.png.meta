@@ -320,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78d137309bdbea042bb6a7daac93b8b2
-      internalID: 50129378
+      spriteID: 7bafdcea75dd22247b81c0b5543def05
+      internalID: 1449115994
       vertices: []
       indices: 
       edges: []
@@ -343,7 +343,7 @@ TextureImporter:
       Spike_B_8: 2040624343
       Spike_B_2: 13895202
       Spike_B_0: -1951262722
-      Spike_B_9: 50129378
+      Spike_B_9: 1449115994
       Spike_B_6: 125628163
       Spike_B_1: -1407472752
       Spike_B_3: 1250166416

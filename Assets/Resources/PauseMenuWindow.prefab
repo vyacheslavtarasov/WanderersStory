@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -127,6 +127,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputActionAsset: {fileID: 0}
   DefaultButton: {fileID: 7081435249862558954}
+  allButtons:
+  - {fileID: 7081435249862558954}
+  - {fileID: 7081435251041775265}
+  - {fileID: 7081435250510543987}
+  - {fileID: 7081435250251666655}
   Parent: {fileID: 0}
 --- !u!1 &7081435249198189960
 GameObject:
@@ -139,6 +144,7 @@ GameObject:
   - component: {fileID: 7081435249198189961}
   - component: {fileID: 7081435249198189959}
   - component: {fileID: 7081435249198189958}
+  - component: {fileID: 6395635443601977260}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -208,6 +214,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+--- !u!114 &6395635443601977260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081435249198189960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd81c691027fe7a47b1b3e10acc46d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: SettingsButton
+  _localizationSource: 
+  _comment: 
 --- !u!1 &7081435249862558954
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,8 +352,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7081435249092625585}
-        m_TargetAssemblyTypeName: PauseMenuWindow, Assembly-CSharp
-        m_MethodName: ReloadLevel
+        m_TargetAssemblyTypeName: AnimatedWindow, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -353,6 +374,7 @@ GameObject:
   - component: {fileID: 7081435250018412889}
   - component: {fileID: 7081435250018412887}
   - component: {fileID: 7081435250018412886}
+  - component: {fileID: 8182480860528074596}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -421,7 +443,26 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0412\u044B\u0439\u0442\u0438 \u0438\u0437 \u0438\u0433\u0440\u044B"
+  m_Text: "\u0412\u044B\u0439\u0442\u0438 \u0432 \u0413\u043B\u0430\u0432\u043D\u043E\u0435
+    \u041C\u0435\u043D\u044E"
+--- !u!114 &8182480860528074596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081435250018412888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd81c691027fe7a47b1b3e10acc46d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: ExitToMainMenuButton
+  _localizationSource: "\u0412\u044B\u0439\u0442\u0438 \u0432 \u0413\u043B\u0430\u0432\u043D\u043E\u0435
+    \u041C\u0435\u043D\u044E"
+  _comment: "\u043A\u043D\u043E\u043F\u043A\u0430 \u0432 \u043C\u0435\u043D\u044E
+    \u043F\u0430\u0443\u0437\u044B \u0432\u044B\u0445\u043E\u0434 \u0432 \u0433\u043B\u0430\u0432\u043D\u043E\u0435
+    \u043C\u0435\u043D\u044E"
 --- !u!1 &7081435250061710643
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +474,7 @@ GameObject:
   - component: {fileID: 7081435250061710640}
   - component: {fileID: 7081435250061710638}
   - component: {fileID: 7081435250061710641}
+  - component: {fileID: 4009402980663820382}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -501,7 +543,22 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u043C\u0435\u043D\u044E"
+  m_Text: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
+--- !u!114 &4009402980663820382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081435250061710643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd81c691027fe7a47b1b3e10acc46d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: Close
+  _localizationSource: 
+  _comment: 
 --- !u!1 &7081435250251666655
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +704,7 @@ GameObject:
   - component: {fileID: 7081435250419433743}
   - component: {fileID: 7081435250419433741}
   - component: {fileID: 7081435250419433740}
+  - component: {fileID: 1982432763145736328}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -715,7 +773,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u0435\u0440\u0435\u0437\u0430\u043F\u0443\u0441\u043A \u0443\u0440\u043E\u0432\u043D\u044F"
+  m_Text: "\u041F\u0440\u0435\u0434\u043C\u0435\u043D\u044B \u0438 \u041E\u043F\u0438\u0441\u0430\u043D\u0438\u044F"
+--- !u!114 &1982432763145736328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081435250419433742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd81c691027fe7a47b1b3e10acc46d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: itemsanddescriptionsbutton
+  _localizationSource: "\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044B \u0438 \u041E\u043F\u0438\u0441\u0430\u043D\u0438\u044F"
+  _comment: "\u041A\u043D\u043E\u043F\u043A\u0430 \u0432 \u043C\u0435\u043D\u044E
+    \u043F\u0430\u0443\u0437\u044B \u0434\u043B\u044F \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432
+    \u0438 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0439"
 --- !u!1 &7081435250510543987
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +915,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7081435249092625585}
         m_TargetAssemblyTypeName: PauseMenuWindow, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: ExitToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -928,6 +1003,7 @@ GameObject:
   - component: {fileID: 7081435250844616843}
   - component: {fileID: 7081435250844616841}
   - component: {fileID: 7081435250844616840}
+  - component: {fileID: 399862593131086077}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -997,6 +1073,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u041F\u0430\u0443\u0437\u0430"
+--- !u!114 &399862593131086077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7081435250844616842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd81c691027fe7a47b1b3e10acc46d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: pausemenuname
+  _localizationSource: "\u041F\u0430\u0443\u0437\u0430"
+  _comment: "\u041C\u0435\u043D\u044E \u043F\u0430\u0443\u0437\u044B"
 --- !u!1 &7081435251041775265
 GameObject:
   m_ObjectHideFlags: 0

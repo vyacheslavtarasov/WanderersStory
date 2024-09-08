@@ -12,6 +12,8 @@ public class HeroInputReader : MonoBehaviour
     {
         foreach (AnimatedWindow obj in FindObjectsOfType<AnimatedWindow>())
         {
+            Debug.Log("window found");
+            Debug.Log(obj);
             obj.Close();
         }
     }

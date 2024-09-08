@@ -53,10 +53,13 @@ public class Inventory : MonoBehaviour
         var item = GetItem(name);
         if (item.IsVoid) return;
 
-        item.Amount -= amount;
+        Debug.Log(item.Amount);
 
-        if (item.Amount <= 0)
-            _inventory.Remove(item);
+        int newAmount = item.Amount - amount;
+        _inventory.Remove(item);
+
+        if (newAmount > 0)
+            Add(item.Name, newAmount);
 
         OnChanged?.Invoke(_inventory);
     }

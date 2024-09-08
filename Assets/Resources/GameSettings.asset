@@ -18,3 +18,20 @@ MonoBehaviour:
     _value: 0.80632555
   _locale:
     _value: English
+  _session:
+    _value:
+      _health: 50
+      JumpsAmount: 2
+      Inventory: []
+      QuickInventoryIndex: 0
+      Perks: []
+      _money: 0
+      CheckpointName: first
+      LevelObjectsState:
+      - ObjectName: MoneyBag (7)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: PowerPotion (5)
+        DefaultState: active
+        CurrentState: dead
+      LevelName: MechanicsDemoLevel

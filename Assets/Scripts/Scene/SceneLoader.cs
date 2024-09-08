@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -13,8 +14,9 @@ public class SceneLoader : MonoBehaviour
     {
         _session = FindObjectOfType<GameSession>();
         _session.PlayerDataSavedAtSceneStart = _session.Data.ShallowCopy();
-        _session._currentCheckpointName = _session.DefaultCheckpoint;
+        _session.Data.CheckpointName = _session.DefaultCheckpoint;
         SceneManager.LoadScene(_levelName);
+        Debug.Log("loading!");
     }
 
     public void Load(PlayerData data)
@@ -22,7 +24,7 @@ public class SceneLoader : MonoBehaviour
         _session = FindObjectOfType<GameSession>();
         _session.PlayerDataSavedAtSceneStart = data;
         _session.Data = data;
-        _session._currentCheckpointName = _session.DefaultCheckpoint;
+        _session.Data.CheckpointName = data.CheckpointName;
         SceneManager.LoadScene(data.LevelName);
     }
 }

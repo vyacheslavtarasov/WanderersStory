@@ -45,10 +45,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data:
-    _health: 20
+    _health: 50
     JumpsAmount: 2
     Inventory: []
+    QuickInventoryIndex: 0
+    Perks: []
+    _money: 0
+    LevelName: 
   PlayerDataSavedAtSceneStart:
     _health: 0
     JumpsAmount: 0
     Inventory: []
+    QuickInventoryIndex: 0
+    Perks: []
+    _money: 0
+    LevelName: 
+  LoadLevelWithOpening: 0
+  Level1_Gate_Found: 0
+  _currentCheckpointName: 
+  DefaultCheckpoint: default

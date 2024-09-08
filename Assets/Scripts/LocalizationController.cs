@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 
 [RequireComponent(typeof(Text))]
@@ -32,8 +33,6 @@ public class LocalizationController : MonoBehaviour
 
     private void OnValueChanged(string newValue, string oldValue)
     {
-
-
         _data = LocalizationData4Language.I(newValue);
 
         foreach(var entry in _data.LocalizationEntriesList)
@@ -44,10 +43,20 @@ public class LocalizationController : MonoBehaviour
                 break;
             }
         }
-         
     }
 
+    [ContextMenu("Store the Data in File (no override!)")]
+    public void Store()
+    {
+        string[] files = Directory.GetFiles($"Assets/Resources/Localization");
 
+        foreach(string file in files)
+        {
+            string contentToAppend = _localizationKey + "\t" + _localizationSource + "\t\t" + _comment + "\r\n";
+            File.AppendAllText(file, contentToAppend, System.Text.Encoding.Unicode);
+        }
+ 
+    }
 
     private void OnDestroy()
     {
@@ -55,8 +64,5 @@ public class LocalizationController : MonoBehaviour
         {
             _model.OnChanged -= OnValueChanged;
         }
-        
     }
-
-
 }

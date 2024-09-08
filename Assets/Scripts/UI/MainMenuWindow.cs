@@ -15,8 +15,18 @@ public class MainMenuWindow : AnimatedWindow
     public void StartGame()
     {
         _afterCloseAction = () => {
+
+            var sessions = FindObjectsOfType<GameSession>();
+
+            foreach (var gameSession in sessions)
+            {
+                Destroy(gameSession.gameObject);
+            }
+
             GameObject session = Instantiate(Session, Vector3.zero, Quaternion.identity);
             session.GetComponent<GameSession>().LoadLevelWithOpening = true;
+           session.GetComponent<GameSession>().PlayerDataSavedAtSceneStart  = session.GetComponent<GameSession>().Data.ShallowCopy();
+            
             SceneManager.LoadScene("MechanicsDemoLevel");
         };
         Close();
@@ -35,8 +45,6 @@ public class MainMenuWindow : AnimatedWindow
         _afterCloseAction = () => { Debug.Log("loading a save");
 
             GameObject session = Instantiate(Session, Vector3.zero, Quaternion.identity);
-            Debug.Log($"Session: {PlayerPrefs.GetString("session", "default")}");
-            Debug.Log(GameSettings.I.Session.Value.LevelName);
             GetComponent<SceneLoader>().Load(GameSettings.I.Session.Value);
         };
         Close();

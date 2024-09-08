@@ -1,11 +1,14 @@
+using UnityEngine.Events;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PerkShopController : MonoBehaviour
 {
     [SerializeField] private List<PerkShopPerk> _availablePerks; // Model1
     private PerkShopView _perkShopView;
-    // Start is called before the first frame update
+    public UnityEvent AfterShopAppears; 
 
     public List<PerkShopPerk> AvailablePerks => _availablePerks;
     void Start()
@@ -28,7 +31,13 @@ public class PerkShopController : MonoBehaviour
         else
         {
             _perkShopView.gameObject.SetActive(true);
+            Invoke("AfterShopAppearsCall", 2.0f);
         }
+    }
+
+    public void AfterShopAppearsCall()
+    {
+        AfterShopAppears?.Invoke();
     }
 
     public void Remove(string name)

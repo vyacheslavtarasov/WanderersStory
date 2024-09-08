@@ -35,7 +35,7 @@ public class LevelTitleController: MonoBehaviour
     {
 
         _dialogData = data;
-        Debug.Log(_dialogData.Sentences[0]);
+        // Debug.Log(_dialogData.Sentences[0]);
         _locactionName.text = _dialogData.Sentences[0];
         _placeName.text = string.Empty;
 
@@ -44,7 +44,7 @@ public class LevelTitleController: MonoBehaviour
         {
             if (localActionMap.name == "UI")
             {
-                Debug.Log("enabling UI level title controller");
+                // Debug.Log("enabling UI level title controller");
                 localActionMap.Enable();
             }
             else

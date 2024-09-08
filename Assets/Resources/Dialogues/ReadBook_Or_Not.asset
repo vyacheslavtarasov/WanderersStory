@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10cfacd73a1b884e8d21cd405871f65, type: 3}
+  m_Name: ReadBook_Or_Not
+  m_EditorClassIdentifier: 
+  _data:
+    _sentences:
+    - "\u041F\u043E\u0442\u0440\u0430\u0442\u0438\u0442\u044C \u0432\u0440\u0435\u043C\u044F
+      \u043D\u0430 \u0447\u0442\u0435\u043D\u0438\u0435?"
+    _speakerName: "\u0413\u0435\u0440\u043E\u0439"
+    _place: 0
+  _engData:
+    _sentences:
+    - Spend time reading?
+    _speakerName: Hero
+    _place: 0
+  _chiData:
+    _sentences:
+    - "\u82B1\u65F6\u95F4\u8BFB\u4E66\uFF1F"
+    _speakerName: "\u82F1\u96C4"
+    _place: 0

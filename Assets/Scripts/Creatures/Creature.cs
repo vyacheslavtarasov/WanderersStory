@@ -58,10 +58,13 @@ public class Creature : MonoBehaviour
     protected FixedJoint2D _fixedJoint;
     protected SpriteRenderer _spriteRenderer;
     [SerializeField] protected SoundPlayer _soundPlayer;
+    protected SoundPlayer _soundPlayer4OneShots;
 
     public MovingPlatformController platformController;
 
     public UnityEvent JumpEvent;
+    public UnityEvent XDirectionChange;
+    public UnityEvent DoubleJumpEvent;
 
     private void Awake()
     {
@@ -71,6 +74,7 @@ public class Creature : MonoBehaviour
         _inventory = GetComponent<Inventory>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _fixedJoint = GetComponent<FixedJoint2D>();
+        _soundPlayer4OneShots = FindObjectOfType<Camera>().gameObject.GetComponent<SoundPlayer>();
     }
 
     public void SetDirection(Vector3 newDirection)
@@ -82,10 +86,6 @@ public class Creature : MonoBehaviour
     public void SetJumping(bool isJumping)
     {
         _isJumping = isJumping;
-        if (_isJumping)
-        {
-            _soundPlayer.Play("jump");
-        }
     }
 
     public void SetUp(bool isUp)
@@ -207,6 +207,7 @@ public class Creature : MonoBehaviour
         if (wasHealth > currentHealth)
         {
             _animator.SetTrigger("hit");
+            _soundPlayer4OneShots.Play("Damage");
             this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * _damageForceToInflict, ForceMode2D.Force);
         }
@@ -228,6 +229,7 @@ public class Creature : MonoBehaviour
                 transform.localScale = new Vector3(1, 1, 1);
                 // _spriteRenderer.flipX = false;
             }
+        XDirectionChange?.Invoke();
     }
 
     protected void SetAnimationParameters()
@@ -236,10 +238,20 @@ public class Creature : MonoBehaviour
             if (_direction.x != 0.0f) // button is pressed
         {
             _animator.SetBool("isRunning", true);
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.PlayLoop("running");
+            }
+            
+
         }
         else
         {
             _animator.SetBool("isRunning", false);
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Pause();
+            }
         }
 
         _animator.SetFloat("verticalVelocity", _rigidbody.velocity.y);
@@ -247,10 +259,15 @@ public class Creature : MonoBehaviour
         if (_isGrounded) // button is pressed
         {
             _animator.SetBool("isGrounded", true);
+            
         }
         else
         {
             _animator.SetBool("isGrounded", false);
+            if (_soundPlayer != null)
+            {
+                _soundPlayer.Pause();
+            }
         }
         if (_isJumping) // button is pressed
         {
@@ -270,6 +287,8 @@ public class Creature : MonoBehaviour
     
     protected virtual void FixedUpdate()
     {
+
+
 
         if ((_direction.x != 0 || _isJumping) && _fixedJoint != null && _fixedJoint.enabled == true)
         {
@@ -447,6 +466,8 @@ public class Creature : MonoBehaviour
             OnJump();
         }
 
+        
+
         if (_isJumping && _currentJumpsCount > 0 && _jumpAvailable && !_isGrounded)
         {
             _rigidbody.velocity = new Vector2(this._rigidbody.velocity.x, 0);
@@ -457,6 +478,12 @@ public class Creature : MonoBehaviour
             _ascendTime = 0.0f;
             _fallTime = 0.0f;
             OnJump();
+
+            if (_jumpsAmount > 1 && _currentJumpsCount < _jumpsAmount - 1)
+            {
+                Debug.Log("second!");
+                DoubleJumpEvent?.Invoke();
+            }
         }
 
         // Avoid unnecessary jumps on ground if you keep button pressed
@@ -512,7 +539,8 @@ public class Creature : MonoBehaviour
 
     protected virtual void OnJump()
     {
-        Debug.Log("invoking jump");
+        Debug.Log("invoking jumpasdf");
+        _soundPlayer4OneShots.Play("Jump");
         JumpEvent?.Invoke();
     }
 }

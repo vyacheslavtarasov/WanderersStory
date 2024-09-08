@@ -14,6 +14,37 @@ public class PerkShopView : AnimatedWindow
     [SerializeField] private Text _price;
     [SerializeField] private GameObject _perkContainer;
     [SerializeField] private Text _actionText;
+    [SerializeField] private Text _actionText2; 
+    [SerializeField] private Text _moneyAvailable;
+    [SerializeField] private Text _nameToDisplay;
+
+    public string LocalizationLanguage = "";
+    private StringPersistentProperty _model;
+
+    private GameSession _session;
+
+    public override void Awake()
+    {
+        base.Awake();
+        _session = FindObjectOfType<GameSession>();
+        _session.Data.OnMoneyChangedEvent += MoneyAmountChanged;
+
+        _model = GameSettings.I.Locale;
+        _model.OnChanged += OnValueChanged;
+        OnValueChanged(_model.Value, _model.Value);
+    }
+
+    private void OnValueChanged(string newValue, string oldValue)
+    {
+        LocalizationLanguage = newValue;
+        Debug.Log(LocalizationLanguage);
+    }
+
+    private void MoneyAmountChanged(int amount)
+    {
+        Redraw();
+    }
+
 
     [SerializeField] private PerkShopPerk _chosenPerkShopPerk;
 
@@ -23,7 +54,7 @@ public class PerkShopView : AnimatedWindow
     public void Redraw(List<PerkShopPerk> _perks = null)
     {
         PerkWidget[] perkWidgets = _perkContainer.GetComponentsInChildren<PerkWidget>();
-        
+
         int index = 0;
         int count = _perkShopController.AvailablePerks.Count;
         _playerPerkController = FindObjectOfType<PlayerPerkController>();
@@ -40,21 +71,28 @@ public class PerkShopView : AnimatedWindow
                 perkWidget.RemoveSubscriptions();
                 perkWidget.OnChanged += SetNameOfChosenPerk;
             }
-            
+
 
             index += 1;
-            
+
         }
-        Debug.Log(index);
         PerkDef itemDefinition = DefsFacade.I.Perks.Get(_chosenPerkShopPerk.Name);
-        _description.text = itemDefinition.Description;
+
+        if (itemDefinition._nameAndDescription) { 
+
+        _description.text = string.Join(" ", itemDefinition._nameAndDescription.GetLocalizedData(LocalizationLanguage).Sentences);
+        _nameToDisplay.text = itemDefinition._nameAndDescription.GetLocalizedData(LocalizationLanguage).SpeakerName;
+        }
+
         _price.text = _chosenPerkShopPerk.Price.ToString();
+        _moneyAvailable.text = _session.Data.Money.ToString();
 
         if (_playerPerkController.GetItem(_chosenPerkShopPerk.Name).IsVoid)
         {
             _useButton.interactable = false;
             _buyButton.interactable = true;
-            _actionText.text = "ÑKÑÖÑÅÑyÑÑÑé";
+            _actionText.enabled = false;
+            _actionText2.enabled = true;
         }
         else
         {
@@ -64,7 +102,8 @@ public class PerkShopView : AnimatedWindow
             {
                 _useButton.interactable = false;
             }
-            _actionText.text = "Ñ^Ñ{ÑyÑÅÑyÑÇÑÄÑrÑpÑÑÑé";
+            _actionText.enabled = true;
+            _actionText2.enabled = false;
         }
     }
 
@@ -95,22 +134,10 @@ public class PerkShopView : AnimatedWindow
     {
         Redraw();
         base.OnEnable();
-        /*_animator.SetTrigger("show");
-        foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
-        {
-            if (localActionMap.name == "UI")
-            {
-                Debug.Log("enabling UI animated window controller");
-                localActionMap.Enable();
-            }
-            else
-            {
-                localActionMap.Disable();
-            }
-        }
+        _animator.SetTrigger("show");
         
-        DefaultButton.GetComponent<Button>().Select();*/
         
+        DefaultButton.GetComponent<Button>().Select();
     }
 
     public override void OnCloseAnimationComplete()
@@ -127,11 +154,16 @@ public class PerkShopView : AnimatedWindow
     {
         if (_playerPerkController.GetItem(_chosenPerkShopPerk.Name).IsVoid)
         {
-            _playerPerkController.Add(_chosenPerkShopPerk.Name);
+            if (_playerPerkController.TryBuy(_chosenPerkShopPerk.Name, _chosenPerkShopPerk.Price) == 1)
+            {
+                Debug.Log("Not enought money!");
+                return;
+            }
         }
         else
         {
-            _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
+            // _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
+            ActivatePerk();
         }
         
         Redraw();
@@ -139,9 +171,39 @@ public class PerkShopView : AnimatedWindow
 
     public void ActivatePerk()
     {
-        Debug.Log("activate " + _chosenPerkShopPerk.Name);
-        _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
+        Debug.Log("activate " + _chosenPerkShopPerk.Name + "!");
+
+        if (_playerPerkController.GetItem(_chosenPerkShopPerk.Name).Active)
+        {
+            Debug.Log("deactivating");
+            _playerPerkController.DeactivatePerk(_chosenPerkShopPerk.Name);
+        }
+        else
+        {
+            Debug.Log("activating");
+            if (_playerPerkController.GetActivePerks().Count == 0)
+            {
+                Debug.Log("== 0");
+                _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
+                Redraw();
+                return;
+            }
+
+            if (!_session.Data.GetInventoryItem("PerksEquipEnhancer").IsVoid)
+            {
+                Debug.Log("activating new perk");
+                Debug.Log(_session.Data.GetInventoryItem("PerksEquipEnhancer").Amount);
+                Debug.Log(_playerPerkController.GetActivePerks().Count);
+                if (_session.Data.GetInventoryItem("PerksEquipEnhancer").Amount + 1 > _playerPerkController.GetActivePerks().Count)
+                {
+                    _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
+                }
+            }
+        }
+        
         Redraw();
     }
+
+
  
 }

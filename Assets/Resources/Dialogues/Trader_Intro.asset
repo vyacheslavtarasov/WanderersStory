@@ -17,3 +17,13 @@ MonoBehaviour:
     - "\u042F \u0442\u043E\u0440\u0433\u0443\u044E \u0443\u043C\u0435\u043D\u0438\u044F\u043C\u0438."
     _speakerName: "\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446"
     _place: 1
+  _engData:
+    _sentences:
+    - I trade skills.
+    _speakerName: Trader
+    _place: 1
+  _chiData:
+    _sentences:
+    - "\u6211\u4EA4\u6613\u6280\u80FD\u3002"
+    _speakerName: "\u5546\u8D3E"
+    _place: 1

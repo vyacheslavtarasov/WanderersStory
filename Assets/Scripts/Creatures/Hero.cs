@@ -32,6 +32,9 @@ public class Hero : Creature
     
 
     [SerializeField] protected Sensor _stickyWallCheckerR;
+    [SerializeField] public CircleCollider2D wallClingCollider;
+
+    CinemachineCameraShaker shaker;
 
     public void OnPerksUpdate(List<PlayerPerk> perks)
     {
@@ -47,19 +50,25 @@ public class Hero : Creature
         }
 
         var wallCling = _playerPerkController.GetItem("wallCling");
-        if (!wallCling.IsVoid && doubleJump.Active)
+        if (!wallCling.IsVoid && wallCling.Active)
         {
-            _stickyWallCheckerR.enabled = true;
+            wallClingCollider.enabled = true;
         }
         else
         {
-            _stickyWallCheckerR.enabled = false;
+            wallClingCollider.enabled = false;
         }
 
     }
 
+    
+    
     private void Start()
     {
+        shaker = FindObjectOfType<CinemachineCameraShaker>();
+
+        GetComponent<Health>().OnDamage.AddListener(shaker.StartShake);
+
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
 
@@ -74,6 +83,12 @@ public class Hero : Creature
 
         _healthComponent.currentHealth = _session.Data.Health;
         _healthComponent.ChangeHealth(0.0f);
+
+        AssignHeroToFollowCamera[] cameras = FindObjectsOfType<AssignHeroToFollowCamera>();
+        foreach (AssignHeroToFollowCamera cam in cameras)
+        {
+            cam.AssignHero();
+        }
 
 
         InputActionAsset InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
@@ -160,6 +175,8 @@ public class Hero : Creature
     private void OnDestroy()
     {
         _inventory.OnChanged -= OnChangeInventory;
+        GetComponent<Health>().OnDamage.RemoveListener(shaker.StartShake);
+
     }
 
     public void OnChangeInventory(List<InventoryItemData> _inventory)
@@ -217,6 +234,7 @@ public class Hero : Creature
         if (_fallTime > 0.4f)
         {
             SlapTheGroundParticleSpawner.Spawn();
+            _soundPlayer4OneShots.Play("Landing");
         }
 
         base.OnGroundTouch(myGameObject);

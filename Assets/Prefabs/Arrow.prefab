@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 3056954887692414959}
   - component: {fileID: 2074448733}
   - component: {fileID: 2074448732}
+  - component: {fileID: 8337610961250124793}
+  - component: {fileID: -1750254658994372115}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -115,7 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1229a28be769244db9c261280c218b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _randomInterval: 0
   _interval: 2
+  _minValue: 0
+  _maxValue: 0
   Tick:
     m_PersistentCalls:
       m_Calls:
@@ -131,6 +136,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEnableMetronome:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9211776729457240405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Velocity: 6
+  AngleDisplacement: -90
 --- !u!50 &-1240209561484053655
 Rigidbody2D:
   serializedVersion: 4
@@ -200,6 +209,7 @@ MonoBehaviour:
     m_Bits: 1
   _tags:
   - Player
+  _exceptions: []
   CollisionEnterEvent:
     m_PersistentCalls:
       m_Calls:
@@ -207,6 +217,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: HealthModifier, Assembly-CSharp
         m_MethodName: Modify
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8337610961250124793}
+        m_TargetAssemblyTypeName: Destroy, Assembly-CSharp
+        m_MethodName: DestroyMe
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -234,3 +256,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Amount: -1
+--- !u!114 &8337610961250124793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637066976138412375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2003c92182e6344ba04b04ea861bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1750254658994372115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637066976138412375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d0b003a5f4c7c41868cf1ec537dbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObjectsList: []
+  _isTouching: 0
+  _layers:
+    serializedVersion: 2
+    m_Bits: 64
+  _tags: []
+  _exceptions: []
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8337610961250124793}
+        m_TargetAssemblyTypeName: Destroy, Assembly-CSharp
+        m_MethodName: DestroyMe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionExitAllEvent:
+    m_PersistentCalls:
+      m_Calls: []

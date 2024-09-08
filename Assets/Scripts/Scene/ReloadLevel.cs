@@ -8,11 +8,37 @@ public class ReloadLevel : MonoBehaviour
 {
 
     private GameSession _session;
-    public void Reload()
+    private Hero hero;
+    private DeadSplashScreenController _deadSplashScreenController;
+
+    private void Start()
     {
         _session = FindObjectOfType<GameSession>();
+        hero = FindObjectOfType<Hero>();
+        _deadSplashScreenController = FindObjectOfType<DeadSplashScreenController>(true);
+
+    }
+    public void Reload()
+    {
+        
         _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();
         var scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+
+    public void RespawnHero()
+    {
+        
+        Debug.Log(hero);
+        // Destroy(hero.gameObject);
+        hero.gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        
+        Debug.Log(_deadSplashScreenController);
+
+        _deadSplashScreenController.gameObject.SetActive(true);
+
+        /*_session = FindObjectOfType<GameSession>();
+        _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();
+        _session.SpawnHero(_session._currentCheckpointName);*/
     }
 }

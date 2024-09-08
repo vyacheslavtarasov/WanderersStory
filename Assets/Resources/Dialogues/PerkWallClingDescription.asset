@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10cfacd73a1b884e8d21cd405871f65, type: 3}
+  m_Name: PerkWallClingDescription
+  m_EditorClassIdentifier: 
+  _data:
+    _sentences:
+    - "\u0421\u043F\u043E\u0441\u043E\u0431\u043D\u043E\u0441\u0442\u044C \u0446\u0435\u043F\u043B\u044F\u0442\u044C\u0441\u044F
+      \u0438 \u0437\u0430\u0432\u0438\u0441\u0430\u0442\u044C \u043D\u0430 \u0434\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0445
+      \u0441\u0442\u0435\u043D\u0430\u0445."
+    _speakerName: "\u0426\u0435\u043F\u043B\u044F\u043D\u0438\u0435 \u0437\u0430
+      \u0441\u0442\u0435\u043D\u044B"
+    _place: 0
+  _engData:
+    _sentences:
+    - The ability to cling and hang on wooden walls.
+    _speakerName: Wall Cling
+    _place: 0
+  _chiData:
+    _sentences:
+    - "\u80FD\u591F\u7C98\u9644\u548C\u60AC\u6302\u5728\u6728\u5899\u4E0A\u3002"
+    _speakerName: "\u5899\u8D34"
+    _place: 0

@@ -47,7 +47,16 @@ public class PauseMenuWindow : AnimatedWindow
     public void CloseMenu()
     {
         Close();
-        
+    }
+
+    public void ExitToMainMenu()
+    {
+        _afterCloseAction = () => {
+            _session = FindObjectOfType<GameSession>();
+            _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();
+            SceneManager.LoadScene("MainMenu");
+        };
+        Close();
     }
 
     public override void OnCloseAnimationComplete()

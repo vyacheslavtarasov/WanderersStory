@@ -13,16 +13,21 @@ public class EventTracker : MonoBehaviour
     [Header("Name of the Event")]
     public string EventName;
 
+    private GameObject _source;
+
     [Space]
     public UnityEvent EventInvoked;
+    public InteractionEvent EventWithSource;
 
     public void OnEventInvokeInTargetObject()
     {
         EventInvoked?.Invoke();
+        EventWithSource?.Invoke(_source);
     }
 
     public void Subscribe(GameObject obj)
     {
+        _source = obj;
         var component = obj.GetComponent(ComponentName);
         Debug.Log(component.GetType());
 

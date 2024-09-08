@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10cfacd73a1b884e8d21cd405871f65, type: 3}
+  m_Name: Trader_Ask_For_Gifts
+  m_EditorClassIdentifier: 
+  _data:
+    _sentences:
+    - "\u0412\u0438\u0436\u0443 \u0442\u044B \u0441\u043E\u0431\u0440\u0430\u043B
+      \u0434\u043B\u044F \u043C\u0435\u043D\u044F \u0414\u0430\u0440\u044B \u0421\u043C\u0435\u0440\u0442\u0438!"
+    - "\u041E\u0442\u0434\u0430\u0448\u044C \u0438\u0445 \u043C\u043D\u0435 \u0432
+      \u043E\u0431\u043C\u0435\u043D \u043D\u0430 \u043A\u043B\u044E\u0447 \u043A
+      \u0432\u043E\u0440\u043E\u0442\u0430\u043C \u0432 \u0437\u0430\u043C\u043E\u043A?"
+    _speakerName: "\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446"
+    _place: 1
+  _engData:
+    _sentences:
+    - I see you've collected the Deathly Hallows for me!
+    - Will you give them to me in exchange for the key to the gate to the castle?
+    _speakerName: Trader
+    _place: 1
+  _chiData:
+    _sentences:
+    - "\u6211\u770B\u5230\u4F60\u4E3A\u6211\u6536\u96C6\u4E86\u300A\u6B7B\u4EA1\u5723\u5668\u300B\uFF01"
+    - "\u4F60\u80FD\u628A\u5B83\u4EEC\u7ED9\u6211\uFF0C\u6362\u53D6\u57CE\u5821\u5927\u95E8\u7684\u94A5\u5319\u5417\uFF1F"
+    _speakerName: "\u5546\u8D3E"
+    _place: 1

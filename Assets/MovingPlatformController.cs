@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+// using System;
+using UnityEngine.Events;
+
 
 public enum Mode
 {
@@ -20,8 +22,16 @@ public class MovingPlatformController : MonoBehaviour
     public int _targetPositionIndex = 1;
     public bool _directionForward = true;
 
+    public bool _randomDirection = false; // for circle and ping pong
+
     public delegate void OnHealthChanged(Vector2 newValue);
     public event OnHealthChanged OnMove;
+
+    public UnityEvent TransitionEnd;
+    public UnityEvent DirectionChanged;
+    public UnityEvent OnStartMove;
+    public UnityEvent OnStop;
+
 
     public Mode MoveMode = Mode.PingPong;
 
@@ -45,17 +55,27 @@ public class MovingPlatformController : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        OnStartMove?.Invoke();
+    }
 
-
+    private void OnDisable()
+    {
+        OnStop?.Invoke();
+    }
 
     private void FixedUpdate()
     {
-
-
-        if (Vector2.Distance(transform.position, Positions[_targetPositionIndex].position) < Velocity * 0.02f)
+        bool currentDirectionForward = _directionForward;
+        if (Vector2.Distance(transform.localPosition, Positions[_targetPositionIndex].localPosition) < Velocity * 0.02f)
         {
             if (MoveMode == Mode.PingPong)
             {
+                if (_randomDirection)
+                {
+                    _directionForward = Random.value < 0.5f;
+                }
                 if (_directionForward)
                 {
                     _targetPositionIndex += 1;
@@ -63,6 +83,7 @@ public class MovingPlatformController : MonoBehaviour
                     {
                         _directionForward = false;
                         _targetPositionIndex = Positions.Count - 2;
+                        TransitionEnd?.Invoke();
                     }
                 }
                 else
@@ -72,11 +93,16 @@ public class MovingPlatformController : MonoBehaviour
                     {
                         _directionForward = true;
                         _targetPositionIndex = 1;
+                        TransitionEnd?.Invoke();
                     }
                 }
             }
             else if (MoveMode == Mode.Circle)
             {
+                if (_randomDirection)
+                {
+                    _directionForward = Random.value < 0.5f; ;
+                }
                 if (_directionForward)
                 {
                     _targetPositionIndex += 1;
@@ -101,10 +127,12 @@ public class MovingPlatformController : MonoBehaviour
                     _targetPositionIndex += 1;
                     if (_targetPositionIndex >= Positions.Count)
                     {
+                        TransitionEnd?.Invoke();
                         _targetPositionIndex = Positions.Count - 2;
                         _directionForward = false;
                         Velocity = 0.0f;
                         this.enabled = false;
+
                     }
                 }
                 else
@@ -112,6 +140,7 @@ public class MovingPlatformController : MonoBehaviour
                     _targetPositionIndex -= 1;
                     if (_targetPositionIndex < 0)
                     {
+                        TransitionEnd?.Invoke();
                         _targetPositionIndex = 1;
                         _directionForward = true;
                         Velocity = 0.0f;
@@ -126,6 +155,7 @@ public class MovingPlatformController : MonoBehaviour
                     _targetPositionIndex += 1;
                     if (_targetPositionIndex >= Positions.Count)
                     {
+                        TransitionEnd?.Invoke();
                         _targetPositionIndex = Positions.Count - 2;
                         _directionForward = false;
                     }
@@ -135,6 +165,7 @@ public class MovingPlatformController : MonoBehaviour
                     _targetPositionIndex -= 1;
                     if (_targetPositionIndex < 0)
                     {
+                        TransitionEnd?.Invoke();
                         _targetPositionIndex = 1;
                         _directionForward = true;
                         
@@ -145,8 +176,12 @@ public class MovingPlatformController : MonoBehaviour
             }
         }
 
-        _rigidbody.velocity = (Positions[_targetPositionIndex].position - transform.position).normalized * Velocity;
+        if (currentDirectionForward != _directionForward)
+        {
+            DirectionChanged?.Invoke();
+        }
 
+        _rigidbody.velocity = (Positions[_targetPositionIndex].localPosition - transform.localPosition).normalized * Velocity;
     }
 
     private void LateUpdate()

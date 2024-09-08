@@ -7,6 +7,7 @@ using System;
 public class LanguageSetupWidget : MonoBehaviour
 {
     [SerializeField] private Dropdown _dropdown;
+    [SerializeField] private ScrollRect _scrollRect;
 
     private StringPersistentProperty _model;
 
@@ -18,10 +19,26 @@ public class LanguageSetupWidget : MonoBehaviour
         /*var a = _dropdown.options.ToArray();
         Debug.Log(a[1].text);*/
         OnValueChanged(_model.Value, _model.Value);
+
+        /*var template = _dropdown.template;
+        var item = template.GetComponentInChildren<Toggle>();
+
+        // Set the highlight color
+        var colors = item.colors;
+        colors.highlightedColor = Color.red;
+        item.colors = colors;*/
+
+
     }
     private void OnDropdownValueChanged(int newValue)
     {
         _model.Value = _dropdown.options[newValue].text;
+        
+    }
+
+    private void OnSelectChanged(Vector2 vec)
+    {
+        Debug.Log(vec);
     }
 
 
