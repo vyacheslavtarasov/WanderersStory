@@ -42,7 +42,6 @@ public class AnimatedWindow : MonoBehaviour
         }
 
        DefaultButton.GetComponent<Button>().Select();
-        Debug.Log("default button set");
 
         Button[] allButtons1 = GetComponentsInChildren<Button>();
 
@@ -145,7 +144,8 @@ public class AnimatedWindow : MonoBehaviour
                 localActionMap.Disable();
             }
         }
-        _animator.SetTrigger("hide"); 
+        _animator.SetTrigger("hide");
+        _soundPlayer4OneShots.Play("Swoosh");
     }
 
     public virtual void OnCloseAnimationComplete()

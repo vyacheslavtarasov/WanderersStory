@@ -28,7 +28,6 @@ MonoBehaviour:
       - \u0441\u043C\u043E\u0436\u0435\u0448\u044C \u044D\u043A\u043C\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C
       \u043E\u0431\u0430."
     _speakerName: "\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446"
-    _place: 1
   _engData:
     _sentences:
     - Don't be surprised, I appear where there is a smell of profit, there are no
@@ -37,11 +36,12 @@ MonoBehaviour:
     - However, if you get me a special item from the Underground Workshop, you will
       be able to equip both.
     _speakerName: Trader
-    _place: 1
   _chiData:
     _sentences:
     - "\u4E0D\u8981\u60CA\u8BB6\uFF0C\u6211\u51FA\u73B0\u5728\u6709\u5229\u6DA6\u6C14\u5473\u7684\u5730\u65B9\uFF0C\u5BF9\u6211\u6765\u8BF4\u6CA1\u6709\u4EFB\u4F55\u969C\u788D\u3002"
     - "\u81F3\u4E8E\u6280\u80FD\uFF0C\u6211\u770B\u4F60\u73B0\u5728\u53EA\u80FD\u88C5\u5907\u4E00\u4E2A\u3002"
     - "\u4E0D\u8FC7\uFF0C\u5982\u679C\u4F60\u4ECE\u5730\u4E0B\u5DE5\u574A\u7ED9\u6211\u4E70\u4E86\u4E00\u4EF6\u7279\u6B8A\u7269\u54C1\uFF0C\u4F60\u5C31\u53EF\u4EE5\u540C\u65F6\u88C5\u5907\u4E24\u8005\u3002"
     _speakerName: "\u5546\u8D3E"
-    _place: 1
+  _place: 1
+  _speakerColor: {r: 0.6182272, g: 0.7169812, b: 0.66787034, a: 1}
+  _speakerSound: 

@@ -23,17 +23,17 @@ MonoBehaviour:
       \u0445\u043E\u0434\u044C\u0431\u044B \u0443\u0434\u0435\u0436\u0438\u0432\u0430\u0439
       \"\u0432\u0432\u0435\u0440\u0445\"."
     _speakerName: "\u041E\u0431\u044A\u044F\u0432\u043B\u0435\u043D\u0438\u0435"
-    _place: 1
   _engData:
     _sentences:
     - Do NOT jump in the warehouse! It makes the lights go out and it's scary.
     - "To climb up the shelf, give an \u2018up\u2019 ouder while walking."
     _speakerName: Announcement
-    _place: 1
   _chiData:
     _sentences:
     - "\u5343\u4E07\u4E0D\u8981\u8DF3\u8FDB\u4ED3\u5E93\uFF01\u90A3\u4F1A\u8BA9\u706F\u7184\u706D\uFF0C\u975E\u5E38\u53EF\u6015\u3002"
     - "\u8981\u722C\u4E0A\u67B6\u5B50\uFF0C\u8FB9\u8D70\u8FB9\u505A \u201C\u5411\u4E0A
       \u201D\u7684\u52A8\u4F5C\u3002"
     _speakerName: "\u516C\u544A"
-    _place: 1
+  _place: 0
+  _speakerColor: {r: 0.83137256, g: 0.9098039, b: 0.95686275, a: 1}
+  _speakerSound: Hero

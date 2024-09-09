@@ -278,6 +278,7 @@ public class Hero : Creature
             WallSide = "Right";
             _animator.SetBool("WallHang", true);
             _currentJumpsCount = _jumpsAmount;
+            _soundPlayer4OneShots.Play("Cling");
         }
 
         if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == -1.0f && !_isGrounded && !_wallStick && (WallSide == "Left" || WallSide == ""))
@@ -287,6 +288,7 @@ public class Hero : Creature
             WallSide = "Left";
             _animator.SetBool("WallHang", true);
             _currentJumpsCount = _jumpsAmount;
+            _soundPlayer4OneShots.Play("Cling");
         }
 
         if (!_stickyWallCheckerR.GetCollisionStatus())

@@ -123,7 +123,9 @@ public class Creature : MonoBehaviour
         if (_attackSensor != null)
         {
             _animator.SetTrigger("attack");
+            _soundPlayer4OneShots.Play("Attack");
         }
+        
 
     }
 

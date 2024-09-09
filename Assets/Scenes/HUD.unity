@@ -204,6 +204,7 @@ MonoBehaviour:
   _animator: {fileID: 20696085}
   _lSpeakerName: {fileID: 1384956583}
   _rSpeakerName: {fileID: 293149136}
+  _soundPlayer: {fileID: 0}
   _lContainer: {fileID: 1405216400}
   _rContainer: {fileID: 356723784}
   _yesButton: {fileID: 1206541786}
@@ -231,9 +232,6 @@ MonoBehaviour:
     - hello my dear friend
     - world end with you!
     _speakerName: Hero
-    _place: 0
-    _speakerColor: {r: 0, g: 0, b: 0, a: 0}
-    _speakerSound: 
 --- !u!114 &20696087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,10 +247,10 @@ MonoBehaviour:
   _source: {fileID: 20696089}
   _sounds:
   - _name: Hero
-    _clip: {fileID: 8300000, guid: d9c555e426fc5bb4f8162c68f657d466, type: 3}
+    _clip: {fileID: 8300000, guid: 1f1a934156dfd9b4e8833d2c6da5ceb6, type: 3}
     _volumeBoostFactor: 0.1
   - _name: Trader
-    _clip: {fileID: 8300000, guid: 1a54bd128124f3f41854c8fdfd7c2b54, type: 3}
+    _clip: {fileID: 8300000, guid: 199db89b6e3a25142acf0fb6b8b3349a, type: 3}
     _volumeBoostFactor: 0.1
 --- !u!114 &20696088
 MonoBehaviour:
@@ -1894,8 +1892,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Material: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
+  m_Color: {r: 1, g: 0.7137255, b: 0.3372549, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4762,8 +4760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Material: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
+  m_Color: {r: 1, g: 0.7137255, b: 0.3372549, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5212,8 +5210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Material: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
+  m_Color: {r: 1, g: 0.7137255, b: 0.3372549, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5227,7 +5225,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

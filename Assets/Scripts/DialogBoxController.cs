@@ -7,6 +7,7 @@ using System;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class DialogBoxController : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class DialogBoxController : MonoBehaviour
 
     [SerializeField] private GameObject _yesButton;
     [SerializeField] private GameObject _noButton;
+
+    private SoundPlayer _soundPlayer4OneShots;
 
     private bool _questionMode = false;
 
@@ -62,6 +65,7 @@ public class DialogBoxController : MonoBehaviour
         _noButton.active = false;
         InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
         _soundPlayer = GetComponent<SoundPlayer>();
+        _soundPlayer4OneShots = FindObjectOfType<Camera>().gameObject.GetComponent<SoundPlayer>();
         // Debug.Log("dialog box controller awake");
     }
     public void ShowDialog(DialogData data, bool IsQuestion)
@@ -92,7 +96,7 @@ public class DialogBoxController : MonoBehaviour
             _rSpeakerName.text = _dialogData.SpeakerName;
             if (_dialogData.SpeakerColor != Color.clear)
             {
-                _lContainer.GetComponent<Image>().color = _dialogData.SpeakerColor;
+                _rContainer.GetComponent<Image>().color = _dialogData.SpeakerColor;
             }
             _lContainer.active = false;
             _rContainer.active = true;
@@ -118,13 +122,48 @@ public class DialogBoxController : MonoBehaviour
         _dialogActive = true;
 
         _nextButton.Select();
+
+        Button[] allButtons1 = GetComponentsInChildren<Button>(true);
+
+        foreach (Button button in allButtons1)
+        {
+            // Add EventTrigger component to the Button
+            EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();
+
+            // Create a new entry for the OnSelect event
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.Select;
+
+            // Subscribe the method to the event
+            entry.callback.AddListener((eventData) => { OnButtonSelected(); });
+
+            // Add the entry to the EventTrigger
+            trigger.triggers.Add(entry);
+
+            // button.onClick.AddListener(DefaultButtonClick);
+        }
+    }
+
+    public void OnButtonSelected()
+    {
+        // Debug.Log("Button Selected!");
+        // Debug.Log(_soundPlayer4OneShots);
+        Button[] allButtons1 = GetComponentsInChildren<Button>();
+        if (allButtons1.Length != 1)
+            _soundPlayer4OneShots.Play("Spring");
+        // Your custom logic here
+    }
+
+    public void DefaultButtonClick()
+    {
+        _soundPlayer4OneShots.Play("Click");
     }
 
 
     public void OnYesButtonClick()
     {
         yesClicked = true;
-
+        DefaultButtonClick();
         _animator.SetBool("show", false);
         _dialogActive = false;
 
@@ -133,7 +172,7 @@ public class DialogBoxController : MonoBehaviour
     public void OnNoButtonClick()
     {
         noClicked = true;
-
+        DefaultButtonClick();
         _animator.SetBool("show", false);
         _dialogActive = false;
 
@@ -148,6 +187,7 @@ public class DialogBoxController : MonoBehaviour
             _animator.SetBool("show", false);
             _dialogActive = false;
             _questionMode = false;
+            DefaultButtonClick();
             return;
         }
         var sentence = _dialogData.Sentences[_currentSentence];
@@ -162,6 +202,7 @@ public class DialogBoxController : MonoBehaviour
         else
         {
             _currentSentence += 1;
+            DefaultButtonClick();
         }
 
         if(_currentSentence >= _dialogData.Sentences.Length)
@@ -174,11 +215,10 @@ public class DialogBoxController : MonoBehaviour
             }
             else
             {
-                // Debug.Log("here");
                 _animator.SetBool("show", false);
                 _dialogActive = false;
             }
-            
+            DefaultButtonClick();
         }
         else
         {
@@ -248,7 +288,27 @@ public class DialogBoxController : MonoBehaviour
         _yesButton.active = false;
         _noButton.active = false;
 
-        
+
+        Button[] allButtons1 = GetComponentsInChildren<Button>(true);
+
+        foreach (Button button in allButtons1)
+        {
+            // Add EventTrigger component to the Button
+            EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();
+
+            // Create a new entry for the OnSelect event
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.Select;
+
+            // Subscribe the method to the event
+            entry.callback.AddListener((eventData) => { OnButtonSelected(); });
+
+            entry.callback.RemoveAllListeners();
+
+            button.onClick.RemoveAllListeners();
+        }
+
+
 
 
         foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
