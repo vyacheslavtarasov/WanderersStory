@@ -15,7 +15,7 @@ public class Hero : Creature
     [SerializeField] private SpawnPrefab SlapTheGroundParticleSpawner;
     [SerializeField] private ParticleSystem _particleSystem;
 
-    private bool _slapAvailable = false;
+   
 
     
 
@@ -233,12 +233,12 @@ public class Hero : Creature
 
     public override void OnGroundTouch(GameObject myGameObject)
     {
-        if (_fallTime > 0.4f)
+        if (_fallTime > 0.4f && _slapAvailable)
         {
             SlapTheGroundParticleSpawner.Spawn();
             _soundPlayer4OneShots.Play("Landing");
         }
-        // _slapAvailable = false;
+        _slapAvailable = false;
         base.OnGroundTouch(myGameObject);
 
     }

@@ -34,6 +34,7 @@ public class Creature : MonoBehaviour
     public float _fallTime = 0.0f;
     public float _ascendTime = 0.0f;
     public bool _isUp = false;
+    public bool _slapAvailable = false;
 
     [Space]
     [Header("Jump Adjustments")]
@@ -320,12 +321,12 @@ public class Creature : MonoBehaviour
             _rigidbody.gravityScale = 2.0f;
         }
 
-        if (_rigidbody.velocity.y < -0.01f)
+        if (_rigidbody.velocity.y < -0.01f && !_isGrounded)
         {
             _fallTime += 0.02f;
         }
 
-        if (_rigidbody.velocity.y > 0.01f)
+        if (_rigidbody.velocity.y > 0.01f && !_isGrounded)
         {
             _ascendTime += 0.02f;
         }
@@ -337,6 +338,7 @@ public class Creature : MonoBehaviour
         {
             _ascendTime = 0.0f;
             _fallTime = 0.0f;
+            _slapAvailable = true;
 
             // became airborne without jumping is basically fall
             if (!_isJumping)
