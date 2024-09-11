@@ -15,6 +15,8 @@ public class Hero : Creature
     [SerializeField] private SpawnPrefab SlapTheGroundParticleSpawner;
     [SerializeField] private ParticleSystem _particleSystem;
 
+    private bool _slapAvailable = false;
+
     
 
     private GameSession _session;
@@ -236,7 +238,7 @@ public class Hero : Creature
             SlapTheGroundParticleSpawner.Spawn();
             _soundPlayer4OneShots.Play("Landing");
         }
-
+        // _slapAvailable = false;
         base.OnGroundTouch(myGameObject);
 
     }

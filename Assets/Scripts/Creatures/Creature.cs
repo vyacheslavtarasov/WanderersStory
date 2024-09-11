@@ -534,6 +534,10 @@ public class Creature : MonoBehaviour
             {
                 _rigidbody.gravityScale = 5.0f;
             }
+            if (Mathf.Abs(platformController._rigidbody.velocity.magnitude) == 0.0f && !_isJumping && _isGrounded)
+            {
+                _rigidbody.gravityScale = 0.0f;
+            }
         }
 
         _priorGrounded = _isGrounded;

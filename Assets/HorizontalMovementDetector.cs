@@ -14,10 +14,6 @@ public class HorizontalMovementDetector : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        if (_rigidbody == null)
-        {
-            Debug.Log(this.name);
-        }
     }
 
     // Update is called once per frame

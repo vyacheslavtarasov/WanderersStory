@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 4967248004525301490}
   - component: {fileID: 4967248004525301501}
   - component: {fileID: 4967248004525301500}
+  - component: {fileID: 2840700256873823510}
+  - component: {fileID: 6296776758095478766}
+  - component: {fileID: 8414269244056335630}
   m_Layer: 11
   m_Name: FireBox_0 (1)
   m_TagString: BackgroundPuller
@@ -158,7 +161,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  OnFinishByDisabling:
+    m_PersistentCalls:
+      m_Calls: []
   _spriteRenderer: {fileID: 0}
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFrame: []
 --- !u!50 &4967248004525301501
 Rigidbody2D:
   serializedVersion: 4
@@ -206,6 +216,159 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.53066254}
   m_EdgeRadius: 0
+--- !u!82 &2840700256873823510
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967248004525301503}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b41a6dc176c2b684ba450eb17c131726, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 2
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &6296776758095478766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967248004525301503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e5b32fead8ba842b2d8d6ee2bfbeac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _horizontalMove: 0
+  StartHorizontalMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2840700256873823510}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  StopHorizontalMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2840700256873823510}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8414269244056335630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967248004525301503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6afa8a3e07b204bb26ddd9e5d34812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlMode: Sound
+  _source: {fileID: 2840700256873823510}
 --- !u!1 &4967248005135879182
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +482,14 @@ MonoBehaviour:
   OnFinish:
     m_PersistentCalls:
       m_Calls: []
+  OnFinishByDisabling:
+    m_PersistentCalls:
+      m_Calls: []
   _spriteRenderer: {fileID: 0}
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFrame: []
 --- !u!114 &4967248005135879183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +502,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1229a28be769244db9c261280c218b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _randomInterval: 0
   _interval: 1000000
+  _minValue: 0
+  _maxValue: 0
   Tick:
     m_PersistentCalls:
       m_Calls:
