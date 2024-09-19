@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public enum place {left, right}
+public enum place {left, right, none}
 
 [Serializable]
 public class DialogData

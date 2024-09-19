@@ -127,11 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputActionAsset: {fileID: 0}
   DefaultButton: {fileID: 7081435249862558954}
-  allButtons:
-  - {fileID: 7081435249862558954}
-  - {fileID: 7081435251041775265}
-  - {fileID: 7081435250510543987}
-  - {fileID: 7081435250251666655}
   Parent: {fileID: 0}
 --- !u!1 &7081435249198189960
 GameObject:
@@ -352,8 +347,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7081435249092625585}
-        m_TargetAssemblyTypeName: AnimatedWindow, Assembly-CSharp
-        m_MethodName: Close
+        m_TargetAssemblyTypeName: PauseMenuWindow, Assembly-CSharp
+        m_MethodName: ShowItemsList
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(menuName = "Defs/Localization", fileName = "Localization")]
 class LocalizationData4Language : ScriptableObject

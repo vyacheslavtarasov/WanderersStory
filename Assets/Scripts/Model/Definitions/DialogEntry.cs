@@ -15,6 +15,8 @@ public class DialogEntry : ScriptableObject
         _engData.Place = Place;
         _chiData.Place = Place;
 
+
+
         if (_speakerColor != Color.clear)
         {
             Debug.Log("changing color");
@@ -39,6 +41,8 @@ public class DialogEntry : ScriptableObject
         {
             return ChiData;
         }
+
+
 
         return Data;
     }
@@ -99,11 +103,15 @@ public class DialogEntry : ScriptableObject
             _speakerSound = "Trader";
 
         }
+
+        // To ensure the data persists when exiting play mode in the Editor
+        // UnityEditor.EditorUtility.SetDirty(this);
+        // UnityEditor.AssetDatabase.SaveAssets();
     }
 
 }
 
-[CustomEditor(typeof(DialogEntry))]
+/*[CustomEditor(typeof(DialogEntry))]
 public class MyScriptableObjectEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -119,7 +127,10 @@ public class MyScriptableObjectEditor : Editor
         {
             // Call the function in the ScriptableObject when the button is clicked
             myScriptableObject.PrintMessage();
+
+
+            
         }
     }
-}
+}*/
 

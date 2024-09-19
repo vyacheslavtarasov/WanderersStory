@@ -24,7 +24,7 @@ public class PerkShopController : MonoBehaviour
     public void ShowUI()
     {
         _perkShopView.SetController(this);
-        if (_perkShopView.gameObject.active)
+        if (_perkShopView.gameObject.activeSelf)
         {
             _perkShopView.gameObject.SetActive(false);
         }

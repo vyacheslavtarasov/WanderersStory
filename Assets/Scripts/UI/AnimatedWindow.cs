@@ -32,7 +32,7 @@ public class AnimatedWindow : MonoBehaviour
         {
             if (localActionMap.name == "UI")
             {
-                Debug.Log("enabling UI animated window controller");
+                Debug.Log("enabling UI animated window controller4");
                 localActionMap.Enable();
             }
             else
@@ -41,7 +41,12 @@ public class AnimatedWindow : MonoBehaviour
             }
         }
 
-       DefaultButton.GetComponent<Button>().Select();
+        if (DefaultButton != null)
+        {
+            DefaultButton.GetComponent<Button>().Select();
+        }
+
+       
 
         Button[] allButtons1 = GetComponentsInChildren<Button>();
 
@@ -136,7 +141,7 @@ public class AnimatedWindow : MonoBehaviour
         {
             if (localActionMap.name == "ArcadeLevelDefault")
             {
-                Debug.Log("enabling arcade animated window controller");
+                Debug.Log("enabling arcade animated window controller5");
                 localActionMap.Enable();
             }
             else

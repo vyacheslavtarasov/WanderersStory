@@ -19,16 +19,16 @@ MonoBehaviour:
     - "\u0417\u0430 \u043A\u0440\u0435\u043F\u043E\u0441\u0442\u043D\u043E\u0439
       \u0441\u0442\u0435\u043D\u043E\u0439."
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
-    _place: 0
   _engData:
     _sentences:
     - When I went down, I found myself...
     - Behind the fortress wall.
     _speakerName: Hero
-    _place: 0
   _chiData:
     _sentences:
     - "\u5F53\u6211\u4E0B\u697C\u65F6\uFF0C\u6211\u53D1\u73B0\u81EA\u5DF1..."
     - "\u5821\u5792\u5899\u540E\u9762\u3002"
     _speakerName: "\u82F1\u96C4"
-    _place: 0
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

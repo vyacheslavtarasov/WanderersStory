@@ -20,16 +20,16 @@ MonoBehaviour:
       \u043E\u0431\u043C\u0435\u043D \u043D\u0430 \u043A\u043B\u044E\u0447 \u043A
       \u0432\u043E\u0440\u043E\u0442\u0430\u043C \u0432 \u0437\u0430\u043C\u043E\u043A?"
     _speakerName: "\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446"
-    _place: 1
   _engData:
     _sentences:
     - I see you've collected the Deathly Hallows for me!
     - Will you give them to me in exchange for the key to the gate to the castle?
     _speakerName: Trader
-    _place: 1
   _chiData:
     _sentences:
     - "\u6211\u770B\u5230\u4F60\u4E3A\u6211\u6536\u96C6\u4E86\u300A\u6B7B\u4EA1\u5723\u5668\u300B\uFF01"
     - "\u4F60\u80FD\u628A\u5B83\u4EEC\u7ED9\u6211\uFF0C\u6362\u53D6\u57CE\u5821\u5927\u95E8\u7684\u94A5\u5319\u5417\uFF1F"
     _speakerName: "\u5546\u8D3E"
-    _place: 1
+  _place: 1
+  _speakerColor: {r: 1, g: 0.84705883, b: 0.8352941, a: 1}
+  _speakerSound: Trader

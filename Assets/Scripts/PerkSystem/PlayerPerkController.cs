@@ -15,6 +15,7 @@ public class PlayerPerkController : MonoBehaviour
         _session = FindObjectOfType<GameSession>();
         _perks = _session.Data.Perks;
         _hero = FindObjectOfType<Hero>();
+        _hero.OnPerksUpdate(null);
 
         OnChanged += _hero.OnPerksUpdate;
         // OnChanged += _perkShopView.Redraw;

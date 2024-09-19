@@ -15,6 +15,7 @@ TagManager:
   - HeatWave
   - Fire
   - Water
+  - BackgroundPuller
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - WallsToClimb
   - GravityVolume
   - Crate
-  - 
+  - ItemStopper
   - 
   - 
   - 

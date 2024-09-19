@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.EventSystems;
 
@@ -35,7 +34,7 @@ public class DialogBoxController : MonoBehaviour
     [SerializeField] private AudioClip _open;
     [SerializeField] private AudioClip _close;
 
-    [SerializeField] private Button _nextButton;
+    [SerializeField] public Button _nextButton;
 
     public bool _dialogActive = false;
     public bool yesClicked = false;
@@ -61,8 +60,8 @@ public class DialogBoxController : MonoBehaviour
 
     private void Awake()
     {
-        _yesButton.active = false;
-        _noButton.active = false;
+        _yesButton.SetActive(false);
+        _noButton.SetActive(false);
         InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
         _soundPlayer = GetComponent<SoundPlayer>();
         _soundPlayer4OneShots = FindObjectOfType<Camera>().gameObject.GetComponent<SoundPlayer>();
@@ -80,7 +79,7 @@ public class DialogBoxController : MonoBehaviour
         _animator.SetBool("show", true);
         _nextButton.interactable = true;
 
-        if (_dialogData.Place == null || _dialogData.Place == place.left)
+        if (_dialogData.Place == place.left)
         {
             _lSpeakerName.text = _dialogData.SpeakerName;
             if (_dialogData.SpeakerColor != Color.clear)
@@ -88,8 +87,8 @@ public class DialogBoxController : MonoBehaviour
                 _lContainer.GetComponent<Image>().color = _dialogData.SpeakerColor;
             }
            
-            _lContainer.active = true;
-            _rContainer.active = false;
+            _lContainer.SetActive(true);
+            _rContainer.SetActive(false);
         }
         else
         {
@@ -98,15 +97,25 @@ public class DialogBoxController : MonoBehaviour
             {
                 _rContainer.GetComponent<Image>().color = _dialogData.SpeakerColor;
             }
-            _lContainer.active = false;
-            _rContainer.active = true;
+            _lContainer.SetActive(false);
+            _rContainer.SetActive(true);
+        }
+
+        _container.GetComponent<Image>().CrossFadeAlpha(1.0f, 1.0f, true);
+
+        if (_dialogData.Place == place.none)
+        {
+
+            _lContainer.SetActive(false);
+            _rContainer.SetActive(false);
+            _container.GetComponent<Image>().CrossFadeAlpha(0.8f, 1.0f, true);
         }
 
         foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
         {
             if (localActionMap.name == "UI")
             {
-                Debug.Log("enabling UI dialog box controller");
+                Debug.Log("enabling UI dialog box controller6");
                 localActionMap.Enable();
             }
             else
@@ -209,8 +218,8 @@ public class DialogBoxController : MonoBehaviour
         {
             if (_isQuestion)
             {
-                _yesButton.active = true;
-                _noButton.active = true;
+                _yesButton.SetActive(true);
+                _noButton.SetActive(true);
                 _questionMode = true;
             }
             else
@@ -247,7 +256,7 @@ public class DialogBoxController : MonoBehaviour
 
     public void AddYesListener(string id, UnityAction action)
     {
-        Debug.Log("adding" + id);
+        // Debug.Log("adding" + id);
         if (!yesListeners.ContainsKey(id))
         {
             yesListeners.Add(id, action);
@@ -285,8 +294,8 @@ public class DialogBoxController : MonoBehaviour
     {
         _dialogActive = false;
         _nextButton.interactable = false;
-        _yesButton.active = false;
-        _noButton.active = false;
+        _yesButton.SetActive(false);
+        _noButton.SetActive(false);
 
 
         Button[] allButtons1 = GetComponentsInChildren<Button>(true);
@@ -315,7 +324,7 @@ public class DialogBoxController : MonoBehaviour
         {
             if (localActionMap.name == "ArcadeLevelDefault")
             {
-                // Debug.Log("enabling arcade dialog box controller");
+                Debug.Log("enabling arcade dialog box controller7");
                 localActionMap.Enable();
             }
             else
@@ -366,7 +375,8 @@ public class DialogBoxController : MonoBehaviour
     {
         _sentenceTypeComplete = false;
         _text.text = string.Empty;
-        _soundPlayer.PlayLoop(_dialogData.SpeakerName);
+        _soundPlayer.PlayLoop(_dialogData.SpeakerSound);
+        Debug.Log(_dialogData.SpeakerSound);
         var sentence = _dialogData.Sentences[_currentSentence];
         // Debug.Log(_currentSentence);
         // Debug.Log(sentence);

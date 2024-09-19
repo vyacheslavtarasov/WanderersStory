@@ -17,14 +17,14 @@ MonoBehaviour:
     - "\u0422\u0435\u043F\u0435\u0440\u044C \u0422\u043E\u0440\u0433\u043E\u0432\u0446\u0443
       \u043E\u0442 \u043D\u0435\u0451 \u043D\u0435 \u0441\u043A\u0440\u044B\u0442\u044C\u0441\u044F..."
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
-    _place: 0
   _engData:
     _sentences:
     - Now the Trader can't escape her...
     _speakerName: Hero
-    _place: 0
   _chiData:
     _sentences:
     - "\u73B0\u5728\uFF0C\u5546\u4EBA\u65E0\u6CD5\u5B8C\u5168\u8EB2\u907F\u5979...."
     _speakerName: "\u82F1\u96C4"
-    _place: 0
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

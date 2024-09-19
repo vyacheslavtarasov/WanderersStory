@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5025635206262913414}
   - component: {fileID: 5025635206262913415}
   - component: {fileID: 5025635206262913420}
+  - component: {fileID: 793993710029101982}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -172,6 +173,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 793993710029101982}
+        m_TargetAssemblyTypeName: HealthModifier, Assembly-CSharp
+        m_MethodName: Modify
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   CollisionExitEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -246,3 +259,16 @@ MonoBehaviour:
   TransformComponent: {fileID: 5025635206262913421}
   inheritScale: 1
   inheritRotation: 0
+--- !u!114 &793993710029101982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025635206262913412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dfba261a409884cb0ed5d424fed1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amount: 50

@@ -59,7 +59,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -253,12 +253,12 @@ MonoBehaviour:
   _sounds:
   - _name: jump
     _clip: {fileID: 8300000, guid: ffa909546fd81e242b4687a76ca1ffd6, type: 3}
-    _volumeBoostFactor: 0.3
+    _volumeBoostFactor: 0.5
   - _name: landing
     _clip: {fileID: 8300000, guid: 5c714c6ccdc6722449b203cffac2193c, type: 3}
     _volumeBoostFactor: 1
   - _name: running
-    _clip: {fileID: 8300000, guid: 2530af318de7603468ad9eed123a3a82, type: 3}
+    _clip: {fileID: 8300000, guid: d426445dd88d3cf45a6455f6de31bf75, type: 3}
     _volumeBoostFactor: 1
 --- !u!114 &121035901
 MonoBehaviour:
@@ -1044,6 +1044,7 @@ MonoBehaviour:
   _fallTime: 0
   _ascendTime: 0
   _isUp: 0
+  _slapAvailable: 0
   _jumpForce: 480
   _minimalAscendTime: 0.1
   _jumpsAmount: 0

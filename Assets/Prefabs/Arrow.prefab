@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 2074448732}
   - component: {fileID: 8337610961250124793}
   - component: {fileID: -1750254658994372115}
+  - component: {fileID: 2240513070183527537}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -291,6 +292,47 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8337610961250124793}
+        m_TargetAssemblyTypeName: Destroy, Assembly-CSharp
+        m_MethodName: DestroyMe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionExitAllEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2240513070183527537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637066976138412375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d0b003a5f4c7c41868cf1ec537dbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObjectsList: []
+  _isTouching: 0
+  _layers:
+    serializedVersion: 2
+    m_Bits: 2048
+  _tags:
+  - Item
+  _exceptions: []
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7637066976138412379}
         m_TargetAssemblyTypeName: Destroy, Assembly-CSharp
         m_MethodName: DestroyMe
         m_Mode: 1

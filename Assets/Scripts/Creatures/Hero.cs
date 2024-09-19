@@ -94,7 +94,11 @@ public class Hero : Creature
 
 
         InputActionAsset InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
-        if (_session.LoadLevelWithOpening)
+
+        Debug.Log("start of the hero with ");
+        Debug.Log(_session.LoadLevelWithOpening);
+
+        /*sif (_session.LoadLevelWithOpening)
         {
 
         }
@@ -104,7 +108,7 @@ public class Hero : Creature
             {
                 if (localActionMap.name == "ArcadeLevelDefault")
                 {
-                    // Debug.Log("enabling arcade hero controller");
+                    Debug.Log("enabling arcade hero controller3");
                     localActionMap.Enable();
                 }
                 else
@@ -112,7 +116,7 @@ public class Hero : Creature
                     localActionMap.Disable();
                 }
             }
-        }
+        }*/
         
 
     }

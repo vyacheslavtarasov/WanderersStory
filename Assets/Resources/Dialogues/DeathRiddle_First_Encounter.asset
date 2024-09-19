@@ -22,17 +22,17 @@ MonoBehaviour:
     - "\u041D\u0443 \u0432\u043E\u0442 \u043F\u043E\u0445\u043E\u0436\u0435 \u0438
       \u0432\u0441\u0451."
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
-    _place: 0
   _engData:
     _sentences:
     - With my lifestyle, she is always nearby. But we meet face to face for the first
       time.
     - My end has come.
     _speakerName: Hero
-    _place: 0
   _chiData:
     _sentences:
     - "\u5728\u6211\u7684\u751F\u6D3B\u65B9\u5F0F\u4E2D\uFF0C\u5979\u603B\u662F\u5728\u90A3\u91CC\u3002\u4F46\u8FD9\u662F\u6211\u4EEC\u7B2C\u4E00\u6B21\u9762\u5BF9\u9762\u89C1\u9762\u3002"
     - "\u6211\u7684\u672B\u65E5\u6765\u4E86\u3002"
     _speakerName: "\u82F1\u96C4"
-    _place: 0
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

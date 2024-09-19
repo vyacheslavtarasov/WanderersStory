@@ -20,16 +20,16 @@ MonoBehaviour:
     - "\u0421\u0442\u043E\u0438\u0442 \u043B\u0438\u0448\u044C \u0440\u0430\u0437\u0436\u0435\u0447\u044C
       \u043E\u0433\u043E\u043D\u044C."
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
-    _place: 0
   _engData:
     _sentences:
     - Nice crucible. You can cook something useful in here.
     - All you have to do is light a fire.
     _speakerName: Hero
-    _place: 0
   _chiData:
     _sentences:
     - "\u5769\u57DA\u4E0D\u9519\u3002\u4F60\u53EF\u4EE5\u5728\u8FD9\u91CC\u716E\u51FA\u6709\u7528\u7684\u4E1C\u897F\u3002"
     - "\u8FD9\u53EA\u662F\u4E00\u4E2A\u70B9\u706B\u7684\u95EE\u9898\u3002"
     _speakerName: "\u82F1\u96C4"
-    _place: 0
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

@@ -12,24 +12,24 @@ public class DeathRiddleController : MonoBehaviour
 
     public void StartRiddle()
     {
-        if (DemoUp.active)
+        if (DemoUp.activeSelf)
         {
-            MainObjectList[0].active = false;
-            MainObjectList[1].active = true;
+            MainObjectList[0].SetActive(false);
+            MainObjectList[1].SetActive(true);
             DemoUp.SetActive(false);
         }
         else
         {
-            MainObjectList[0].active = true;
-            MainObjectList[1].active = false;
+            MainObjectList[0].SetActive(true);
+            MainObjectList[1].SetActive(false);
             DemoDown.SetActive(false);
         }
 
         int rnd1 = Random.Range(2, 3+1);
-        MainObjectList[rnd1].active = true;
-        
+        MainObjectList[rnd1].SetActive(true);
+
         int rnd2 = Random.Range(4, 5+1);
-        MainObjectList[rnd2].active = true;
+        MainObjectList[rnd2].SetActive(true);
 
     }
 
@@ -37,7 +37,7 @@ public class DeathRiddleController : MonoBehaviour
     {
         foreach(GameObject obj in MainObjectList)
         {
-            if (obj.active)
+            if (obj.activeSelf)
             {
                 obj.SetActive(false);
             }

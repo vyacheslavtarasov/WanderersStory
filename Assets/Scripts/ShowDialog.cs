@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -32,10 +33,17 @@ public class ShowDialog : MonoBehaviour
     {
         _model = GameSettings.I.Locale;
         LocalizationLanguage = _model.Value.ToString();
-        Debug.Log(_model.Value.ToString());
-        Debug.Log(LocalizationLanguage);
+        /*Debug.Log(_model.Value.ToString());
+        Debug.Log(LocalizationLanguage);*/
         _model.OnChanged += OnValueChanged;
         OnValueChanged(_model.Value, _model.Value);
+    }
+
+    public void ExitToMainMenu()
+    {
+
+            SceneManager.LoadScene("MainMenu");
+
     }
 
     private void OnValueChanged(string newValue, string oldValue)
@@ -69,6 +77,30 @@ public class ShowDialog : MonoBehaviour
     }
 
     public void Show(GameObject initiator, GameObject source)
+    {
+        // Debug.Log(LocalizationLanguage);
+
+        Initiator = initiator;
+
+        if (Skip)
+        {
+            DialogFinishedEvent?.Invoke();
+            return;
+        }
+        if (!Enabled) return;
+        if (_dialogBox == null)
+        {
+            _dialogBox = FindObjectOfType<DialogBoxController>();
+        }
+        if (_dialogBox._dialogActive) return;
+        _dialogBox.ShowDialog(_dialogEntry.GetLocalizedData(LocalizationLanguage), IsQuestion);
+        float randomFloat = Random.value;
+        _dialogBox.AddListener(randomFloat.ToString(), DialogFinished);
+        _dialogBox.AddYesListener(randomFloat.ToString(), YesChosen);
+        _dialogBox.AddNoListener(randomFloat.ToString(), NoChosen);
+    }
+
+    public void Show(GameObject initiator)
     {
         Debug.Log(LocalizationLanguage);
 

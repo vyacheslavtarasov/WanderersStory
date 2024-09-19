@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10cfacd73a1b884e8d21cd405871f65, type: 3}
+  m_Name: Ending_Witcher 1
+  m_EditorClassIdentifier: 
+  _data:
+    _sentences:
+    - "\u041A\u041E\u041D\u0426\u041E\u0412\u041A\u0410 3: \u041E\u0411\u041C\u0410\u041D\u0423\u0412\u0428\u0418\u0419
+      \u0421\u0423\u0414\u042C\u0411\u0423"
+    _speakerName: "\u0413\u0435\u0440\u043E\u0439"
+  _engData:
+    _sentences:
+    - I walked away from the decision, let them sort it out for themselves.
+    _speakerName: Hero
+  _chiData:
+    _sentences:
+    - "\u6211\u4E0D\u505A\u51B3\u5B9A\uFF0C\u8BA9\u4ED6\u4EEC\u81EA\u5DF1\u89E3\u51B3\u3002"
+    _speakerName: 
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

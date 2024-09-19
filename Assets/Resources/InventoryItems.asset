@@ -16,50 +16,66 @@ MonoBehaviour:
   - _id: HealthPotion
     _icon: {fileID: 21300000, guid: f347ce861fefbb642b2f49dac37c26b3, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: 2a6a057a811ec704c8d557f1b7633ff6, type: 2}
+    _description: {fileID: 11400000, guid: 80f5dd47707283b49a30c2184f13bd10, type: 2}
+    _showInItemList: 1
   - _id: PowerPotion
     _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: 894c0cdab87479841853dedcba8427dc, type: 2}
+    _description: {fileID: 11400000, guid: f3f854cb78afae249ade864ad639c403, type: 2}
+    _showInItemList: 1
   - _id: BrokenHandle
-    _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
+    _icon: {fileID: 21300000, guid: 54c27f4fc667960448fe3484ffef10ac, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: 8c0a592ecd0e4da489ea7299f131af9d, type: 2}
+    _description: {fileID: 11400000, guid: 6c163f8a6b94e1c4dadf15fdd2ecb29b, type: 2}
+    _showInItemList: 1
   - _id: FixedHandle
-    _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
+    _icon: {fileID: 21300000, guid: 019f1026abc12584d96f0936b0008bc5, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: e9ffbc05f3e01e04096b56d51c078bc0, type: 2}
+    _description: {fileID: 11400000, guid: 3757182a0cd3af041969a8c7086c9d55, type: 2}
+    _showInItemList: 1
   - _id: PowerDebuffPotion
-    _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
+    _icon: {fileID: 21300000, guid: 7e0b909cacdaafd4db579c9c02b3cd74, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: 47a25fceb0034654dac498682e8660ed, type: 2}
+    _description: {fileID: 11400000, guid: f11a010d459d6dc4f97f9acd278a6ca7, type: 2}
+    _showInItemList: 1
   - _id: DeathsGift
-    _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
+    _icon: {fileID: 1646579404, guid: b81f0b64e0d693f498abf877933a01f2, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: f7b84aa41d2b7fd4bb0b57b9dadba0b2, type: 2}
+    _description: {fileID: 11400000, guid: fc468ae6e1addd541af789c67a6f62a1, type: 2}
+    _showInItemList: 1
   - _id: Flint
-    _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
+    _icon: {fileID: -1809159238, guid: 9c4ea5e16700cdd46a0a9e83269f7af3, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: dc5e8b1ca856bb347b0157383c311d0e, type: 2}
+    _description: {fileID: 11400000, guid: c0e2c7f3dc948fd4890ed04fed56979c, type: 2}
+    _showInItemList: 1
   - _id: PowerDebuffPotionRecipe
-    _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
+    _icon: {fileID: 908085176, guid: b81f0b64e0d693f498abf877933a01f2, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: 321c31cae37ee3847ba0dc26e4424bab, type: 2}
+    _description: {fileID: 11400000, guid: d69a3513b59376f48b98fc0488516722, type: 2}
+    _showInItemList: 1
   - _id: PerksEquipEnhancer
-    _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
+    _icon: {fileID: -1545694977, guid: b81f0b64e0d693f498abf877933a01f2, type: 3}
     _tags: 
-    _name2Display: {fileID: 0}
-    _description: {fileID: 0}
+    _name2Display: {fileID: 11400000, guid: 73961633c4e4705449f3bda84dd1ecea, type: 2}
+    _description: {fileID: 11400000, guid: 9d5d6c71cdd6c9e44b8d790e926b734d, type: 2}
+    _showInItemList: 1
   - _id: BookAboutDeath
+    _icon: {fileID: -1145755839, guid: b81f0b64e0d693f498abf877933a01f2, type: 3}
+    _tags: 
+    _name2Display: {fileID: 11400000, guid: d0203bbd7a82d9c48b21456004ad2709, type: 2}
+    _description: {fileID: 11400000, guid: 313ddb7927f1ac54288eb608253176b5, type: 2}
+    _showInItemList: 1
+  - _id: TraderEnding
     _icon: {fileID: 21300000, guid: 3f04972f51f3daa43b648ff4649051e4, type: 3}
     _tags: 
     _name2Display: {fileID: 0}
     _description: {fileID: 0}
+    _showInItemList: 0

@@ -42,6 +42,7 @@ public class Sensor : MonoBehaviour
         if (_collider == null)
         {
             Debug.LogError("Assign the gameobject Collider in the inspector before resuming.");
+            Debug.Log(gameObject.name);
             // UnityEditor.EditorApplication.isPlaying = false;
         }
     }

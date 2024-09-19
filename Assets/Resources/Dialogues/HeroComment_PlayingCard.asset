@@ -30,9 +30,6 @@ MonoBehaviour:
       \u0440\u0443\u043A\u043E\u0439 \u043F\u043E\u0434\u0430\u0442\u044C \u0434\u043E
       \u0432\u043E\u0440\u043E\u0442 \u0437\u0430\u043C\u043A\u0430."
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
-    _place: 0
-    _speakerColor: {r: 0.5517266, g: 0.8490566, b: 0.5238519, a: 1}
-    _speakerSound: Hero
   _engData:
     _sentences:
     - A playing card with her mark on it. I know she's around without it.
@@ -41,15 +38,12 @@ MonoBehaviour:
     - All right, I've passed the Water Tower, only the Workshop Tower lies ahead,
       and then it's a short walk to the castle gates.
     _speakerName: Hero
-    _place: 0
-    _speakerColor: {r: 0.5381789, g: 0.7924528, b: 0.47397646, a: 1}
-    _speakerSound: Hero
   _chiData:
     _sentences:
     - "\u4E00\u5F20\u6709\u5979\u6807\u8BB0\u7684\u6251\u514B\u724C \u6211\u77E5\u9053\u5979\u5C31\u5728\u9644\u8FD1"
     - "\u4E5F\u8BB8\u8FD9\u4E2A\u9ED1\u8272\u6807\u8BB0\u5E76\u4E0D\u9002\u5408\u6211\u3002\u867D\u7136\u9662\u5B50\u91CC\u5230\u5904\u90FD\u662F\u9677\u9631\uFF0C\u4F46\u5468\u56F4\u4E00\u4E2A\u4EBA\u90FD\u6CA1\u6709\u3002"
     - "\u597D\u4E86\uFF0C\u6211\u5DF2\u7ECF\u901A\u8FC7\u4E86\u6C34\u5854\uFF0C\u73B0\u5728\u524D\u9762\u53EA\u6709\u8F66\u95F4\u5854\u4E86\uFF0C\u7136\u540E\u53EA\u9700\u8D70\u4E00\u5C0F\u6BB5\u8DEF\u5C31\u80FD\u5230\u8FBE\u57CE\u5821\u5927\u95E8\u3002"
     _speakerName: "\u82F1\u96C4"
-    _place: 0
-    _speakerColor: {r: 0.58811474, g: 0.8113208, b: 0.5464934, a: 1}
-    _speakerSound: Hero
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

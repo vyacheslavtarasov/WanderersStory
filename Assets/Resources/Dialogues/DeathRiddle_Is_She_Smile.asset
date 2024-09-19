@@ -17,14 +17,14 @@ MonoBehaviour:
     - "\u041E\u043D\u0430 \u0443\u043B\u044B\u0431\u0430\u0435\u0442\u0441\u044F
       \u0447\u0442\u043E-\u043B\u0438..?"
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
-    _place: 0
   _engData:
     _sentences:
     - Is she smiling or is it just me?
     _speakerName: Hero
-    _place: 0
   _chiData:
     _sentences:
     - "\u5979\u5728\u5FAE\u7B11\u8FD8\u662F\u6211\u60F3\u8C61\u7684\u2026\u2026\uFF1F"
     _speakerName: "\u82F1\u96C4"
-    _place: 0
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

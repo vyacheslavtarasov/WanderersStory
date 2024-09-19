@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10cfacd73a1b884e8d21cd405871f65, type: 3}
+  m_Name: ItemDescription_PowerDebuffPotionRecipe
+  m_EditorClassIdentifier: 
+  _data:
+    _sentences:
+    - "\u0412 \u044D\u0442\u043E\u0439 \u043A\u043D\u0438\u0433\u0435 \u0435\u0441\u0442\u044C
+      \u0440\u0435\u0446\u0435\u043F\u0442 \u041E\u0441\u043B\u0430\u0431\u043B\u044F\u044E\u0435\u0433\u043E
+      \u0417\u0435\u043B\u044C\u044F. \u0414\u043B\u044F \u0435\u0433\u043E \u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u0438\u044F
+      \u043D\u0443\u0436\u043D\u044B 4 \u0414\u0430\u0440\u0430 \u0421\u043C\u0435\u0440\u0442\u0438."
+    _speakerName: 
+  _engData:
+    _sentences:
+    - There is a recipe for a Weakening Potion in this book. You need 4 Deathly Hallows
+      to make it.
+    _speakerName: 
+  _chiData:
+    _sentences:
+    - "\u8FD9\u672C\u4E66\u91CC\u6709\u5F31\u5316\u836F\u5242\u7684\u914D\u65B9\u3002\u4F60\u9700\u8981
+      4 \u4E2A\u6B7B\u4EA1\u5723\u5668\u624D\u80FD\u5236\u4F5C\u3002"
+    _speakerName: 
+  _place: 0
+  _speakerColor: {r: 0, g: 0, b: 0, a: 0}
+  _speakerSound: 

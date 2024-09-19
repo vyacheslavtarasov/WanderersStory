@@ -53,7 +53,7 @@ public class PauseMenuWindow : AnimatedWindow
     {
         _afterCloseAction = () => {
             _session = FindObjectOfType<GameSession>();
-            _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();
+            _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();// ?
             SceneManager.LoadScene("MainMenu");
         };
         Close();
@@ -64,6 +64,13 @@ public class PauseMenuWindow : AnimatedWindow
         _afterCloseAction?.Invoke();
         base.OnCloseAnimationComplete();
 
+    }
+
+    public void ShowItemsList()
+    {
+        Close();
+        ItemListView _itemListView = FindObjectOfType<ItemListView>(true);
+        _itemListView.gameObject.SetActive(true);
     }
 
 }

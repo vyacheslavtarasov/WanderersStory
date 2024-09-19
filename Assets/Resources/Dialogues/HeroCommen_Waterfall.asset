@@ -18,14 +18,14 @@ MonoBehaviour:
       \u043C\u043E\u0436\u0435\u0442 \u043F\u043E\u0442\u0443\u0448\u0438\u0442\u044C
       \u043B\u044E\u0431\u0443\u044E \u0433\u043E\u0440\u0435\u043B\u043A\u0443."
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
-    _place: 0
   _engData:
     _sentences:
     - A waterfall like this can put out any burner.
     _speakerName: Hero
-    _place: 0
   _chiData:
     _sentences:
     - "\u8FD9\u6837\u7684\u7011\u5E03\u53EF\u4EE5\u7184\u706D\u4EFB\u4F55\u71C3\u70E7\u5668\u3002"
     _speakerName: "\u82F1\u96C4"
-    _place: 0
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

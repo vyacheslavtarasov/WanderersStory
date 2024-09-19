@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,8 +32,9 @@ public struct ItemDef
     [SerializeField] private string _id;
     [SerializeField] private Sprite _icon;
     [SerializeField] private ItemTag[] _tags;
-    [SerializeField] private DialogEntry _name2Display;
-    [SerializeField] private DialogEntry _description;
+    [SerializeField] public DialogEntry _name2Display;
+    [SerializeField] public DialogEntry _description;
+    [SerializeField] public bool _showInItemList;
 
     public bool HasTag(ItemTag tag)
     {

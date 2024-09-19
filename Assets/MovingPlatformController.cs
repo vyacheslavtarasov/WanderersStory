@@ -25,7 +25,7 @@ public class MovingPlatformController : MonoBehaviour
     public bool _randomDirection = false; // for circle and ping pong
 
     public delegate void OnHealthChanged(Vector2 newValue);
-    public event OnHealthChanged OnMove;
+    // public event OnHealthChanged OnMove;
 
     public UnityEvent TransitionEnd;
     public UnityEvent DirectionChanged;
