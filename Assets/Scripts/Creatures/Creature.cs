@@ -169,11 +169,10 @@ public class Creature : MonoBehaviour
 
     public void OnLadderTouch(GameObject ladder)
     {
-        Debug.Log(ladder.name);
+        // Debug.Log(ladder.name);
         if (!_isUp && _isGrounded && transform.position.y - 1.6f < ladder.gameObject.transform.position.y)
         {
             ladder.transform.GetComponentInParent<EdgeCollider2D>().enabled = false;
-            Debug.Log(ladder.transform.parent.name);
         }
     }
 
@@ -485,7 +484,6 @@ public class Creature : MonoBehaviour
 
             if (_jumpsAmount > 1 && _currentJumpsCount < _jumpsAmount - 1)
             {
-                Debug.Log("second!");
                 DoubleJumpEvent?.Invoke();
             }
         }
@@ -547,7 +545,6 @@ public class Creature : MonoBehaviour
 
     protected virtual void OnJump()
     {
-        Debug.Log("invoking jumpasdf");
         _soundPlayer4OneShots.Play("Jump");
         JumpEvent?.Invoke();
     }

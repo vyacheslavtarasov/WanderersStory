@@ -30,6 +30,12 @@ public class Health : MonoBehaviour
     {
         var wasHealth = currentHealth;
         currentHealth += amount;
+
+        if (currentHealth > 50)
+        {
+            currentHealth = 50;
+        }
+
         OnChangeHealth?.Invoke(wasHealth, currentHealth, overallHealth);
 
         if (currentHealth <= 0.0f)

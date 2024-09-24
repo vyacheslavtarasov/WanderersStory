@@ -115,7 +115,7 @@ public class DialogBoxController : MonoBehaviour
         {
             if (localActionMap.name == "UI")
             {
-                Debug.Log("enabling UI dialog box controller6");
+                // Debug.Log("enabling UI dialog box controller6");
                 localActionMap.Enable();
             }
             else
@@ -324,7 +324,7 @@ public class DialogBoxController : MonoBehaviour
         {
             if (localActionMap.name == "ArcadeLevelDefault")
             {
-                Debug.Log("enabling arcade dialog box controller7");
+                // Debug.Log("enabling arcade dialog box controller7");
                 localActionMap.Enable();
             }
             else
@@ -332,6 +332,16 @@ public class DialogBoxController : MonoBehaviour
                 localActionMap.Disable();
             }
         }
+
+        string[] Names = listeners.Keys.ToArray();
+
+        DialogFinishedEvent?.Invoke(); // here you can add new listeners, so we need to remove not all, but previously existed.
+
+        foreach (string name in Names)
+        {
+            RemoveListener(name);
+        }
+
 
         if (noClicked)
         {
@@ -359,14 +369,11 @@ public class DialogBoxController : MonoBehaviour
             yesClicked = false;
         }
 
-        string[] Names = listeners.Keys.ToArray();
-
-        DialogFinishedEvent?.Invoke(); // here you can add new listeners, so we need to remove not all, but previously existed.
+        /*if(!yesClicked && !noClicked)
+        {*/
+            
+        // }
         
-        foreach(string name in Names)
-        {
-            RemoveListener(name);
-        } 
 
         _questionMode = false;
     }
@@ -376,7 +383,7 @@ public class DialogBoxController : MonoBehaviour
         _sentenceTypeComplete = false;
         _text.text = string.Empty;
         _soundPlayer.PlayLoop(_dialogData.SpeakerSound);
-        Debug.Log(_dialogData.SpeakerSound);
+        // Debug.Log(_dialogData.SpeakerSound);
         var sentence = _dialogData.Sentences[_currentSentence];
         // Debug.Log(_currentSentence);
         // Debug.Log(sentence);

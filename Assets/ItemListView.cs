@@ -55,8 +55,11 @@ public class ItemListView : AnimatedWindow
 
         ItemDef itemDefinition = DefsFacade.I.Items.Get(name);
 
-        _description.text = itemDefinition._description.Data.Sentences[0];
-        _nameToDisplay.text = itemDefinition._name2Display.Data.Sentences[0];
+        // _description.text = itemDefinition._description.Data.Sentences[0];
+        // _nameToDisplay.text = itemDefinition._name2Display.Data.Sentences[0];
+
+        _nameToDisplay.text = itemDefinition._name2Display.GetLocalizedData(LocalizationLanguage).Sentences[0];
+        _description.text = itemDefinition._description.GetLocalizedData(LocalizationLanguage).Sentences[0];
         _icon.sprite = itemDefinition.Icon;
 
 

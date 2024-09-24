@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 using Newtonsoft.Json;
+using UnityEngine.InputSystem;
 
 public class Checkpoint : MonoBehaviour
 {
@@ -28,7 +29,16 @@ public class Checkpoint : MonoBehaviour
 
         _session.OnChanged += OnCurrentCheckpointChange;
 
-        
+        /*var devices = InputSystem.devices;
+
+        // Log the names of the devices
+        foreach (var device in devices)
+        {
+            Debug.Log("Device: " + device.name + " (" + device.deviceId + ")");
+        }*/
+
+
+
     }
 
     private void OnCurrentCheckpointChange(string newCheckpointName)

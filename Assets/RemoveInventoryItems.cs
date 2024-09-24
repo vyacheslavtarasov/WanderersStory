@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.Events;
+using System;
 
 
 
@@ -24,6 +25,7 @@ public class RemoveInventoryItems : MonoBehaviour
     {
         Debug.Log("removing");
         GameObject initiator = GameObject.Find(_gameObjectName);
+        Debug.Log(initiator);
         if (initiator != null && CheckObjectWithName)
         {
             Debug.Log(initiator);
@@ -44,7 +46,7 @@ public class RemoveInventoryItems : MonoBehaviour
         {
             if (inventoryComponent != null)
             {
-                inventoryComponent.Remove(Name, Amount);
+                inventoryComponent.Remove(Name.ToString(), Amount);
                 Done?.Invoke(initiator, null);
             }
         }

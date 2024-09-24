@@ -19,12 +19,12 @@ MonoBehaviour:
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
   _engData:
     _sentences:
-    - I became a punishing instrument of fate and helped the inevitable happen.
+    - 'ENDING 2: INSTRUMENT OF DESTINY'
     _speakerName: Hero
   _chiData:
     _sentences:
-    - "\u6211\u6210\u4E86\u547D\u8FD0\u7684\u60E9\u7F5A\u5DE5\u5177\uFF0C\u52A9\u957F\u4E86\u4E0D\u53EF\u907F\u514D\u7684\u4E8B\u60C5\u53D1\u751F\u3002"
+    - "\u7ED3\u5C40 2\uFF1A\u547D\u8FD0\u7684\u5DE5\u5177"
     _speakerName: 
-  _place: 0
+  _place: 2
   _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
   _speakerSound: Hero

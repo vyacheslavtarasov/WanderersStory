@@ -52,7 +52,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121035895}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0d5f2d7396b69f8479b83d34246d834c, type: 3}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121035895}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c6afa8a3e07b204bb26ddd9e5d34812, type: 3}
   m_Name: 
@@ -717,6 +717,8 @@ GameObject:
   - component: {fileID: 1168325636438093296}
   - component: {fileID: 8576369605381459386}
   - component: {fileID: -9166330392201065523}
+  - component: {fileID: 1029203580870256188}
+  - component: {fileID: 3581497828151553583}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -1027,10 +1029,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _runAccelerationMultiplier: 0.12
   _maximumHorizontalVelocity: 4
-  _runBrakingMultiplier: 0.86
+  _runBrakingMultiplier: 0.76
   _runAccelerationMultiplierSlope: 0.3
   _maximumHorizontalVelocitySlopeAscend: 4.5
-  _maximumHorizontalVelocitySlopeDescend: 2.5
+  _maximumHorizontalVelocitySlopeDescend: 3
   _runBrakingMultiplierSlope: 0.05
   _attackDamage: -1
   _damageForceToInflict: 200
@@ -1282,6 +1284,116 @@ MonoBehaviour:
   gettingTransparentTime: 1
   moveTime: 1
   ObjectToTransfer: {fileID: 0}
+--- !u!82 &1029203580870256188
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605853861375256991}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0d5f2d7396b69f8479b83d34246d834c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3581497828151553583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605853861375256991}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6afa8a3e07b204bb26ddd9e5d34812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlMode: Music
+  _source: {fileID: 1029203580870256188}
 --- !u!1 &2605853861377530576
 GameObject:
   m_ObjectHideFlags: 0

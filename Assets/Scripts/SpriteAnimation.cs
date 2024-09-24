@@ -76,6 +76,7 @@ public class SpriteAnimation : MonoBehaviour
             if (!_loop && currentSpriteIndex == 0)
             {
                 this.OnFinish.Invoke();
+                
                 this.enabled = false;
             }
         }

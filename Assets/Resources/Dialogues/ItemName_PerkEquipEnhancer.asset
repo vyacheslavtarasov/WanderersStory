@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _sentences:
-    - "\u0420\u0430\u0441\u0448\u0438\u0440\u0438\u0442\u0435\u043B\u044C \u0421\u043F\u043E\u0441\u043E\u0431\u043D\u043E\u0441\u0442\u0435\u0439"
+    - "\u0410\u0440\u0442\u0435\u0444\u0430\u043A\u0442 \u0423\u043C\u0435\u043D\u0438\u0439"
     _speakerName: 
   _engData:
     _sentences:

@@ -126,6 +126,7 @@ public class ShowDialog : MonoBehaviour
 
     public void DialogFinished()
     {
+        Debug.Log("dialog finished event called");
         DialogFinishedEvent?.Invoke();
         DialogFinishedEventWithInitiator?.Invoke(Initiator);
         return;
@@ -147,7 +148,7 @@ public class ShowDialog : MonoBehaviour
 
     public void Show(DialogEntry dialogEntry)
     {
-        Debug.Log(LocalizationLanguage);
+        // Debug.Log(LocalizationLanguage);
         if (Skip)
         {
             DialogFinishedEvent?.Invoke();

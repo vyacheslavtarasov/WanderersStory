@@ -7,7 +7,6 @@ public class DefaultVerticalCameraSwitcher : CameraSwitcher
 {
     public void Switch()
     {
-        Debug.Log("switching default vertical");
         _cameraStateController.SwitchToDefaultVerticalCamera(gameObject);
     }
 

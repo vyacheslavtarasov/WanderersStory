@@ -13,39 +13,48 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   _music:
-    _value: 0.040869825
+    _value: 0.10000002
   _sound:
-    _value: 0.29999992
+    _value: 0.4999999
   _locale:
     _value: Russian
   _session:
     _value:
       _health: 50
       JumpsAmount: 2
-      Inventory: []
+      Inventory:
+      - Name: PowerPotion
+        Amount: 1
+        QuickMenuIndex: -1
+      - Name: PerksEquipEnhancer
+        Amount: 1
+        QuickMenuIndex: -1
+      - Name: Flint
+        Amount: 1
+        QuickMenuIndex: -1
+      - Name: BrokenHandle
+        Amount: 1
+        QuickMenuIndex: -1
       QuickInventoryIndex: 0
-      Perks: []
-      _money: 0
-      CheckpointName: default
+      Perks:
+      - Name: doubleJump
+        Active: 1
+        MenuIndex: -1
+      - Name: wallCling
+        Active: 1
+        MenuIndex: -1
+      _money: 5
+      CheckpointName: third
       LevelObjectsState:
-      - ObjectName: MoneyBagFirst
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: PowerPotion (3)
-        DefaultState: active
-        CurrentState: active
       - ObjectName: PowerPotion (6)
         DefaultState: active
         CurrentState: active
-      - ObjectName: Broken Handle
-        DefaultState: active
-        CurrentState: 
       - ObjectName: Prize2
-        DefaultState: active
-        CurrentState: 
+        DefaultState: notActive
+        CurrentState: notActive
       - ObjectName: PowerDebuffPotion
-        DefaultState: active
-        CurrentState: 
+        DefaultState: notActive
+        CurrentState: notActive
       - ObjectName: FixedHandleFixedHandle
         DefaultState: active
         CurrentState: active
@@ -59,11 +68,8 @@ MonoBehaviour:
         DefaultState: active
         CurrentState: active
       - ObjectName: FixedHandleFixedHandle (1)
-        DefaultState: active
-        CurrentState: 
-      - ObjectName: Flint
-        DefaultState: active
-        CurrentState: dead
+        DefaultState: notActive
+        CurrentState: notActive
       - ObjectName: PowerPotion (5)
         DefaultState: active
         CurrentState: active
@@ -71,114 +77,129 @@ MonoBehaviour:
         DefaultState: active
         CurrentState: active
       - ObjectName: Prize4
-        DefaultState: active
-        CurrentState: 
+        DefaultState: notActive
+        CurrentState: notActive
       - ObjectName: Prize1
-        DefaultState: active
-        CurrentState: 
+        DefaultState: notActive
+        CurrentState: notActive
       - ObjectName: Prize3
-        DefaultState: active
-        CurrentState: 
-      - ObjectName: crate_2
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: MoneyBag (24)
-        DefaultState: active
-        CurrentState: active
+        DefaultState: notActive
+        CurrentState: notActive
       - ObjectName: PowerPotion (4)
         DefaultState: active
-        CurrentState: active
-      - ObjectName: Lever_Ready2bBroken
+        CurrentState: 
+      - ObjectName: OneTimeActivator
         DefaultState: active
-        CurrentState: active
+        CurrentState: notActive
       - ObjectName: MoneyBag (20)
         DefaultState: active
         CurrentState: active
       - ObjectName: Lever_Broken
         DefaultState: notActive
-        CurrentState: 
+        CurrentState: notActive
       - ObjectName: RotatableGates
         DefaultState: 90
-        CurrentState: 90
+        CurrentState: 180
       - ObjectName: RotatableGates (9)
-        DefaultState: 90
-        CurrentState: 90
-      - ObjectName: MoneyBag (19)
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: MoneyBag (27)
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: MoneyBag (26)
-        DefaultState: active
-        CurrentState: active
+        DefaultState: 60
+        CurrentState: 0
       - ObjectName: PowerPotion (5)
         DefaultState: active
-        CurrentState: active
+        CurrentState: 
       - ObjectName: Lever_ExitUniversal
         DefaultState: active
-        CurrentState: 
+        CurrentState: active
       - ObjectName: MoneyBag (23)
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: BreakableFloor
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: crate_2 (1)
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: Perk Enchancer
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: MoneyBag (25)
         DefaultState: active
         CurrentState: active
       - ObjectName: RotatableGates (2)
         DefaultState: 90
-        CurrentState: 90
+        CurrentState: 0
       - ObjectName: StopAndGo (2)
-        DefaultState: active
-        CurrentState: 
+        DefaultState: notActive
+        CurrentState: active
       - ObjectName: PowerPotion (6)
         DefaultState: active
-        CurrentState: active
-      - ObjectName: BreakableFloor (1)
-        DefaultState: active
-        CurrentState: active
+        CurrentState: 
       - ObjectName: StopAndGo (1)
-        DefaultState: active
-        CurrentState: 
+        DefaultState: notActive
+        CurrentState: active
       - ObjectName: StopAndGo (3)
-        DefaultState: active
-        CurrentState: 
+        DefaultState: notActive
+        CurrentState: notActive
       - ObjectName: CameraBoundingShapeHorizontal
         DefaultState: active
-        CurrentState: active
+        CurrentState: notActive
       - ObjectName: RotatableGates (7)
         DefaultState: -90
-        CurrentState: -90
+        CurrentState: 0
       - ObjectName: MoneyBag (28)
         DefaultState: active
         CurrentState: active
       - ObjectName: MoneyBag (22)
         DefaultState: active
         CurrentState: active
-      - ObjectName: MoneyBag (17)
-        DefaultState: active
-        CurrentState: active
       - ObjectName: StopAndGo
-        DefaultState: active
-        CurrentState: 
+        DefaultState: notActive
+        CurrentState: active
       - ObjectName: RotatableGates (1)
         DefaultState: -90
-        CurrentState: -90
+        CurrentState: 0
       - ObjectName: MoneyBag (18)
-        DefaultState: active
-        CurrentState: active
-      - ObjectName: PowerPotion (3)
         DefaultState: active
         CurrentState: active
       - ObjectName: MoneyBag (21)
         DefaultState: active
         CurrentState: active
+      - ObjectName: Broken Handle
+        DefaultState: notActive
+        CurrentState: dead
+      - ObjectName: Lever_Ready2bBroken
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: MoneyBagFirst
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: PowerPotion (3)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: Flint
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: crate_2
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: MoneyBag (24)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: MoneyBag (19)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: MoneyBag (27)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: MoneyBag (26)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: BreakableFloor
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: crate_2 (1)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: Perk Enchancer
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: MoneyBag (25)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: BreakableFloor (1)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: MoneyBag (17)
+        DefaultState: active
+        CurrentState: dead
+      - ObjectName: PowerPotion (3)
+        DefaultState: active
+        CurrentState: dead
       LevelName: MechanicsDemoLevel

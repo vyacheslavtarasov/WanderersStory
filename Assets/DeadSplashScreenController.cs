@@ -44,7 +44,6 @@ public class DeadSplashScreenController : AnimatedWindow
 
     public void Retry()
     {
-        Debug.Log("calling retry");
         retry = true;
         hero = FindObjectOfType<Hero>();
         Destroy(hero.gameObject);
@@ -56,7 +55,6 @@ public class DeadSplashScreenController : AnimatedWindow
 
     public override void OnCloseAnimationComplete()
     {
-        Debug.Log("close animation complete");
         if (!retry)
         {
 

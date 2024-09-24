@@ -51,8 +51,8 @@ MonoBehaviour:
     _translation: "\u5173\u95ED"
   - _key: GameName
     _source: "\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446, \u0421\u043C\u0435\u0440\u0442\u044C
-      \u0438 \u0442\u044B."
-    _translation: "\u5546\u4EBA\u3001\u6B7B\u4EA1\u548C\u4F60\u3002"
+      \u0438 \u0422\u044B"
+    _translation: "\u5546\u4EBA\u3001\u6B7B\u4EA1\u4E0E\u4F60"
   - _key: GameStartButton
     _source: "\u041D\u0430\u0447\u0430\u0442\u044C"
     _translation: "\u5F00\u59CB\u6E38\u620F"
@@ -78,3 +78,28 @@ MonoBehaviour:
   - _key: BuyButton
     _source: "\u041A\u0443\u043F\u0438\u0442\u044C"
     _translation: "\u4E70"
+  - _key: jumpControl
+    _source: " - \u041F\u0440\u044B\u0436\u043E\u043A"
+    _translation: " -  \u8DF3\u8F6C"
+  - _key: AtackButton
+    _source: " -  \u0410\u0442\u0430\u043A\u0430"
+    _translation: " -  \u653B\u51FB"
+  - _key: MenuButton
+    _source: " -  \u041C\u0435\u043D\u044E"
+    _translation: "\u6E38\u620F\u83DC\u5355"
+  - _key: ControlsLabel
+    _source: "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"
+    _translation: "\u6E38\u620F\u63A7\u5236"
+  - _key: MoveButtons
+    _source: "\u041F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435"
+    _translation: "\u79FB\u52A8"
+  - _key: NoButton
+    _source: "\u041D\u0415\u0422"
+    _translation: "\u4E0D"
+  - _key: YESButton
+    _source: "\u0414\u0410"
+    _translation: "\u662F"
+  - _key: InteractButton
+    _source: " -  \u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435,
+      \u0432\u044B\u0431\u043E\u0440"
+    _translation: " - \u4E92\u52A8\u3001\u9009\u62E9"

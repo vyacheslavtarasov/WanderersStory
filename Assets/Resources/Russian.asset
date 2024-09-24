@@ -53,9 +53,9 @@ MonoBehaviour:
     _translation: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
   - _key: GameName
     _source: "\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446, \u0421\u043C\u0435\u0440\u0442\u044C
-      \u0438 \u0442\u044B."
+      \u0438 \u0422\u044B"
     _translation: "\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446, \u0421\u043C\u0435\u0440\u0442\u044C
-      \u0438 \u0442\u044B."
+      \u0438 \u0422\u044B"
   - _key: GameStartButton
     _source: "\u041D\u0430\u0447\u0430\u0442\u044C"
     _translation: "\u041D\u0430\u0447\u0430\u0442\u044C"
@@ -82,3 +82,29 @@ MonoBehaviour:
   - _key: BuyButton
     _source: "\u041A\u0443\u043F\u0438\u0442\u044C"
     _translation: "\u041A\u0443\u043F\u0438\u0442\u044C"
+  - _key: jumpControl
+    _source: " - \u041F\u0440\u044B\u0436\u043E\u043A"
+    _translation: " - \u041F\u0440\u044B\u0436\u043E\u043A"
+  - _key: AtackButton
+    _source: " -  \u0410\u0442\u0430\u043A\u0430"
+    _translation: " -  \u0410\u0442\u0430\u043A\u0430"
+  - _key: MenuButton
+    _source: " -  \u041C\u0435\u043D\u044E"
+    _translation: " -  \u041C\u0435\u043D\u044E"
+  - _key: ControlsLabel
+    _source: "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"
+    _translation: "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"
+  - _key: MoveButtons
+    _source: "\u041F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435"
+    _translation: "\u041F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435"
+  - _key: NoButton
+    _source: "\u041D\u0415\u0422"
+    _translation: "\u041D\u0415\u0422"
+  - _key: YESButton
+    _source: "\u0414\u0410"
+    _translation: "\u0414\u0410"
+  - _key: InteractButton
+    _source: " -  \u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435,
+      \u0432\u044B\u0431\u043E\u0440"
+    _translation: " -  \u0412\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435,
+      \u0432\u044B\u0431\u043E\u0440"

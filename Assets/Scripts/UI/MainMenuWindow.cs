@@ -26,7 +26,7 @@ public class MainMenuWindow : AnimatedWindow
             GameObject session = Instantiate(Session, Vector3.zero, Quaternion.identity);
             session.GetComponent<GameSession>().LoadLevelWithOpening = true;
             session.GetComponent<GameSession>().PlayerDataSavedAtSceneStart  = session.GetComponent<GameSession>().Data.ShallowCopy();
-            Debug.Log(session.GetComponent<GameSession>().LoadLevelWithOpening);
+            // Debug.Log(session.GetComponent<GameSession>().LoadLevelWithOpening);
             SceneManager.LoadScene("MechanicsDemoLevel");
         };
         Close();

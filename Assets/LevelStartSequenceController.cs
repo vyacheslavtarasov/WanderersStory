@@ -51,8 +51,28 @@ public class LevelStartSequenceController : MonoBehaviour
                     StatefulObject component = obj.GetComponent<StatefulObject>();
                     if (component != null)
                     {
-                        component.SetCurrentState(state.CurrentState);
+                        if (obj.name == "Lever_Ready2bBroken")
+                        {
+                            Debug.Log("setting currentState to " + obj.name + state.CurrentState);
+                        }
+                        if (state.CurrentState != null && state.CurrentState != "")
+                        {
+
+                            component.SetCurrentState(state.CurrentState);
+                        }
+                        else
+                        {
+                            
+                            component.SetCurrentState(component.DefaultState);
+                        }
+                        
+
+                        if (obj.name == "Lever_Ready2bBroken")
+                        {
+                            Debug.Log("applying currentState to " + obj.name);
+                        }
                         component.GetComponent<StatefulObject>().ApplyCurrentState();
+                        
                     }
                     else
                     {
@@ -98,7 +118,7 @@ public class LevelStartSequenceController : MonoBehaviour
         {
             if (localActionMap.name == "ArcadeLevelDefault")
             {
-                Debug.Log("enabling arcade hero controller3");
+                // Debug.Log("enabling arcade hero controller3");
                 localActionMap.Enable();
             }
             else
@@ -110,7 +130,7 @@ public class LevelStartSequenceController : MonoBehaviour
         if (!_session.LoadLevelWithOpening) return;
 
         _session.LoadLevelWithOpening = false;
-        Debug.Log("setting LoadLevelWithOpening to false");
+        // Debug.Log("setting LoadLevelWithOpening to false");
         
 
         if (_dialog != null)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatefulObjectRotation : StatefulObject
 {
-    private void Start()
+    private void Awake()
     {
         SetCurrentState(DefaultState);
     }

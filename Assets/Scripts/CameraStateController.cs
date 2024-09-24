@@ -37,7 +37,7 @@ public class CameraStateController : MonoBehaviour
 
     public void SetShowCamera()
     {
-        Debug.Log("setting show camera");
+        // Debug.Log("setting show camera");
         _animator.SetTrigger("Show");
     }
 
@@ -48,9 +48,9 @@ public class CameraStateController : MonoBehaviour
 
     public void AssignFollowObject(GameObject gameObject)
     {
-        Debug.Log("assigning object");
-        Debug.Log(CurrentCinemachineVirtualCamera);
-        Debug.Log(gameObject);
+        // Debug.Log("assigning object");
+        // Debug.Log(CurrentCinemachineVirtualCamera);
+        // Debug.Log(gameObject);
         CurrentCinemachineVirtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = gameObject.transform;
     }
 

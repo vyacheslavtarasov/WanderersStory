@@ -32,7 +32,7 @@ public class AnimatedWindow : MonoBehaviour
         {
             if (localActionMap.name == "UI")
             {
-                Debug.Log("enabling UI animated window controller4");
+                // Debug.Log("enabling UI animated window controller4");
                 localActionMap.Enable();
             }
             else
@@ -136,12 +136,12 @@ public class AnimatedWindow : MonoBehaviour
 
     public void Close()
     {
-        Debug.Log("calling close");
+        // Debug.Log("calling close");
         foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
         {
             if (localActionMap.name == "ArcadeLevelDefault")
             {
-                Debug.Log("enabling arcade animated window controller5");
+                // Debug.Log("enabling arcade animated window controller5");
                 localActionMap.Enable();
             }
             else

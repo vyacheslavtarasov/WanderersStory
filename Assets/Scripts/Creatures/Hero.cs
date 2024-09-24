@@ -95,8 +95,8 @@ public class Hero : Creature
 
         InputActionAsset InputActionAsset = Resources.Load<InputActionAsset>("HeroInputActions");
 
-        Debug.Log("start of the hero with ");
-        Debug.Log(_session.LoadLevelWithOpening);
+        // Debug.Log("start of the hero with ");
+        // Debug.Log(_session.LoadLevelWithOpening);
 
         /*sif (_session.LoadLevelWithOpening)
         {
@@ -145,7 +145,7 @@ public class Hero : Creature
     {
         if (_interactSensor != null)
         {
-            Debug.Log(_interactSensor.GetIntersectedObjects());
+            // Debug.Log(_interactSensor.GetIntersectedObjects());
             foreach (GameObject obj in _interactSensor.GetIntersectedObjects())
             {
                 Interactive interactiveComponent = obj.GetComponent<Interactive>();

@@ -80,7 +80,7 @@ public class PlayerPerkController : MonoBehaviour
         {
             if (_perks[i].Name == name)
             {
-                Debug.Log("activating");
+                // Debug.Log("activating");
                 _perks[i] = new PlayerPerk(name, true, -1);
             }
             /*else if (_perks[i].Active)
@@ -101,7 +101,7 @@ public class PlayerPerkController : MonoBehaviour
         {
             if (_perks[i].Name == name)
             {
-                Debug.Log("deactivating");
+                // Debug.Log("deactivating");
                 _perks[i] = new PlayerPerk(name, false, -1);
             }
             /*else if (_perks[i].Active)

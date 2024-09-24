@@ -18,7 +18,7 @@ public class AngleCondition : MonoBehaviour
 
         var body = obj.GetComponent<Rigidbody2D>();
         float velocityAngle = Vector2.SignedAngle(Vector2.right, body.velocity);
-        Debug.Log(velocityAngle);
+        // Debug.Log(velocityAngle);
         if (velocityAngle > From && velocityAngle < To)
         {
             Ok?.Invoke(obj);

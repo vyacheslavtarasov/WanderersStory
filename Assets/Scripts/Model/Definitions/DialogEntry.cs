@@ -10,7 +10,7 @@ public class DialogEntry : ScriptableObject
 
     public DialogData GetLocalizedData(string language)
     {
-        Debug.Log("get localized data called");
+        // Debug.Log("get localized data called");
         _data.Place = Place;
         _engData.Place = Place;
         _chiData.Place = Place;
@@ -19,8 +19,6 @@ public class DialogEntry : ScriptableObject
 
         if (_speakerColor != Color.clear)
         {
-            Debug.Log("changing color");
-            Debug.Log(SpeakerColor);
             _data.SpeakerColor = SpeakerColor;
             _engData.SpeakerColor = SpeakerColor;
             _chiData.SpeakerColor = SpeakerColor;
@@ -71,11 +69,11 @@ public class DialogEntry : ScriptableObject
 
             if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
             {
-                Debug.Log("Parsed Color: " + newColor);
+                // Debug.Log("Parsed Color: " + newColor);
             }
             else
             {
-                Debug.LogError("Failed to parse color string");
+                // Debug.LogError("Failed to parse color string");
             }
             _speakerColor = newColor;
 
@@ -92,11 +90,11 @@ public class DialogEntry : ScriptableObject
 
             if (ColorUtility.TryParseHtmlString(hexColor, out newColor))
             {
-                Debug.Log("Parsed Color: " + newColor);
+                // Debug.Log("Parsed Color: " + newColor);
             }
             else
             {
-                Debug.LogError("Failed to parse color string");
+                // Debug.LogError("Failed to parse color string");
             }
             _speakerColor = newColor;
 

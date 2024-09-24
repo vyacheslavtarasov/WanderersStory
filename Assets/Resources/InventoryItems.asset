@@ -56,7 +56,7 @@ MonoBehaviour:
     _description: {fileID: 11400000, guid: c0e2c7f3dc948fd4890ed04fed56979c, type: 2}
     _showInItemList: 1
   - _id: PowerDebuffPotionRecipe
-    _icon: {fileID: 908085176, guid: b81f0b64e0d693f498abf877933a01f2, type: 3}
+    _icon: {fileID: 1127846050, guid: b81f0b64e0d693f498abf877933a01f2, type: 3}
     _tags: 
     _name2Display: {fileID: 11400000, guid: 321c31cae37ee3847ba0dc26e4424bab, type: 2}
     _description: {fileID: 11400000, guid: d69a3513b59376f48b98fc0488516722, type: 2}

@@ -25,6 +25,10 @@ public class ItemWidget : MonoBehaviour
         if (itemDefinition._name2Display != null)
         {
             _text.text = itemDefinition._name2Display.GetLocalizedData(_localization).Sentences[0];
+            if (item.Amount > 1)
+            {
+                _text.text += " (" + item.Amount + ")";
+            }
         }
         else
         {

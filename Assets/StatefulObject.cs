@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatefulObject : MonoBehaviour
 {
-    private string _currentState;
+    protected string _currentState;
     public string DefaultState;
 
     public void SetCurrentState(float value)
@@ -14,6 +14,11 @@ public class StatefulObject : MonoBehaviour
 
     public void SetCurrentState(string value)
     {
+        if (gameObject.name == "Lever_Ready2bBroken")
+        {
+            Debug.Log("going to set current state " + value + " to " + gameObject.name);
+        }
+        
         _currentState = value;
     }
 
