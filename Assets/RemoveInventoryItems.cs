@@ -23,16 +23,12 @@ public class RemoveInventoryItems : MonoBehaviour
 
     public void Remove()
     {
-        Debug.Log("removing");
         GameObject initiator = GameObject.Find(_gameObjectName);
-        Debug.Log(initiator);
         if (initiator != null && CheckObjectWithName)
         {
-            Debug.Log(initiator);
             var inventoryComponent = initiator.GetComponent<Inventory>();
             if (inventoryComponent != null)
             {
-                Debug.Log("rem");
                 inventoryComponent.Remove(Name.ToString(), Amount);
                 Done?.Invoke(initiator, null);
             }
@@ -40,6 +36,20 @@ public class RemoveInventoryItems : MonoBehaviour
     }
 
     public void Remove(GameObject initiator = null, GameObject source = null)
+    {
+        var inventoryComponent = initiator.GetComponent<Inventory>();
+        if (inventoryComponent != null)
+        {
+            if (inventoryComponent != null)
+            {
+                inventoryComponent.Remove(Name.ToString(), Amount);
+                Done?.Invoke(initiator, null);
+            }
+        }
+
+    }
+
+    public void Remove(GameObject initiator = null)
     {
         var inventoryComponent = initiator.GetComponent<Inventory>();
         if (inventoryComponent != null)

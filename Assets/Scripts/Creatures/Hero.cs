@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+using DG.Tweening;
 public class Hero : Creature
 {
     private PlayerPerkController _playerPerkController;
@@ -63,8 +63,16 @@ public class Hero : Creature
 
     }
 
-    
-    
+    public void SetDisplacement(Vector3 displacement)
+    {
+        CinemachineCameraOffset[] offsets = FindObjectsOfType<CinemachineCameraOffset>();
+
+        foreach (CinemachineCameraOffset offset in offsets)
+        {
+            DOTween.To(() => offset.m_Offset, x => offset.m_Offset = x, displacement, 1);
+        }
+    }
+
     private void Start()
     {
         shaker = FindObjectOfType<CinemachineCameraShaker>();
@@ -117,7 +125,9 @@ public class Hero : Creature
                 }
             }
         }*/
-        
+
+        SetDisplacement(Vector3.zero);
+
 
     }
 

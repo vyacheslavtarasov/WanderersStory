@@ -16,7 +16,6 @@ public class SceneLoader : MonoBehaviour
         _session.PlayerDataSavedAtSceneStart = _session.Data.ShallowCopy();
         _session.Data.CheckpointName = _session.DefaultCheckpoint;
         SceneManager.LoadScene(_levelName);
-        Debug.Log("loading!");
     }
 
     public void Load(PlayerData data)

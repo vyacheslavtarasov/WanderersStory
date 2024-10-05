@@ -108,7 +108,7 @@ public class DialogBoxController : MonoBehaviour
 
             _lContainer.SetActive(false);
             _rContainer.SetActive(false);
-            _container.GetComponent<Image>().CrossFadeAlpha(0.8f, 1.0f, true);
+            _container.GetComponent<Image>().CrossFadeAlpha(0.9f, 1.0f, true);
         }
 
         foreach (InputActionMap localActionMap in InputActionAsset.actionMaps)
@@ -368,12 +368,6 @@ public class DialogBoxController : MonoBehaviour
             }
             yesClicked = false;
         }
-
-        /*if(!yesClicked && !noClicked)
-        {*/
-            
-        // }
-        
 
         _questionMode = false;
     }

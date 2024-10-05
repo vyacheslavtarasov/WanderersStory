@@ -47,9 +47,16 @@ public class DeadSplashScreenController : AnimatedWindow
         retry = true;
         hero = FindObjectOfType<Hero>();
         Destroy(hero.gameObject);
-        _session = FindObjectOfType<GameSession>();
-        _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();
+        // _session = FindObjectOfType<GameSession>();
+        // _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();
+
+        _session.Data.Health = 50.0f;
         _session.SpawnHero(_session.Data.CheckpointName);
+
+
+
+        // GetComponent<SceneLoader>().Load(GameSettings.I.Session.Value);
+
         Close();
     }
 

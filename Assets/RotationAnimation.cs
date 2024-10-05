@@ -49,7 +49,6 @@ public class RotationAnimation : MonoBehaviour
 
     public void RotateWithDelay(float delay = 0f)
     {
-        Debug.Log("rotating with delay");
         Invoke("Rotate", delay);
     }
 

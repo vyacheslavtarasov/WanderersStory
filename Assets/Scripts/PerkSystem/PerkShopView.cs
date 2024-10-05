@@ -37,7 +37,6 @@ public class PerkShopView : AnimatedWindow
     private void OnValueChanged(string newValue, string oldValue)
     {
         LocalizationLanguage = newValue;
-        Debug.Log(LocalizationLanguage);
     }
 
     private void MoneyAmountChanged(int amount)
@@ -156,7 +155,7 @@ public class PerkShopView : AnimatedWindow
         {
             if (_playerPerkController.TryBuy(_chosenPerkShopPerk.Name, _chosenPerkShopPerk.Price) == 1)
             {
-                Debug.Log("Not enought money!");
+                // Debug.Log("Not enought money!");
                 return;
             }
         }
@@ -171,19 +170,15 @@ public class PerkShopView : AnimatedWindow
 
     public void ActivatePerk()
     {
-        Debug.Log("activate " + _chosenPerkShopPerk.Name + "!");
 
         if (_playerPerkController.GetItem(_chosenPerkShopPerk.Name).Active)
         {
-            Debug.Log("deactivating");
             _playerPerkController.DeactivatePerk(_chosenPerkShopPerk.Name);
         }
         else
         {
-            Debug.Log("activating");
             if (_playerPerkController.GetActivePerks().Count == 0)
             {
-                Debug.Log("== 0");
                 _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
                 Redraw();
                 return;
@@ -191,9 +186,6 @@ public class PerkShopView : AnimatedWindow
 
             if (!_session.Data.GetInventoryItem("PerksEquipEnhancer").IsVoid)
             {
-                Debug.Log("activating new perk");
-                Debug.Log(_session.Data.GetInventoryItem("PerksEquipEnhancer").Amount);
-                Debug.Log(_playerPerkController.GetActivePerks().Count);
                 if (_session.Data.GetInventoryItem("PerksEquipEnhancer").Amount + 1 > _playerPerkController.GetActivePerks().Count)
                 {
                     _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);

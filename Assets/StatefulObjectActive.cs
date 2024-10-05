@@ -8,13 +8,13 @@ public class StatefulObjectActive : StatefulObject
     {
         if (gameObject.name == "Lever_Ready2bBroken")
         {
-            Debug.Log("Awake for Lever.. ");
+            // Debug.Log("Awake for Lever.. ");
         }
         if (_currentState == null || _currentState == "")
         {
             if (gameObject.name == "Lever_Ready2bBroken")
             {
-                Debug.Log("Awake for Lever.. going to set default state as current state");
+                // Debug.Log("Awake for Lever.. going to set default state as current state");
             }
             SetCurrentState(DefaultState);
         }
@@ -24,7 +24,7 @@ public class StatefulObjectActive : StatefulObject
         base.ApplyCurrentState();
         if (gameObject.name == "Lever_Ready2bBroken")
         {
-            Debug.Log("going to apply " + GetCurrentState());
+            // Debug.Log("going to apply " + GetCurrentState());
         }
         
         if (GetCurrentState() == "active")

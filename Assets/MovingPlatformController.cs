@@ -68,7 +68,13 @@ public class MovingPlatformController : MonoBehaviour
     private void FixedUpdate()
     {
         bool currentDirectionForward = _directionForward;
+
         if (Vector2.Distance(transform.localPosition, Positions[_targetPositionIndex].localPosition) < Velocity * 0.02f)
+        {
+            transform.localPosition = Positions[_targetPositionIndex].localPosition;
+        }
+
+            if (Vector2.Distance(transform.localPosition, Positions[_targetPositionIndex].localPosition) < Velocity * 0.02f)
         {
             if (MoveMode == Mode.PingPong)
             {

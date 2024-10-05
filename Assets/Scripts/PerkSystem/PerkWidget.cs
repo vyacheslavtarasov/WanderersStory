@@ -34,7 +34,6 @@ public class PerkWidget : MonoBehaviour
 
     public void OnButtonPressed()
     {
-        Debug.Log(OnChanged.GetInvocationList().Length);
         OnChanged?.Invoke(_perkItem);
     }
 }

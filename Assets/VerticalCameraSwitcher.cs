@@ -42,7 +42,7 @@ public class VerticalCameraSwitcher : CameraSwitcher
 
     public void Switch()
     {
-        Debug.Log("switching vertical");
+        // Debug.Log("switching vertical");
         _cameraStateController.SwitchToVerticalCamera(gameObject);
     }
 

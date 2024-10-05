@@ -29,8 +29,8 @@ public class GameSettings : ScriptableObject
 
     private void OnEnable()
     {
-        _music = new FloatPersistenProperty("music", 1.0f);
-        _sound = new FloatPersistenProperty("sound", 1.0f);
+        _music = new FloatPersistenProperty("music", 0.1f);
+        _sound = new FloatPersistenProperty("sound", 0.6f);
         _locale = new StringPersistentProperty("locale", "English");
         _session = new ObjectPersistentProperty("session", null);
     }

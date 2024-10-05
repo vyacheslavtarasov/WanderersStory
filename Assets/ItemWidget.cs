@@ -48,7 +48,6 @@ public class ItemWidget : MonoBehaviour
     public void OnButtonSelect()
     {
         // Debug.Log(OnSelected.GetInvocationList().Length);
-        Debug.Log(_item.Name);
         OnSelected?.Invoke(_item.Name);
     }
 }

@@ -23,17 +23,21 @@ MonoBehaviour:
       \u0435\u0451 \u0414\u0430\u0440\u044B \u043D\u0430 \u0441\u0442\u043E\u0440\u043E\u043D\u0443,
       \u043C\u043E\u0436\u0435\u0442 \u043B\u0443\u0447\u0448\u0435 \u0432\u0435\u0440\u043D\u0443\u0442\u044C
       \u0438\u0445 \u043E\u0431\u0440\u0430\u0442\u043D\u043E..."
+    - "\u0418\u0441\u043A\u0430\u0442\u044C \u0435\u0451 \u0441\u0442\u043E\u0438\u0442
+      \u043D\u0430 \u0432\u043E\u0437\u0432\u044B\u0448\u0435\u043D\u043D\u043E\u0441\u0442\u044F\u0445."
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
   _engData:
     _sentences:
     - Bottom line. You can get close to Death by avoiding looking in his direction
       and doing a double jump.
     - Also... should I give her gifts away, maybe I should give them back....
+    - You should look for it in the higher ground.
     _speakerName: Hero
   _chiData:
     _sentences:
     - "\u4E00\u53E5\u8BDD \u4F60\u53EF\u4EE5\u901A\u8FC7\u4E0D\u770B\u6B7B\u795E\u7684\u65B9\u5411\u548C\u53CC\u8DF3\u6765\u63A5\u8FD1\u4ED6\u3002"
     - "\u8FD8\u6709... \u6211\u662F\u5426\u5E94\u8BE5\u628A\u5979\u7684\u793C\u7269\u9001\u8D70\uFF0C\u4E5F\u8BB8\u6211\u5E94\u8BE5\u628A\u5B83\u4EEC\u9001\u56DE\u53BB...."
+    - "\u4F60\u5E94\u8BE5\u53BB\u9AD8\u5730\u627E\u627E\u3002"
     _speakerName: "\u82F1\u96C4"
   _place: 0
   _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}

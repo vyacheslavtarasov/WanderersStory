@@ -26,12 +26,9 @@ public class CinemachineCameraShaker : MonoBehaviour
     [ContextMenu("shake")]
     public void StartShake()
     {
-        Debug.Log("start shake");
         _shakeTimer = ShakeTime;
         noise = _camerasController.LiveChild.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         noise.m_AmplitudeGain = ShakeValue;
-        Debug.Log(noise.m_AmplitudeGain);
-
     }
 
     // Update is called once per frame

@@ -29,10 +29,8 @@ public class EventTracker : MonoBehaviour
     {
         _source = obj;
         var component = obj.GetComponent(ComponentName);
-        Debug.Log(component.GetType());
 
         FieldInfo field = component.GetType().GetField(EventName, BindingFlags.Public | BindingFlags.Instance);
-        Debug.Log(field);
 
         if (field != null)
         {
@@ -48,10 +46,8 @@ public class EventTracker : MonoBehaviour
     public void UnSubscribe(GameObject obj)
     {
         var component = obj.GetComponent(ComponentName);
-        Debug.Log(component.GetType());
 
         FieldInfo field = component.GetType().GetField(EventName, BindingFlags.Public | BindingFlags.Instance);
-        Debug.Log(field);
 
         if (field != null)
         {

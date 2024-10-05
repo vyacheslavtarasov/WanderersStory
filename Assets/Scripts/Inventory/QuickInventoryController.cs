@@ -29,7 +29,6 @@ public class QuickInventoryController : MonoBehaviour
 
     private void UpdateInventoryUI()
     {
-        Debug.Log("redrawing quick ui");
         Rebuild();
     }
 

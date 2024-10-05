@@ -23,8 +23,7 @@ MonoBehaviour:
   _engData:
     _sentences:
     - Judging by the look of it, it's a comfortable chair... Plus, the place is quiet.
-    - "\u041D\u0435 \u0432\u0437\u0434\u0440\u0435\u043C\u043D\u0443\u0442\u044C
-      \u043B\u0438 \u043C\u043D\u0435 \u0447\u0430\u0441\u043E\u043A?"
+    - Why don't I take a nap for an hour?
     _speakerName: Hero
   _chiData:
     _sentences:

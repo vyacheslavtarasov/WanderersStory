@@ -16,7 +16,7 @@ public class StatefulObject : MonoBehaviour
     {
         if (gameObject.name == "Lever_Ready2bBroken")
         {
-            Debug.Log("going to set current state " + value + " to " + gameObject.name);
+            // Debug.Log("going to set current state " + value + " to " + gameObject.name);
         }
         
         _currentState = value;

@@ -26,7 +26,6 @@ public class Teleport : MonoBehaviour
     {
         if (ObjectToTransfer != null)
         {
-            Debug.Log("here");
             StartCoroutine(TeleportMe(ObjectToTransfer));
         }
         else
@@ -43,17 +42,16 @@ public class Teleport : MonoBehaviour
         Vector3 beginCoordinates = obj.transform.position;
         while (currentTime < moveTime)
         {
-            Vector3 coordinate = Vector3.Lerp(beginCoordinates, place, currentTime / moveTime);
-            obj.transform.position = coordinate;
+            // Vector3 coordinate = Vector3.Lerp(beginCoordinates, place, currentTime / moveTime);
+            // obj.transform.position = coordinate;
             currentTime += Time.deltaTime;
             yield return null;
         }
-        
+        obj.transform.position = place;
     }
 
     private IEnumerator VanishingCoroutine(GameObject obj, float targetOpacity)
     {
-        
         SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
         float currentTime = 0.0f;
         float beginningOpacity = spriteRenderer.color.a;

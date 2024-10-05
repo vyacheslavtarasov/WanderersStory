@@ -38,7 +38,7 @@ public class LevelStartSequenceController : MonoBehaviour
         _model.OnChanged += OnValueChanged;
         OnValueChanged(_model.Value, _model.Value);
 
-        Debug.Log("applying object states");
+        // Debug.Log("applying object states");
 
         Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>();
         foreach (Transform obj in objs)
@@ -53,7 +53,7 @@ public class LevelStartSequenceController : MonoBehaviour
                     {
                         if (obj.name == "Lever_Ready2bBroken")
                         {
-                            Debug.Log("setting currentState to " + obj.name + state.CurrentState);
+                            // Debug.Log("setting currentState to " + obj.name + state.CurrentState);
                         }
                         if (state.CurrentState != null && state.CurrentState != "")
                         {
@@ -69,14 +69,14 @@ public class LevelStartSequenceController : MonoBehaviour
 
                         if (obj.name == "Lever_Ready2bBroken")
                         {
-                            Debug.Log("applying currentState to " + obj.name);
+                            // Debug.Log("applying currentState to " + obj.name);
                         }
                         component.GetComponent<StatefulObject>().ApplyCurrentState();
                         
                     }
                     else
                     {
-                        Debug.Log(obj.name);
+                        // Debug.Log(obj.name);
                     }
                 }
             }

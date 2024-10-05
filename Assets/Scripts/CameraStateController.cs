@@ -48,9 +48,6 @@ public class CameraStateController : MonoBehaviour
 
     public void AssignFollowObject(GameObject gameObject)
     {
-        // Debug.Log("assigning object");
-        // Debug.Log(CurrentCinemachineVirtualCamera);
-        // Debug.Log(gameObject);
         CurrentCinemachineVirtualCamera.GetComponent<CinemachineVirtualCamera>().Follow = gameObject.transform;
     }
 

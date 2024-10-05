@@ -42,7 +42,9 @@ public class ShowDialog : MonoBehaviour
     public void ExitToMainMenu()
     {
 
-            SceneManager.LoadScene("MainMenu");
+        GameSession _session = FindObjectOfType<GameSession>();
+        _session.Data = _session.PlayerDataSavedAtSceneStart.ShallowCopy();// ?
+        SceneManager.LoadScene("MainMenu");
 
     }
 
@@ -56,7 +58,14 @@ public class ShowDialog : MonoBehaviour
     {
         // Debug.Log(LocalizationLanguage);
 
+        if (_dialogBox != null)
+        {
+            _dialogBox.YesEvent.RemoveAllListeners();
+            _dialogBox.NoEvent.RemoveAllListeners();
+            _dialogBox.DialogFinishedEvent.RemoveAllListeners();
+        }
 
+        
 
         if (Skip)
         {
@@ -68,6 +77,9 @@ public class ShowDialog : MonoBehaviour
         {
             _dialogBox = FindObjectOfType<DialogBoxController>();
         }
+        _dialogBox.YesEvent.RemoveAllListeners();
+        _dialogBox.NoEvent.RemoveAllListeners();
+        _dialogBox.DialogFinishedEvent.RemoveAllListeners();
         if (_dialogBox._dialogActive) return;
         float randomFloat = Random.value;
         _dialogBox.AddListener(randomFloat.ToString(), DialogFinished);
@@ -79,6 +91,13 @@ public class ShowDialog : MonoBehaviour
     public void Show(GameObject initiator, GameObject source)
     {
         // Debug.Log(LocalizationLanguage);
+        if (_dialogBox != null)
+        {
+            _dialogBox.YesEvent.RemoveAllListeners();
+            _dialogBox.NoEvent.RemoveAllListeners();
+            _dialogBox.DialogFinishedEvent.RemoveAllListeners();
+        }
+        
 
         Initiator = initiator;
 
@@ -92,6 +111,9 @@ public class ShowDialog : MonoBehaviour
         {
             _dialogBox = FindObjectOfType<DialogBoxController>();
         }
+        _dialogBox.YesEvent.RemoveAllListeners();
+        _dialogBox.NoEvent.RemoveAllListeners();
+        _dialogBox.DialogFinishedEvent.RemoveAllListeners();
         if (_dialogBox._dialogActive) return;
         _dialogBox.ShowDialog(_dialogEntry.GetLocalizedData(LocalizationLanguage), IsQuestion);
         float randomFloat = Random.value;
@@ -102,7 +124,15 @@ public class ShowDialog : MonoBehaviour
 
     public void Show(GameObject initiator)
     {
-        Debug.Log(LocalizationLanguage);
+        // Debug.Log(LocalizationLanguage);
+
+        if (_dialogBox != null)
+        {
+            _dialogBox.YesEvent.RemoveAllListeners();
+            _dialogBox.NoEvent.RemoveAllListeners();
+            _dialogBox.DialogFinishedEvent.RemoveAllListeners();
+        }
+        
 
         Initiator = initiator;
 
@@ -116,6 +146,11 @@ public class ShowDialog : MonoBehaviour
         {
             _dialogBox = FindObjectOfType<DialogBoxController>();
         }
+
+        _dialogBox.YesEvent.RemoveAllListeners();
+        _dialogBox.NoEvent.RemoveAllListeners();
+        _dialogBox.DialogFinishedEvent.RemoveAllListeners();
+
         if (_dialogBox._dialogActive) return;
         _dialogBox.ShowDialog(_dialogEntry.GetLocalizedData(LocalizationLanguage), IsQuestion);
         float randomFloat = Random.value;
@@ -126,7 +161,7 @@ public class ShowDialog : MonoBehaviour
 
     public void DialogFinished()
     {
-        Debug.Log("dialog finished event called");
+        // Debug.Log("dialog finished event called");
         DialogFinishedEvent?.Invoke();
         DialogFinishedEventWithInitiator?.Invoke(Initiator);
         return;
@@ -149,6 +184,14 @@ public class ShowDialog : MonoBehaviour
     public void Show(DialogEntry dialogEntry)
     {
         // Debug.Log(LocalizationLanguage);
+
+        if (_dialogBox != null)
+        {
+            _dialogBox.YesEvent.RemoveAllListeners();
+            _dialogBox.NoEvent.RemoveAllListeners();
+            _dialogBox.DialogFinishedEvent.RemoveAllListeners();
+        }
+
         if (Skip)
         {
             DialogFinishedEvent?.Invoke();
@@ -156,7 +199,10 @@ public class ShowDialog : MonoBehaviour
         }
         if (!Enabled) return;
         _dialogBox = FindObjectOfType<DialogBoxController>();
-        
+        _dialogBox.YesEvent.RemoveAllListeners();
+        _dialogBox.NoEvent.RemoveAllListeners();
+        _dialogBox.DialogFinishedEvent.RemoveAllListeners();
+
         if (_dialogBox._dialogActive) return;
         _dialogBox.ShowDialog(_dialogEntry.GetLocalizedData(LocalizationLanguage), IsQuestion);
         float randomFloat = Random.value;

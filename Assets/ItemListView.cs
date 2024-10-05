@@ -38,7 +38,6 @@ public class ItemListView : AnimatedWindow
     private void OnValueChanged(string newValue, string oldValue)
     {
         LocalizationLanguage = newValue;
-        Debug.Log(LocalizationLanguage);
     }
 
     /*private void InventoryChanged()
@@ -65,7 +64,6 @@ public class ItemListView : AnimatedWindow
 
 
         // Redraw(name);
-        Debug.Log(name);
         /*if (instances.Count > 0)
         {
             DefaultButton = instances[^1];
@@ -116,8 +114,6 @@ public class ItemListView : AnimatedWindow
         if (instances.Count > 0 || name == "")
         {
             DefaultButton = instances[^1];
-            Debug.Log("selection default button1");
-            Debug.Log(DefaultButton.name);
             // DefaultButton.GetComponent<Button>().Select();
 
         }

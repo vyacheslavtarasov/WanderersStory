@@ -29,11 +29,11 @@ public class ReloadLevel : MonoBehaviour
     public void RespawnHero()
     {
         
-        Debug.Log(hero);
+
         // Destroy(hero.gameObject);
         hero.gameObject.GetComponent<Rigidbody2D>().simulated = false;
         
-        Debug.Log(_deadSplashScreenController);
+
 
         _deadSplashScreenController.gameObject.SetActive(true);
 

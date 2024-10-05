@@ -22,7 +22,7 @@ MonoBehaviour:
     _sentences:
     - Looks like She wants to get hers...
     - Give the Deathly Hallows?
-    _speakerName: 
+    _speakerName: Hero
   _chiData:
     _sentences:
     - "\u770B\u6765\u5979\u4E5F\u60F3\u5F97\u5230\u5979\u7684......"

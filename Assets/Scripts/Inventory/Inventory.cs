@@ -28,7 +28,6 @@ public class Inventory : MonoBehaviour
         {
             item = _inventory[itemIndex];
             item.Amount += 1;
-            Debug.Log(item.QuickMenuIndex);
             _inventory[itemIndex] = item;
         }
 
@@ -52,8 +51,6 @@ public class Inventory : MonoBehaviour
 
         var item = GetItem(name);
         if (item.IsVoid) return;
-
-        Debug.Log(item.Amount);
 
         int newAmount = item.Amount - amount;
         _inventory.Remove(item);

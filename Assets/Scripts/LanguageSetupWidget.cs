@@ -38,7 +38,7 @@ public class LanguageSetupWidget : MonoBehaviour
 
     private void OnSelectChanged(Vector2 vec)
     {
-        Debug.Log(vec);
+        // Debug.Log(vec);
     }
 
 
