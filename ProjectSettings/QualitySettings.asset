@@ -187,7 +187,7 @@ QualitySettings:
     customRenderPipeline: {fileID: 11400000, guid: c38a238e34fb87449afeaac118651a6b, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
-    name: Ultra
+    name: Level 5
     pixelLightCount: 4
     shadows: 2
     shadowResolution: 2
@@ -200,7 +200,7 @@ QualitySettings:
     shadowmaskMode: 1
     skinWeights: 255
     textureQuality: 0
-    anisotropicTextures: 2
+    anisotropicTextures: 0
     antiAliasing: 0
     softParticles: 1
     softVegetation: 1
@@ -223,7 +223,7 @@ QualitySettings:
     customRenderPipeline: {fileID: 11400000, guid: 7deb86ce2e387164bb85f7b7b2223256, type: 2}
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
-    Android: 2
+    Android: 0
     GameCoreScarlett: 5
     GameCoreXboxOne: 5
     Lumin: 5
@@ -233,7 +233,7 @@ QualitySettings:
     Server: 0
     Stadia: 5
     Standalone: 5
-    WebGL: 3
+    WebGL: 5
     Windows Store Apps: 5
     XboxOne: 5
     iPhone: 2

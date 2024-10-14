@@ -19,6 +19,8 @@ public class Health : MonoBehaviour
 
     public UnityEvent OnHeal;
     public UnityEvent OnDamage;
+
+    public bool Invictible { get; set; }
     
 
     private void Start()
@@ -29,6 +31,12 @@ public class Health : MonoBehaviour
     public void ChangeHealth(float amount, GameObject inflicter = null)
     {
         var wasHealth = currentHealth;
+
+        if (Invictible && amount < 0)
+        {
+            return;
+        }
+
         currentHealth += amount;
 
         if (currentHealth > 50)
