@@ -15,8 +15,7 @@ public class Hero : Creature
     [SerializeField] private SpawnPrefab SlapTheGroundParticleSpawner;
     [SerializeField] private ParticleSystem _particleSystem;
 
-   
-
+    
     
 
     private GameSession _session;
@@ -73,6 +72,22 @@ public class Hero : Creature
         }
     }
 
+    public void SetDown()
+    {
+        // StartCoroutine(SetDownSpace());      
+    }
+    /*IEnumerator SetDownSpace()
+    {
+        // yield return new WaitForSeconds(0.6f);
+        // SetDisplacement(new Vector3(0, -2.1f, 0));
+    }*/
+
+    public void UnsetDown()
+    {
+        // StopCoroutine(SetDownSpace());
+        // SetDisplacement(Vector3.zero);
+    }
+
     private void Start()
     {
         shaker = FindObjectOfType<CinemachineCameraShaker>();
@@ -127,8 +142,6 @@ public class Hero : Creature
         }*/
 
         SetDisplacement(Vector3.zero);
-
-
     }
 
     public void JumpFromShelf()
@@ -215,6 +228,7 @@ public class Hero : Creature
 
     protected override void OnJump()
     {
+
         base.OnJump();
         JumpDustParticleSpawner.Spawn();
 
@@ -287,7 +301,7 @@ public class Hero : Creature
         LaunchParticles();
 
 
-        if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == 1.0f && !_isGrounded && !_wallStick && (WallSide == "Right" || WallSide == ""))
+        if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == 1.0f && !_isGrounded && !_wallStick && (WallSide == "Right" || WallSide == "") && _wallStickAvailable)
         {
             // Debug.Log("stick left");
             _wallStick = true;
@@ -295,9 +309,11 @@ public class Hero : Creature
             _animator.SetBool("WallHang", true);
             _currentJumpsCount = _jumpsAmount;
             _soundPlayer4OneShots.Play("Cling");
+            _wallStickAvailable = false;
+
         }
 
-        if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == -1.0f && !_isGrounded && !_wallStick && (WallSide == "Left" || WallSide == ""))
+        if (_stickyWallCheckerR.GetCollisionStatus() && _direction.x == -1.0f && !_isGrounded && !_wallStick && (WallSide == "Left" || WallSide == "") && _wallStickAvailable)
         {
             // Debug.Log("stick right");
             _wallStick = true;
@@ -305,6 +321,14 @@ public class Hero : Creature
             _animator.SetBool("WallHang", true);
             _currentJumpsCount = _jumpsAmount;
             _soundPlayer4OneShots.Play("Cling");
+            _wallStickAvailable = false;
+
+        }
+
+        if (_direction.x == 0)
+        {
+            _wallStickAvailable = true;
+
         }
 
         if (!_stickyWallCheckerR.GetCollisionStatus())

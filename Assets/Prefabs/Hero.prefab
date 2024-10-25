@@ -999,6 +999,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e53cb95e-30ad-447d-8ab4-a658717a3c61
     m_ActionName: UI/Cancel
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2605853861375256978}
+        m_TargetAssemblyTypeName: HeroInputReader, Assembly-CSharp
+        m_MethodName: Down
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dc8e6744-f778-4745-91e5-bf584a0885d0
+    m_ActionName: ArcadeLevelDefault/Down[/Keyboard/downArrow,/XInputControllerWindows/dpad/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ArcadeLevelDefault
@@ -1075,6 +1091,7 @@ MonoBehaviour:
   JumpDustParticleSpawner: {fileID: 2605853861377530582}
   SlapTheGroundParticleSpawner: {fileID: 2605853860362572933}
   _particleSystem: {fileID: 2605853861527134731}
+  _wallStickAvailable: 1
   WallSide: 
   _stickyWallCheckerR: {fileID: 6513737310873735241}
   wallClingCollider: {fileID: 1570585123955391083}

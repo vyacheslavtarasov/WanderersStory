@@ -39,6 +39,7 @@ public class Creature : MonoBehaviour
     [Space]
     [Header("Jump Adjustments")]
     [SerializeField] private float _jumpForce;
+    private float initialJumpForce;
     [SerializeField] private float _minimalAscendTime = 1.0f;
     [SerializeField] protected int _jumpsAmount = 2;
 
@@ -61,6 +62,9 @@ public class Creature : MonoBehaviour
     [SerializeField] protected SoundPlayer _soundPlayer;
     protected SoundPlayer _soundPlayer4OneShots;
 
+    [SerializeField] protected bool _wallStickAvailable = true;
+    
+
     public MovingPlatformController platformController;
 
     public UnityEvent JumpEvent;
@@ -76,6 +80,7 @@ public class Creature : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _fixedJoint = GetComponent<FixedJoint2D>();
         _soundPlayer4OneShots = FindObjectOfType<Camera>().gameObject.GetComponent<SoundPlayer>();
+        initialJumpForce = _jumpForce;
     }
 
     public void SetDirection(Vector3 newDirection)
@@ -86,7 +91,20 @@ public class Creature : MonoBehaviour
 
     public void SetJumping(bool isJumping)
     {
+        if (_wallStick)
+        {
+            _wallStickAvailable = false;
+            CancelInvoke("MakeWallStickAvailable");
+            Invoke("MakeWallStickAvailable", 0.4f);
+        }
         _isJumping = isJumping;
+    }
+
+    private void MakeWallStickAvailable()
+    {
+        _wallStickAvailable = true;
+        CancelInvoke("MakeWallStickAvailable");
+        Debug.Log("made available");
     }
 
     public void SetUp(bool isUp)
@@ -201,6 +219,9 @@ public class Creature : MonoBehaviour
             _fixedJoint.connectedBody = myGameObject.GetComponent<Rigidbody2D>();
             _fixedJoint.enabled = true;
         }
+
+       
+        
     }
 
     
@@ -212,6 +233,10 @@ public class Creature : MonoBehaviour
             _soundPlayer4OneShots.Play("Damage");
             this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * _damageForceToInflict, ForceMode2D.Force);
+            if (_jumpForce != initialJumpForce)
+            {
+                _jumpForce = initialJumpForce;
+            }
         }
     }
 

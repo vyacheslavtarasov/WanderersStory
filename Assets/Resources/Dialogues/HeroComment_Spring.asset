@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10cfacd73a1b884e8d21cd405871f65, type: 3}
+  m_Name: HeroComment_Spring
+  m_EditorClassIdentifier: 
+  _data:
+    _sentences:
+    - "\u0410 \u0447\u0442\u043E \u0435\u0441\u043B\u0438 \u043F\u043E\u043F\u0440\u043E\u0431\u043E\u0432\u0430\u0442\u044C
+      \u043F\u0440\u044B\u0433\u043D\u0443\u0442\u044C \u043D\u0430 \u044D\u0442\u0443
+      \u0448\u0442\u0443\u043A\u0443 \u0441\u0432\u0435\u0440\u0445\u0443?"
+    _speakerName: "\u0413\u0435\u0440\u043E\u0439"
+  _engData:
+    _sentences:
+    - What if we try jumping on top of this thing?
+    _speakerName: Hero
+  _chiData:
+    _sentences:
+    - "\u5982\u679C\u6211\u4EEC\u8BD5\u7740\u4ECE\u4E0A\u9762\u8DF3\u4E0B\u6765\u5462\uFF1F"
+    _speakerName: "\u82F1\u96C4"
+  _place: 0
+  _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}
+  _speakerSound: Hero

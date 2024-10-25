@@ -159,11 +159,8 @@ public class PerkShopView : AnimatedWindow
                 return;
             }
         }
-        else
-        {
-            // _playerPerkController.ActivatePerk(_chosenPerkShopPerk.Name);
             ActivatePerk();
-        }
+
         
         Redraw();
     }

@@ -84,6 +84,20 @@ public class HeroInputReader : MonoBehaviour
 
     }
 
+    public void Down(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _hero.SetDown();
+        }
+        if (context.canceled)
+        {
+            _hero.UnsetDown();
+        }
+
+
+    }
+
     public void JumpFromShelf(InputAction.CallbackContext context)
     {
 

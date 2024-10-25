@@ -20,6 +20,8 @@ public class Health : MonoBehaviour
     public UnityEvent OnHeal;
     public UnityEvent OnDamage;
 
+    private bool dead = false;
+
     public bool Invictible { get; set; }
     
 
@@ -28,8 +30,17 @@ public class Health : MonoBehaviour
         currentHealth = overallHealth;
     }
 
+    private void OnEnable()
+    {
+        if (currentHealth > 0)
+        {
+            dead = false;
+        }
+    }
+
     public void ChangeHealth(float amount, GameObject inflicter = null)
     {
+        if (dead) { return; }
         var wasHealth = currentHealth;
 
         if (Invictible && amount < 0)
@@ -39,20 +50,25 @@ public class Health : MonoBehaviour
 
         currentHealth += amount;
 
+
         if (currentHealth > 50)
         {
             currentHealth = 50;
         }
 
+        
+
         OnChangeHealth?.Invoke(wasHealth, currentHealth, overallHealth);
 
-        if (currentHealth <= 0.0f)
+        if (currentHealth <= 0.0f && !dead)
         {
             OnDead?.Invoke();
+
+            dead = true;
             return;
         }
         
-        if (amount < 0)
+        if (amount < 0 && !dead)
         {
             OnDamage?.Invoke();
             return;

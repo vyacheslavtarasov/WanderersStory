@@ -16,15 +16,17 @@ MonoBehaviour:
     _sentences:
     - "\u041C\u0435\u0448\u043E\u0447\u0435\u043A \u0441 \u0437\u043E\u043B\u043E\u0442\u043E\u043C.
       \u041E\u043D \u043D\u0438\u043A\u043E\u0433\u0434\u0430 \u043D\u0435 \u0431\u0443\u0434\u0435\u0442
-      \u043B\u0438\u0448\u043D\u0438\u043C."
+      \u043B\u0438\u0448\u043D\u0438\u043C, \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0430\u0442\u044C
+      \u0442\u0430\u043A\u043E\u0435 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0451\u043D\u043D\u043E
+      \u043D\u0435 \u0441\u0442\u043E\u0438\u0442."
     _speakerName: "\u0413\u0435\u0440\u043E\u0439"
   _engData:
     _sentences:
-    - A bag of gold. You can never have too much of it.
+    - A bag of gold. It's never a waste, you definitely shouldn't miss it.
     _speakerName: Hero
   _chiData:
     _sentences:
-    - "\u4E00\u888B\u9EC4\u91D1 \u4F60\u6C38\u8FDC\u4E0D\u4F1A\u5ACC\u591A\u3002"
+    - "\u4E00\u888B\u9EC4\u91D1 \u7EDD\u4E0D\u6D6A\u8D39\uFF0C\u7EDD\u5BF9\u4E0D\u5BB9\u9519\u8FC7\u3002"
     _speakerName: "\u82F1\u96C4"
   _place: 0
   _speakerColor: {r: 0.8, g: 0.89411765, b: 1, a: 1}

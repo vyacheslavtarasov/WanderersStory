@@ -747,8 +747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SendPointerHoverToParent: 0
-  m_MoveRepeatDelay: 0.1
-  m_MoveRepeatRate: 0.1
+  m_MoveRepeatDelay: 0.6
+  m_MoveRepeatRate: 0.6
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 34275f41ae2f1b74da8371362360de7a, type: 3}
   m_PointAction: {fileID: 0}
